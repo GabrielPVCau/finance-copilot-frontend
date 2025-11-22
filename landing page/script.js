@@ -1,94 +1,119 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- 1. FAQ Toggle Logic ---
-    window.toggleFaq = (button) => {
-        const content = button.nextElementSibling;
-        const icon = button.querySelector('span');
+    // --- 1. Zero-Party Data Logic (Multi-step Form) ---
+    window.selectObjective = (obj) => {
+        const step1 = document.getElementById('step1');
+        const form = document.getElementById('leadForm');
+        const input = document.getElementById('selectedObjective');
 
-        document.querySelectorAll('#faq-container > div > div').forEach(el => {
-            if (el !== content && !el.classList.contains('hidden')) {
-                el.classList.add('hidden');
-                const btn = el.previousElementSibling;
-                const icn = btn.querySelector('span');
-                if (icn) icn.style.transform = 'rotate(0deg)';
-            }
-        });
+        if (step1 && form && input) {
+            input.value = obj;
 
-        content.classList.toggle('hidden');
-        if (!content.classList.contains('hidden')) {
-            icon.style.transform = 'rotate(180deg)';
-        } else {
-            icon.style.transform = 'rotate(0deg)';
+            // Animate transition
+            step1.style.opacity = '0';
+            step1.style.transform = 'translateY(-10px)';
+
+            setTimeout(() => {
+                step1.classList.add('hidden');
+                form.classList.remove('hidden');
+                form.classList.add('animate-fade-in-up');
+
+                // Auto-focus email for speed
+                setTimeout(() => document.getElementById('email')?.focus(), 100);
+            }, 200);
         }
     };
 
-    // --- 2. Scroll to CTA ---
-    window.scrollToCTA = () => {
-        const ctaSection = document.getElementById('cta-final');
-        if (ctaSection) {
-            ctaSection.scrollIntoView({ behavior: 'smooth' });
+    window.backToStep1 = () => {
+        const step1 = document.getElementById('step1');
+        const form = document.getElementById('leadForm');
+
+        if (step1 && form) {
+            form.classList.add('hidden');
+            form.classList.remove('animate-fade-in-up');
+
+            step1.classList.remove('hidden');
+            // Reset animation state
             setTimeout(() => {
-                document.getElementById('email-input')?.focus();
-            }, 600);
+                step1.style.opacity = '1';
+                step1.style.transform = 'translateY(0)';
+            }, 50);
         }
     };
 
-    // --- 3. Form Submission Simulation ---
-    const submitBtn = document.getElementById('final-submit-btn');
-    const emailInput = document.getElementById('email-input');
-    const feedback = document.getElementById('cta-feedback');
-    const defaultLabel = submitBtn ? submitBtn.innerHTML : '';
+    // --- 2. Form Submission & Modal ---
+    const form = document.getElementById('leadForm');
+    const modal = document.getElementById('successModal');
+    const modalOverlay = document.getElementById('modalOverlay');
 
-    const showFeedback = (message, type = 'success') => {
-        if (!feedback) return;
-        feedback.textContent = message;
-        feedback.classList.remove('hidden', 'text-green-400', 'text-red-400');
-        feedback.classList.add(type === 'success' ? 'text-green-400' : 'text-red-400');
-    };
+    if (form) {
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const objective = document.getElementById('selectedObjective').value;
+            const btn = form.querySelector('button[type="submit"]');
+            const originalText = btn.innerText;
 
-    if (submitBtn) {
-        submitBtn.addEventListener('click', () => {
-            const email = emailInput.value.trim();
+            // Simulate API Call / Loading State
+            btn.disabled = true;
+            btn.innerText = 'Processando...';
+            btn.classList.add('opacity-80');
 
-            if (!email.includes('@')) {
-                emailInput.classList.add('ring-2', 'ring-red-500', 'bg-red-500/10');
-                emailInput.focus();
-                showFeedback('Digite um e-mail válido para continuar.', 'error');
-                setTimeout(() => emailInput.classList.remove('ring-2', 'ring-red-500', 'bg-red-500/10'), 1800);
-                return;
-            }
-
-            submitBtn.innerHTML = 'Analisando dados...';
-            submitBtn.disabled = true;
-            submitBtn.classList.add('opacity-80', 'cursor-not-allowed');
-            showFeedback('Estamos conferindo suas vendas com segurança.', 'success');
+            // 5. EXTERNAL REQUIREMENT: GTM/CAPI Placeholder
+            console.log('GTM Event: Lead Generated', {
+                event: 'generate_lead',
+                email: email,
+                objective: objective,
+                timestamp: new Date().toISOString()
+            });
 
             setTimeout(() => {
-                submitBtn.innerHTML = 'Oferta pronta';
-                submitBtn.classList.remove('bg-brand-500', 'hover:bg-brand-400');
-                submitBtn.classList.add('bg-green-500', 'hover:bg-green-400', 'text-white');
-                showFeedback('Pronto! Enviamos a simulação para o seu e-mail.', 'success');
+                // Show Modal
+                if (modal) {
+                    document.getElementById('userEmailDisplay').innerText = email;
+                    modal.classList.remove('hidden');
+                    modal.classList.add('flex');
+                }
 
-                setTimeout(() => {
-                    submitBtn.innerHTML = defaultLabel || 'Liberar meu limite';
-                    submitBtn.disabled = false;
-                    submitBtn.classList.remove('opacity-80', 'cursor-not-allowed', 'bg-green-500', 'hover:bg-green-400', 'text-white');
-                    submitBtn.classList.add('bg-brand-500', 'hover:bg-brand-400');
-                    emailInput.value = '';
-                }, 1800);
-            }, 1400);
+                // Reset Button
+                btn.disabled = false;
+                btn.innerText = originalText;
+                btn.classList.remove('opacity-80');
+            }, 1500);
         });
     }
+
+    window.closeModal = () => {
+        if (modal) {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            form.reset();
+            window.backToStep1();
+        }
+    };
+
+    // Close modal on overlay click
+    if (modalOverlay) {
+        modalOverlay.addEventListener('click', window.closeModal);
+    }
+
+    // --- 3. Scroll to CTA ---
+    window.scrollToCTA = () => {
+        const ctaSection = document.getElementById('simulacao'); // Changed to the form section
+        if (ctaSection) {
+            ctaSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
 
     // --- 4. Navbar Scroll Effect ---
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
         if (window.scrollY > 10) {
-            navbar.classList.add('shadow-lg', 'bg-dark-950/90');
-            navbar.classList.remove('bg-dark-950/80');
+            navbar.classList.add('shadow-lg', 'bg-slate-950/95');
+            navbar.classList.remove('bg-slate-950/80');
         } else {
-            navbar.classList.remove('shadow-lg', 'bg-dark-950/90');
-            navbar.classList.add('bg-dark-950/80');
+            navbar.classList.remove('shadow-lg', 'bg-slate-950/95');
+            navbar.classList.add('bg-slate-950/80');
         }
     });
 });

@@ -1,6 +1,9 @@
 :root {
     --brand-300: #5ef8d0;
+    --brand-400: #2dd4bf;
     --brand-500: #14b8a6;
+    --brand-600: #0d9488;
+    --brand-900: #042a24;
     --dark-950: #020617;
     --dark-card: rgba(15, 23, 42, 0.6);
 }
@@ -37,10 +40,22 @@ body {
     min-height: 100vh;
 }
 
-.text-balance {
-    text-wrap: balance;
+/* 1. PERFORMANCE: INP Optimization */
+.interactive-element {
+    transition: transform 0.1s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s ease, background-color 0.2s ease;
+    cursor: pointer;
 }
 
+.interactive-element:active {
+    transform: scale(0.96);
+}
+
+.interactive-element:focus-visible {
+    outline: 2px solid var(--brand-500);
+    outline-offset: 2px;
+}
+
+/* Hero Backgrounds */
 .hero-orb {
     position: absolute;
     top: -200px;
@@ -48,248 +63,70 @@ body {
     width: 900px;
     height: 900px;
     transform: translateX(-50%);
-    background: radial-gradient(circle, rgba(20, 184, 166, 0.25), transparent 60%);
-    filter: blur(40px);
-    opacity: 0.7;
+    background: radial-gradient(circle, rgba(20, 184, 166, 0.15), transparent 60%);
+    filter: blur(60px);
+    opacity: 0.6;
+    pointer-events: none;
 }
 
 .hero-grid {
     position: absolute;
     inset: 0;
-    background-image: linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
     background-size: 120px 120px;
     mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 0.9), transparent 70%);
+    pointer-events: none;
 }
 
+/* Glassmorphism */
 .glass-card {
     background: var(--dark-card);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.08);
     box-shadow: 0 20px 80px rgba(2, 6, 23, 0.6);
 }
 
-.icon-chip {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 34px;
-    height: 34px;
-    border-radius: 999px;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    background: rgba(20, 184, 166, 0.08);
-    color: var(--brand-300);
-}
-
-.icon-chip.lg {
-    width: 42px;
-    height: 42px;
-    border-radius: 14px;
-}
-
+/* Bento Grid Cards */
 .pain-card {
     padding: 32px;
     border-radius: 24px;
-    background: rgba(13, 18, 32, 0.8);
+    background: rgba(13, 18, 32, 0.6);
     border: 1px solid rgba(255, 255, 255, 0.06);
     transition: border 0.3s ease, transform 0.3s ease;
 }
 
-.pain-card h3 {
-    margin-top: 18px;
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: white;
-}
-
-.pain-card p {
-    margin-top: 10px;
-    color: #94a3b8;
-    font-size: 0.95rem;
-    line-height: 1.5;
-}
-
 .pain-card:hover {
-    border-color: rgba(20, 184, 166, 0.5);
-    transform: translateY(-6px);
+    border-color: rgba(20, 184, 166, 0.3);
+    transform: translateY(-4px);
 }
 
-.icon-circle {
-    display: inline-flex;
-    width: 56px;
-    height: 56px;
-    border-radius: 16px;
-    align-items: center;
-    justify-content: center;
-    color: var(--brand-300);
-    background: rgba(20, 184, 166, 0.08);
-    border: 1px solid rgba(20, 184, 166, 0.2);
+/* FAQ Semantic Animation */
+details > summary {
+    list-style: none;
+}
+details > summary::-webkit-details-marker {
+    display: none;
+}
+details[open] summary ~ * {
+    animation: fadeInUp 0.3s ease-in-out;
 }
 
-.eyebrow {
-    font-size: 0.7rem;
-    letter-spacing: 0.35rem;
-    text-transform: uppercase;
-    font-weight: 600;
-    color: var(--brand-300);
-}
-
-.step-card {
-    position: relative;
-    padding: 32px;
-    border-radius: 28px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    background: rgba(4, 16, 32, 0.7);
-    min-height: 220px;
-}
-
-.step-index {
-    display: inline-flex;
-    padding: 10px 18px;
-    border-radius: 999px;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    color: white;
-    font-size: 0.8rem;
-    letter-spacing: 0.25rem;
-}
-
-.step-card h3 {
-    margin-top: 20px;
-    font-size: 1.4rem;
-    font-weight: 600;
-    color: white;
-}
-
-.benefit-row {
-    display: flex;
-    gap: 16px;
-    align-items: center;
-    padding: 16px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.benefit-row:last-child {
-    border-bottom: none;
-}
-
-.benefit-row h3 {
-    color: white;
-    font-size: 1.1rem;
-    margin: 0;
-}
-
-.benefit-row p {
-    margin: 4px 0 0;
-    color: #94a3b8;
-    font-size: 0.95rem;
-}
-
-.insight-card {
-    padding: 32px;
-    border-radius: 28px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    background: rgba(8, 15, 28, 0.8);
-    box-shadow: 0 10px 40px rgba(2, 6, 23, 0.4);
-}
-
-.logo-chip {
-    padding: 10px 18px;
-    border-radius: 999px;
-    border: 1px dashed rgba(255, 255, 255, 0.2);
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.3rem;
-    color: #e2e8f0;
-}
-
-.testimonial {
-    padding: 28px;
-    border-radius: 24px;
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    background: rgba(8, 15, 28, 0.75);
-}
-
-.testimonial p {
-    margin-top: 16px;
-    color: #cbd5f5;
-    line-height: 1.6;
-    font-size: 0.95rem;
-}
-
-.avatar {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background: rgba(20, 184, 166, 0.2);
-    border: 1px solid rgba(20, 184, 166, 0.25);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 700;
-    color: white;
-}
-
-.faq-card {
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    overflow: hidden;
-    background: rgba(4, 10, 22, 0.8);
-}
-
-.faq-card button {
-    width: 100%;
-    background: transparent;
-    border: none;
-    padding: 20px 24px;
-    text-align: left;
-    font-size: 1rem;
-    font-weight: 600;
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.faq-card button span {
-    transition: transform 0.3s ease;
-    color: var(--brand-300);
-}
-
-.faq-card div {
-    padding: 0 24px 20px;
-    color: #94a3b8;
-    line-height: 1.5;
-    font-size: 0.95rem;
-}
-
-.cta-glow {
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at top, rgba(20, 184, 166, 0.35), transparent 55%);
-    opacity: 0.7;
-}
-
-#cta-final input::placeholder {
-    color: #94a3b8;
-}
-
-#cta-final button {
-    transition: transform 0.25s ease;
-}
-
-#cta-final button:hover {
-    transform: translateY(-2px);
-}
-
-@media (max-width: 768px) {
-    .pain-card,
-    .step-card,
-    .insight-card,
-    .testimonial {
-        padding: 24px;
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
     }
-    .logo-chip {
-        letter-spacing: 0.15rem;
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .pain-card {
+        padding: 24px;
     }
 }

@@ -4,14 +4,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Copiloto Financeiro | Crédito que acompanha suas vendas</title>
+    <title>Copiloto Financeiro | Inteligência de Crédito para PMEs</title>
     <meta name="description"
-        content="Copiloto Financeiro libera crédito rápido usando seus recebíveis. Conecte sua conta PJ, receba oferta em minutos e use o dinheiro sem burocracia.">
-    <script src="https://cdn.tailwindcss.com"></script>
+        content="Plataforma de inteligência financeira que conecta sua PME às melhores ofertas de crédito do mercado. Sem burocracia, 100% seguro.">
+
+    <!-- 1. PERFORMANCE: Speculation Rules para pré-renderização -->
+    <script type="speculationrules">
+    {
+      "prerender": [
+        {
+          "source": "list",
+          "urls": ["/app", "/cadastro", "/termos"]
+        }
+      ]
+    }
+    </script>
+
+    <!-- Fonts: Display Swap para evitar FOIT -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -19,6 +36,7 @@
                 extend: {
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
+                        heading: ['Outfit', 'sans-serif'],
                     },
                     colors: {
                         brand: {
@@ -32,401 +50,332 @@
                             950: '#020617',
                             900: '#0b1220',
                             800: '#111a2c',
-                            card: 'rgba(15,23,42,0.55)'
+                            card: 'rgba(15,23,42,0.6)'
                         }
                     },
                     boxShadow: {
-                        glow: '0 20px 80px rgba(20,184,166,0.25)'
-                    }
-                <!DOCTYPE html>
-                <html lang="pt-BR" class="scroll-smooth">
-
-                <head>
-                    <meta charset="UTF-8">
-                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                    <title>Copiloto Financeiro | Crédito guiado pelas suas vendas</title>
-                    <meta name="description" content="Você conecta a conta PJ, recebe limite em minutos e usa o Pix quando precisa. Crédito que acompanha suas vendas sem papelada.">
-                    <script src="https://cdn.tailwindcss.com"></script>
-                    <link rel="preconnect" href="https://fonts.googleapis.com">
-                    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-                    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-                    <script>
-                        tailwind.config = {
-                            theme: {
-                                extend: {
-                                    fontFamily: {
-                                        sans: ['Inter', 'sans-serif']
-                                    },
-                                    colors: {
-                                        brand: {
-                                            400: '#2dd4bf',
-                                            500: '#14b8a6',
-                                            600: '#0d9488'
-                                        },
-                                        dark: {
-                                            950: '#020617'
-                                        }
-                                    },
-                                    boxShadow: {
-                                        glow: '0 15px 45px rgba(20,184,166,0.25)'
-                                    }
-                                }
-                            }
+                        'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.07)',
+                        'glow': '0 0 20px rgba(20, 184, 166, 0.15)',
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.5s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
                         }
-                    </script>
-                </head>
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="style.css">
+</head>
 
-                <body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-brand-400 selection:text-slate-900">
+<body
+    class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-brand-400 selection:text-slate-900 pb-24 md:pb-0">
 
-                    <nav id="navbar" class="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-slate-950/80 backdrop-blur-sm">
-                        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                            <div class="flex h-16 items-center justify-between">
-                                <button class="flex items-center gap-3" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">
-                                    <span class="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-brand-500 text-lg font-black text-slate-900">C</span>
-                                    <div class="text-left">
-                                        <p class="text-sm font-semibold uppercase tracking-widest text-slate-300">Copiloto</p>
-                                        <p class="text-[11px] tracking-[0.35em] text-brand-400">Financeiro</p>
-                                    </div>
+    <!-- 2. UX: Navegação Thumb-Zone (Mobile Only) -->
+    <div
+        class="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-slate-900/90 backdrop-blur-lg border-t border-slate-800 p-4 pb-6 shadow-[0_-4px_20px_rgba(0,0,0,0.3)]">
+        <button onclick="scrollToCTA()"
+            class="interactive-element flex items-center justify-center w-full py-3.5 bg-brand-500 text-slate-900 font-bold rounded-xl shadow-lg shadow-brand-500/20">
+            Ver Minhas Opções
+        </button>
+    </div>
+
+    <!-- Header Semântico -->
+    <header class="fixed w-full z-40 top-0 transition-all duration-300" id="navbar">
+        <div class="absolute inset-0 bg-slate-950/80 backdrop-blur-md border-b border-white/5"></div>
+        <div class="container mx-auto px-6 py-4 relative flex items-center justify-between">
+            <a href="#" class="flex items-center gap-2 group interactive-element">
+                <div class="w-8 h-8 bg-brand-500 rounded-lg flex items-center justify-center text-slate-900 font-bold">
+                    C
+                </div>
+                <span class="font-heading font-bold text-xl text-white">Copiloto<span
+                        class="text-brand-400">Financeiro</span></span>
+            </a>
+
+            <nav class="hidden md:flex items-center gap-8" aria-label="Principal">
+                <a href="#como-funciona"
+                    class="text-sm font-medium text-slate-400 hover:text-brand-400 transition-colors interactive-element">Como
+                    Funciona</a>
+                <a href="#beneficios"
+                    class="text-sm font-medium text-slate-400 hover:text-brand-400 transition-colors interactive-element">Benefícios</a>
+                <a href="#faq"
+                    class="text-sm font-medium text-slate-400 hover:text-brand-400 transition-colors interactive-element">Dúvidas</a>
+            </nav>
+
+            <button onclick="scrollToCTA()"
+                class="hidden md:inline-flex interactive-element items-center justify-center px-5 py-2.5 text-sm font-semibold text-slate-900 bg-brand-500 rounded-full hover:bg-brand-400 shadow-lg shadow-brand-500/20 transition-all">
+                Acessar Plataforma
+            </button>
+        </div>
+    </header>
+
+    <main class="pt-32 lg:pt-48 overflow-hidden">
+        <!-- Hero Section -->
+        <section class="container mx-auto px-6 mb-24 relative">
+            <div class="hero-orb"></div>
+            <div class="grid lg:grid-cols-2 gap-16 items-center relative z-10">
+
+                <!-- Copywriting: Identidade & Promessa -->
+                <div class="max-w-2xl">
+                    <div
+                        class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-900/50 border border-brand-500/30 text-brand-300 text-xs font-bold uppercase tracking-wide mb-6">
+                        <span class="w-2 h-2 rounded-full bg-brand-400 animate-pulse"></span>
+                        Análise em Tempo Real
+                    </div>
+
+                    <h1 class="font-heading text-4xl lg:text-6xl font-bold text-white leading-[1.1] mb-6">
+                        Não é empréstimo.<br>
+                        É <span
+                            class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-brand-200">Inteligência
+                            de Crédito.</span>
+                    </h1>
+
+                    <p class="text-lg text-slate-400 mb-8 leading-relaxed max-w-lg">
+                        <b>Pare de ser ignorado pelos grandes bancos.</b> Nossa IA analisa seu fluxo de caixa real e
+                        conecta sua empresa a ofertas de crédito que você nem sabia que existiam.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-4 mb-12">
+                        <div class="flex items-center gap-3 text-sm font-medium text-slate-500">
+                            <svg class="w-5 h-5 text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            Regulado pelo BC
+                        </div>
+                        <div class="flex items-center gap-3 text-sm font-medium text-slate-500">
+                            <svg class="w-5 h-5 text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                            </svg>
+                            Dados Criptografados
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. Lógica de Conversão: Zero-Party Data Form (Multi-step) -->
+                <div class="relative" id="simulacao">
+                    <div class="glass-card rounded-2xl p-8 relative z-10">
+                        <!-- Step 1: Preferências (Zero-Party Data) -->
+                        <div id="step1" class="space-y-6">
+                            <div class="text-center">
+                                <h3 class="font-heading text-2xl font-bold text-white">Qual seu objetivo hoje?</h3>
+                                <p class="text-slate-400 text-sm mt-2">Personalizaremos sua análise com base nisso.</p>
+                            </div>
+
+                            <div class="grid gap-3">
+                                <button onclick="selectObjective('giro')"
+                                    class="interactive-element w-full text-left p-4 rounded-xl border border-white/10 bg-white/5 hover:border-brand-500 hover:bg-brand-900/20 transition-all group">
+                                    <span class="font-bold text-white block group-hover:text-brand-300">Capital de
+                                        Giro</span>
+                                    <span class="text-xs text-slate-500">Para estoque, folha e dia a dia.</span>
                                 </button>
-                                <div class="hidden text-xs font-semibold uppercase tracking-widest text-slate-400 md:flex md:gap-8">
-                                    <a href="#dor" class="hover:text-white">Problema</a>
-                                    <a href="#como-funciona" class="hover:text-white">Solução</a>
-                                    <a href="#depoimentos" class="hover:text-white">Prova</a>
-                                </div>
-                                <button onclick="scrollToCTA()" class="rounded-full border border-white/20 px-5 py-2 text-sm font-semibold text-white transition hover:border-brand-400 hover:text-brand-300">Descobrir limite</button>
+                                <button onclick="selectObjective('expansao')"
+                                    class="interactive-element w-full text-left p-4 rounded-xl border border-white/10 bg-white/5 hover:border-brand-500 hover:bg-brand-900/20 transition-all group">
+                                    <span class="font-bold text-white block group-hover:text-brand-300">Expansão &
+                                        Investimento</span>
+                                    <span class="text-xs text-slate-500">Reformas, novos equipamentos ou filiais.</span>
+                                </button>
+                                <button onclick="selectObjective('divida')"
+                                    class="interactive-element w-full text-left p-4 rounded-xl border border-white/10 bg-white/5 hover:border-brand-500 hover:bg-brand-900/20 transition-all group">
+                                    <span class="font-bold text-white block group-hover:text-brand-300">Organizar
+                                        Dívidas</span>
+                                    <span class="text-xs text-slate-500">Trocar juros caros por baratos.</span>
+                                </button>
                             </div>
                         </div>
-                    </nav>
 
-                    <main class="pt-24">
-                        <header id="hero" class="relative overflow-hidden py-20">
-                            <div class="absolute inset-x-0 top-0 h-64 bg-gradient-to-b from-brand-500/10 to-transparent"></div>
-                            <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid gap-12 lg:grid-cols-2 lg:items-center">
-                                <div>
-                                    <p class="text-xs font-semibold uppercase tracking-[0.4em] text-brand-400">Crédito que segue suas vendas</p>
-                                    <h1 class="mt-6 text-4xl font-extrabold leading-tight text-white sm:text-5xl">Você libera dinheiro hoje e paga quando vender amanhã.</h1>
-                                    <p class="mt-6 text-lg text-slate-300">Conecte sua conta PJ, veja o limite em minutos e receba um Pix sem fila nem papelada.</p>
-                                    <ul class="mt-8 space-y-4 text-sm text-slate-300">
-                                        <li class="flex items-center gap-3">
-                                            <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white/10 text-brand-400">
-                                                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                    <path d="M5 13l4 4L19 7" />
-                                                </svg>
-                                            </span>
-                                            Oferta chega em até 5 minutos.
-                                        </li>
-                                        <li class="flex items-center gap-3">
-                                            <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white/10 text-brand-400">
-                                                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                    <path d="M3 7h18M3 12h18M7 17h10" />
-                                                </svg>
-                                            </span>
-                                            Você escolhe o valor e paga só com as próximas vendas.
-                                        </li>
-                                        <li class="flex items-center gap-3">
-                                            <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white/10 text-brand-400">
-                                                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                    <circle cx="12" cy="12" r="9" />
-                                                    <path d="M12 8v8m0 0v1" />
-                                                </svg>
-                                            </span>
-                                            Simular é grátis. Você só paga se usar.
-                                        </li>
-                                    </ul>
-                                    <div class="mt-10 flex flex-col gap-4 sm:flex-row">
-                                        <button onclick="scrollToCTA()" class="inline-flex items-center justify-center gap-2 rounded-2xl bg-brand-500 px-8 py-4 text-lg font-bold text-slate-900 shadow-glow transition hover:bg-brand-400">
-                                            Liberar meu limite
-                                            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                <path d="M5 12h14" />
-                                                <path d="M12 5l7 7-7 7" />
-                                            </svg>
-                                        </button>
-                                        <a href="#como-funciona" class="rounded-2xl border border-white/20 px-8 py-4 text-center text-lg font-semibold text-white transition hover:border-brand-400">Ver como funciona</a>
-                                    </div>
-                                    <div class="mt-10 grid gap-4 sm:grid-cols-3">
-                                        <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
-                                            <p class="text-xs uppercase tracking-[0.3em] text-slate-400">Resposta</p>
-                                            <p class="mt-2 text-2xl font-bold text-white">4 min</p>
-                                            <p class="text-xs text-slate-500">tempo médio</p>
-                                        </div>
-                                        <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
-                                            <p class="text-xs uppercase tracking-[0.3em] text-slate-400">Limite médio</p>
-                                            <p class="mt-2 text-2xl font-bold text-white">R$ 52 mil</p>
-                                            <p class="text-xs text-slate-500">por cliente</p>
-                                        </div>
-                                        <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
-                                            <p class="text-xs uppercase tracking-[0.3em] text-slate-400">Satisfação</p>
-                                            <p class="mt-2 text-2xl font-bold text-white">96%</p>
-                                            <p class="text-xs text-slate-500">avaliam 5 estrelas</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="rounded-[32px] border border-white/10 bg-white/5/90 p-8 backdrop-blur">
-                                    <div class="flex items-center justify-between border-b border-white/10 pb-6">
-                                        <div>
-                                            <p class="text-xs uppercase tracking-[0.3em] text-slate-400">Simulação ao vivo</p>
-                                            <p class="mt-2 text-4xl font-bold text-white">R$ 81.900</p>
-                                            <p class="text-xs text-slate-500">Disponível agora</p>
-                                        </div>
-                                        <span class="inline-flex h-12 w-12 items-center justify-center rounded-2xl border border-brand-500/40 bg-brand-500/20 text-brand-400">
-                                            <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                <path d="M5 13l4 4L19 7" />
-                                            </svg>
-                                        </span>
-                                    </div>
-                                    <dl class="mt-6 space-y-4 text-sm text-slate-300">
-                                        <div class="flex items-center justify-between">
-                                            <dt class="flex items-center gap-2">
-                                                <svg class="h-4 w-4 text-brand-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                    <path d="M4 12h16" />
-                                                </svg>
-                                                Próximo Pix
-                                            </dt>
-                                            <dd class="font-semibold text-white">+ R$ 28.700 em 12 min</dd>
-                                        </div>
-                                        <div class="flex items-center justify-between">
-                                            <dt class="flex items-center gap-2">
-                                                <svg class="h-4 w-4 text-brand-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                    <path d="M3 12l2-2 4 4 4-4 8 8" />
-                                                </svg>
-                                                Score não trava
-                                            </dt>
-                                            <dd class="font-semibold text-white">olhamos vendas reais</dd>
-                                        </div>
-                                        <div>
-                                            <dt class="text-xs uppercase tracking-[0.3em] text-slate-400">Faturamento analisado</dt>
-                                            <dd class="mt-3 h-2 rounded-full bg-white/10">
-                                                <div class="h-full rounded-full bg-gradient-to-r from-brand-500 to-brand-400" style="width:78%"></div>
-                                            </dd>
-                                        </div>
-                                    </dl>
-                                </div>
+                        <!-- Step 2: Contato (Hidden initially) -->
+                        <form id="leadForm" class="hidden space-y-5" novalidate>
+                            <div class="text-center mb-6">
+                                <button type="button" onclick="backToStep1()"
+                                    class="text-xs text-slate-500 hover:text-brand-400 mb-2 flex items-center justify-center gap-1 mx-auto transition-colors">
+                                    ← Voltar
+                                </button>
+                                <h3 class="font-heading text-xl font-bold text-white">Quase lá!</h3>
+                                <p class="text-slate-400 text-sm">Onde devemos enviar seu Dossiê?</p>
                             </div>
-                        </header>
 
-                        <section id="dor" class="border-y border-white/5 bg-slate-950/70 py-20">
-                            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                                <p class="text-xs font-semibold uppercase tracking-[0.4em] text-brand-400">Travou o caixa?</p>
-                                <h2 class="mt-4 text-3xl font-bold text-white">Você perde vendas por três motivos simples.</h2>
-                                <p class="mt-4 text-base text-slate-400">Cada bloqueio rouba energia de quem já está no limite. Cortamos a fricção para o indeciso dizer sim.</p>
-                            </div>
-                            <div class="mt-14 grid max-w-5xl mx-auto gap-6 px-4 sm:px-6 lg:px-8 md:grid-cols-3">
-                                <article class="rounded-2xl border border-white/10 bg-white/5 p-6 text-left">
-                                    <span class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-red-500/10 text-red-300">
-                                        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                            <path d="M12 6v6l3 3" />
-                                            <circle cx="12" cy="12" r="9" />
-                                        </svg>
-                                    </span>
-                                    <h3 class="mt-4 text-xl font-semibold text-white">Fila sem fim</h3>
-                                    <p class="mt-2 text-sm text-slate-300">Quando o banco demora dias, você perde o pedido. Aqui a resposta chega antes do cliente ir embora.</p>
-                                </article>
-                                <article class="rounded-2xl border border-white/10 bg-white/5 p-6 text-left">
-                                    <span class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-amber-500/10 text-amber-300">
-                                        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                            <path d="M4 4h16v16H4z" />
-                                            <path d="M4 10h16" />
-                                        </svg>
-                                    </span>
-                                    <h3 class="mt-4 text-xl font-semibold text-white">Papelada confusa</h3>
-                                    <p class="mt-2 text-sm text-slate-300">Você vira escravo de PDFs e assinaturas. Com Open Finance só precisa logar com a conta PJ.</p>
-                                </article>
-                                <article class="rounded-2xl border border-white/10 bg-white/5 p-6 text-left">
-                                    <span class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-500/10 text-indigo-300">
-                                        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                            <path d="M5 12h14" />
-                                            <path d="M12 5l7 7-7 7" />
-                                        </svg>
-                                    </span>
-                                    <h3 class="mt-4 text-xl font-semibold text-white">Taxa escondida</h3>
-                                    <p class="mt-2 text-sm text-slate-300">Juros mudam depois da assinatura. Aqui você vê quanto paga antes de tocar no botão.</p>
-                                </article>
-                            </div>
-                        </section>
+                            <input type="hidden" id="selectedObjective" name="objective">
 
-                        <section id="como-funciona" class="py-20">
-                            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                                <div class="text-center">
-                                    <p class="text-xs font-semibold uppercase tracking-[0.4em] text-brand-400">Processo em 3 passos</p>
-                                    <h2 class="mt-4 text-3xl font-bold text-white">Você só precisa seguir esta linha reta.</h2>
-                                </div>
-                                <div class="mt-14 grid gap-6 md:grid-cols-3">
-                                    <article class="rounded-2xl border border-white/10 bg-white/5 p-6">
-                                        <span class="text-sm font-bold tracking-[0.4em] text-brand-400">01</span>
-                                        <h3 class="mt-4 text-2xl font-semibold text-white">Conecte</h3>
-                                        <p class="mt-2 text-sm text-slate-300">Você usa o mesmo login do banco. Tudo é criptografado pelo Banco Central.</p>
-                                    </article>
-                                    <article class="rounded-2xl border border-white/10 bg-white/5 p-6">
-                                        <span class="text-sm font-bold tracking-[0.4em] text-brand-400">02</span>
-                                        <h3 class="mt-4 text-2xl font-semibold text-white">Analisamos</h3>
-                                        <p class="mt-2 text-sm text-slate-300">O motor lê quanto entra, ticket médio e sazonalidade. Sem gente atrasando.</p>
-                                    </article>
-                                    <article class="rounded-2xl border border-white/10 bg-white/5 p-6">
-                                        <span class="text-sm font-bold tracking-[0.4em] text-brand-400">03</span>
-                                        <h3 class="mt-4 text-2xl font-semibold text-white">Você usa</h3>
-                                        <p class="mt-2 text-sm text-slate-300">Escolha o valor, receba um Pix e pague conforme cada venda bater.</p>
-                                    </article>
-                                </div>
-                                <div class="mt-12 grid gap-6 lg:grid-cols-2">
-                                    <div class="rounded-3xl border border-white/10 bg-white/5 p-8">
-                                        <h3 class="text-xl font-semibold text-white">Você ganha previsibilidade</h3>
-                                        <ul class="mt-6 space-y-3 text-sm text-slate-300">
-                                            <li class="flex items-center gap-3">
-                                                <svg class="h-4 w-4 text-brand-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                    <path d="M5 13l4 4L19 7" />
-                                                </svg>
-                                                Pix cai no mesmo dia útil.
-                                            </li>
-                                            <li class="flex items-center gap-3">
-                                                <svg class="h-4 w-4 text-brand-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                    <path d="M5 13l4 4L19 7" />
-                                                </svg>
-                                                Sem impacto no Serasa ou consulta escondida.
-                                            </li>
-                                            <li class="flex items-center gap-3">
-                                                <svg class="h-4 w-4 text-brand-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                    <path d="M5 13l4 4L19 7" />
-                                                </svg>
-                                                Pode cancelar quando quiser.
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="rounded-3xl border border-white/10 bg-white/5 p-8">
-                                        <h3 class="text-xl font-semibold text-white">Lógica para o cérebro racional</h3>
-                                        <dl class="mt-6 space-y-3 text-sm text-slate-300">
-                                            <div class="flex items-center justify-between">
-                                                <dt>Taxa total mostrada antes do clique</dt>
-                                                <dd class="font-semibold text-white">100% claro</dd>
-                                            </div>
-                                            <div class="flex items-center justify-between">
-                                                <dt>Tempo médio sem Copiloto</dt>
-                                                <dd class="font-semibold text-white">23 dias</dd>
-                                            </div>
-                                            <div class="flex items-center justify-between">
-                                                <dt>Tempo com Copiloto</dt>
-                                                <dd class="font-semibold text-brand-400">4 minutos</dd>
-                                            </div>
-                                        </dl>
-                                    </div>
-                                </div>
-                                <div class="mt-12 text-center">
-                                    <button onclick="scrollToCTA()" class="rounded-full bg-white px-10 py-4 text-lg font-bold text-slate-900 shadow-glow transition hover:-translate-y-0.5">Quero testar agora</button>
-                                </div>
+                            <div class="space-y-1.5">
+                                <label for="email" class="block text-sm font-semibold text-slate-300">Email
+                                    Corporativo</label>
+                                <input type="email" id="email"
+                                    class="interactive-element block w-full px-4 py-3 bg-slate-900/50 border border-white/10 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 rounded-lg text-white placeholder-slate-600"
+                                    placeholder="nome@empresa.com" required>
                             </div>
-                        </section>
 
-                        <section id="depoimentos" class="border-y border-white/5 bg-slate-950/80 py-20">
-                            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                                <div class="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
-                                    <div>
-                                        <p class="text-xs font-semibold uppercase tracking-[0.4em] text-brand-400">Prova social</p>
-                                        <h2 class="mt-4 text-3xl font-bold text-white">Você não precisa confiar só na gente.</h2>
-                                        <p class="mt-3 text-base text-slate-400">Empresas de varejo, saúde e serviço usam o Copiloto para não parar.</p>
-                                    </div>
-                                    <div class="flex flex-wrap gap-3 text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">
-                                        <span class="rounded-full border border-white/20 px-3 py-1">Shopping Mix</span>
-                                        <span class="rounded-full border border-white/20 px-3 py-1">Nova Agro</span>
-                                        <span class="rounded-full border border-white/20 px-3 py-1">ClinPrime</span>
-                                        <span class="rounded-full border border-white/20 px-3 py-1">Food Hub</span>
-                                    </div>
-                                </div>
-                                <div class="mt-12 grid gap-6 md:grid-cols-3">
-                                    <article class="rounded-2xl border border-white/10 bg-white/5 p-6">
-                                        <div class="text-yellow-400">★★★★★</div>
-                                        <p class="mt-4 text-sm text-slate-100">“Eu ia perder o Dia das Mães. Conectei a conta, peguei 60 mil e reabasteci em meia hora.”</p>
-                                        <p class="mt-6 text-sm font-semibold text-white">Renata Costa • Loja multimarcas</p>
-                                    </article>
-                                    <article class="rounded-2xl border border-white/10 bg-white/5 p-6">
-                                        <div class="text-yellow-400">★★★★★</div>
-                                        <p class="mt-4 text-sm text-slate-100">“Pagamento flexível salvou o fluxo quando o movimento caiu. Eu respiro porque a parcela segue as vendas.”</p>
-                                        <p class="mt-6 text-sm font-semibold text-white">Gustavo Lima • Food service</p>
-                                    </article>
-                                    <article class="rounded-2xl border border-white/10 bg-white/5 p-6">
-                                        <div class="text-yellow-400">★★★★★</div>
-                                        <p class="mt-4 text-sm text-slate-100">“Sem PDF, sem gerente. Vi o custo total antes de aceitar e já sabia quanto voltava.”</p>
-                                        <p class="mt-6 text-sm font-semibold text-white">Maria Júlia • Clínica estética</p>
-                                    </article>
-                                </div>
+                            <div class="space-y-1.5">
+                                <label for="cnpj" class="block text-sm font-semibold text-slate-300">CNPJ</label>
+                                <input type="text" id="cnpj"
+                                    class="interactive-element block w-full px-4 py-3 bg-slate-900/50 border border-white/10 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 rounded-lg text-white placeholder-slate-600"
+                                    placeholder="00.000.000/0001-00" required>
                             </div>
-                        </section>
 
-                        <section id="faq" class="py-20">
-                            <div class="max-w-3xl mx-auto px-4">
-                                <div class="text-center">
-                                    <p class="text-xs font-semibold uppercase tracking-[0.4em] text-brand-400">Perguntas diretas</p>
-                                    <h2 class="mt-4 text-3xl font-bold text-white">Respostas rápidas para o indeciso.</h2>
-                                </div>
-                                <div id="faq-container" class="mt-10 space-y-4">
-                                    <div class="rounded-2xl border border-white/10 bg-white/5">
-                                        <button onclick="toggleFaq(this)" class="flex w-full items-center justify-between px-6 py-4 text-left text-sm font-semibold text-white">
-                                            Preciso ter nome limpo?
-                                            <span class="text-brand-400">▼</span>
-                                        </button>
-                                        <div class="hidden border-t border-white/10 px-6 py-4 text-sm text-slate-300">A análise olha suas entradas reais. Se o caixa gira, a restrição antiga não trava sua oferta.</div>
-                                    </div>
-                                    <div class="rounded-2xl border border-white/10 bg-white/5">
-                                        <button onclick="toggleFaq(this)" class="flex w-full items-center justify-between px-6 py-4 text-left text-sm font-semibold text-white">
-                                            É seguro conectar minha conta?
-                                            <span class="text-brand-400">▼</span>
-                                        </button>
-                                        <div class="hidden border-t border-white/10 px-6 py-4 text-sm text-slate-300">Open Finance só permite leitura. Ninguém mexe no seu dinheiro e você pode desconectar quando quiser.</div>
-                                    </div>
-                                    <div class="rounded-2xl border border-white/10 bg-white/5">
-                                        <button onclick="toggleFaq(this)" class="flex w-full items-center justify-between px-6 py-4 text-left text-sm font-semibold text-white">
-                                            Quanto custa a simulação?
-                                            <span class="text-brand-400">▼</span>
-                                        </button>
-                                        <div class="hidden border-t border-white/10 px-6 py-4 text-sm text-slate-300">Zero. Você só paga se aceitar a oferta e receber o Pix.</div>
-                                    </div>
-                                    <div class="rounded-2xl border border-white/10 bg-white/5">
-                                        <button onclick="toggleFaq(this)" class="flex w-full items-center justify-between px-6 py-4 text-left text-sm font-semibold text-white">
-                                            Como pago depois?
-                                            <span class="text-brand-400">▼</span>
-                                        </button>
-                                        <div class="hidden border-t border-white/10 px-6 py-4 text-sm text-slate-300">O débito sai direto dos recebíveis. Se vender menos, a parcela diminui junto.</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
+                            <button type="submit"
+                                class="interactive-element w-full flex items-center justify-center px-8 py-4 text-base font-bold rounded-xl text-slate-900 bg-brand-500 hover:bg-brand-400 shadow-lg shadow-brand-500/20 transition-all">
+                                Gerar Dossiê Grátis
+                            </button>
 
-                        <section id="cta-final" class="relative overflow-hidden py-24">
-                            <div class="absolute inset-0 bg-gradient-to-b from-brand-500/10 via-transparent to-brand-500/5"></div>
-                            <div class="relative z-10 max-w-4xl mx-auto px-4 text-center">
-                                <p class="text-xs font-semibold uppercase tracking-[0.4em] text-brand-400">Hora da ação</p>
-                                <h2 class="mt-4 text-4xl font-bold text-white">Veja agora quanto crédito está pronto para você.</h2>
-                                <p class="mt-4 text-base text-slate-300">É grátis, não consulta Serasa e você pode desistir quando quiser.</p>
-                                <div class="mt-10 rounded-[28px] border border-white/10 bg-white/5 p-4">
-                                    <div class="flex flex-col gap-3 sm:flex-row">
-                                        <input id="email-input" type="email" placeholder="Seu melhor e-mail" class="w-full rounded-[20px] border border-white/10 bg-slate-900/60 px-6 py-4 text-base text-white placeholder-slate-500 focus:border-brand-400 focus:outline-none">
-                                        <button id="final-submit-btn" class="w-full rounded-[20px] bg-brand-500 px-8 py-4 text-lg font-bold text-slate-900 shadow-glow transition hover:bg-brand-400 sm:w-auto">Liberar meu limite</button>
-                                    </div>
-                                    <p id="cta-feedback" class="mt-3 hidden text-sm text-green-400">Pronto! Confirme o e-mail para finalizar.</p>
-                                </div>
-                                <div class="mt-6 flex flex-col gap-3 text-xs font-semibold uppercase tracking-[0.3em] text-slate-400 sm:flex-row sm:justify-center">
-                                    <span class="flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-green-400"></span> Dados criptografados</span>
-                                    <span class="flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-green-400"></span> Resposta em segundos</span>
-                                    <span class="flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-green-400"></span> Sem consulta ao Serasa</span>
-                                </div>
+                            <div class="flex items-start gap-3 mt-4">
+                                <input id="consent" type="checkbox"
+                                    class="mt-1 h-4 w-4 text-brand-500 border-slate-700 rounded focus:ring-brand-500 bg-slate-900"
+                                    required>
+                                <label for="consent" class="text-xs text-slate-500">
+                                    Concordo com a Política de Privacidade e autorizo a análise.
+                                </label>
                             </div>
-                        </section>
-                    </main>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                    <footer class="border-t border-white/10 bg-black py-10">
-                        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-6 text-sm text-slate-400 md:flex-row md:items-center md:justify-between">
-                            <div>
-                                <p class="text-lg font-semibold text-white">Copiloto <span class="text-brand-400">Financeiro</span></p>
-                                <p class="text-xs text-slate-500">Tecnologia brasileira para destravar o seu caixa.</p>
-                            </div>
-                            <div class="flex gap-6 text-xs font-semibold uppercase tracking-[0.3em]">
-                                <a href="#faq" class="hover:text-white">Privacidade</a>
-                                <a href="#faq" class="hover:text-white">Termos</a>
-                                <a href="#cta-final" class="hover:text-white">Contato</a>
-                            </div>
+        <!-- 2. Layout: Bento Grid Assimétrico -->
+        <section id="beneficios" class="py-24 bg-slate-950 relative">
+            <div class="hero-grid opacity-20"></div>
+            <div class="container mx-auto px-6 relative z-10">
+                <div class="max-w-3xl mx-auto text-center mb-16">
+                    <h2 class="font-heading text-3xl font-bold text-white">Por que funciona?</h2>
+                    <p class="text-slate-400 mt-4">Tecnologia que traduz a realidade da sua empresa para a linguagem dos
+                        bancos.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[minmax(200px,auto)]">
+                    <!-- Large Card -->
+                    <div class="md:col-span-2 pain-card">
+                        <div
+                            class="w-12 h-12 bg-brand-900/50 text-brand-400 rounded-xl flex items-center justify-center mb-6 border border-brand-500/20">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                            </svg>
                         </div>
-                        <p class="mt-6 text-center text-[11px] text-slate-600">© 2025 Copiloto Financeiro. Todos os direitos reservados.</p>
-                    </footer>
+                        <h3 class="font-heading text-xl font-bold text-white mb-2">Visão Além do Score</h3>
+                        <p class="text-slate-400">Enquanto o banco olha apenas seu Serasa, nós analisamos seu <b>fluxo
+                                de caixa, sazonalidade e notas emitidas</b>. Encontramos valor onde outros veem risco.
+                        </p>
+                    </div>
 
-                    <script src="script.js"></script>
-                </body>
+                    <!-- Tall Card -->
+                    <div
+                        class="md:row-span-2 bg-brand-600 rounded-2xl p-8 text-white flex flex-col justify-between shadow-glow relative overflow-hidden group">
+                        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/20"></div>
+                        <div class="relative z-10">
+                            <h3 class="font-heading text-xl font-bold mb-2">Ofertas Exclusivas</h3>
+                            <p class="text-brand-100 text-sm">Negociamos taxas em lote para milhares de PMEs.</p>
+                        </div>
+                        <div class="relative z-10 mt-8">
+                            <div class="text-5xl font-bold mb-1 tracking-tight">48h</div>
+                            <div class="text-sm opacity-80">Tempo médio para propostas</div>
+                        </div>
+                    </div>
 
-                </html>
+                    <!-- Standard Card -->
+                    <div class="pain-card">
+                        <h3 class="font-heading text-xl font-bold text-white mb-2">Segurança Bancária</h3>
+                        <p class="text-slate-400 text-sm">Conexão oficial Open Finance. Acesso somente leitura.</p>
+                    </div>
+
+                    <!-- Standard Card -->
+                    <div class="pain-card">
+                        <h3 class="font-heading text-xl font-bold text-white mb-2">Zero Burocracia</h3>
+                        <p class="text-slate-400 text-sm">Sem envio de papelada física ou PDFs intermináveis.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Estrutura: FAQ Semântico -->
+        <section id="faq" class="py-24 bg-slate-900/50">
+            <div class="container mx-auto px-6 max-w-2xl">
+                <h2 class="font-heading text-3xl font-bold text-white text-center mb-12">Perguntas Frequentes</h2>
+
+                <div class="space-y-4">
+                    <details class="group faq-card">
+                        <summary
+                            class="flex justify-between items-center font-medium cursor-pointer list-none p-6 text-white hover:bg-white/5 transition-colors">
+                            <span>Quanto custa o serviço?</span>
+                            <span class="transition group-open:rotate-180 text-brand-400">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor"
+                                    stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    viewBox="0 0 24 24" width="24">
+                                    <path d="M6 9l6 6 6-6"></path>
+                                </svg>
+                            </span>
+                        </summary>
+                        <div class="text-slate-400 p-6 pt-0">
+                            <b>Zero.</b> O diagnóstico é 100% gratuito para sua empresa. Somos remunerados pelas
+                            instituições financeiras apenas se você fechar um contrato de crédito através da nossa
+                            plataforma.
+                        </div>
+                    </details>
+
+                    <details class="group faq-card">
+                        <summary
+                            class="flex justify-between items-center font-medium cursor-pointer list-none p-6 text-white hover:bg-white/5 transition-colors">
+                            <span>É seguro conectar minha conta?</span>
+                            <span class="transition group-open:rotate-180 text-brand-400">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor"
+                                    stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    viewBox="0 0 24 24" width="24">
+                                    <path d="M6 9l6 6 6-6"></path>
+                                </svg>
+                            </span>
+                        </summary>
+                        <div class="text-slate-400 p-6 pt-0">
+                            Sim. Utilizamos a infraestrutura oficial do <b>Open Finance</b>, regulada pelo Banco
+                            Central. Temos acesso apenas de <i>leitura</i> aos seus dados para análise. Nunca poderemos
+                            movimentar sua conta.
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-black text-slate-400 py-12 border-t border-white/10">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="flex items-center gap-2">
+                <span class="font-heading font-bold text-lg text-white">Copiloto<span
+                        class="text-brand-500">Financeiro</span></span>
+            </div>
+            <div class="text-xs text-center md:text-right">
+                <p>© 2025 Copiloto Financeiro. Todos os direitos reservados.</p>
+                <p class="mt-1 opacity-60">Correspondente bancário autorizado.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="fixed inset-0 z-[100] hidden items-center justify-center px-4" role="dialog"
+        aria-modal="true">
+        <div class="absolute inset-0 bg-slate-950/80 backdrop-blur-sm transition-opacity" id="modalOverlay"></div>
+        <div
+            class="bg-slate-900 border border-white/10 rounded-2xl p-8 max-w-md w-full relative z-10 shadow-2xl animate-fade-in-up">
+            <div
+                class="w-16 h-16 bg-green-500/20 text-green-400 rounded-full flex items-center justify-center mx-auto mb-6 border border-green-500/30">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+            </div>
+            <h3 class="text-2xl font-heading font-bold text-center text-white mb-2">Análise Iniciada!</h3>
+            <p class="text-center text-slate-400 mb-8">Nossa IA já está processando seus dados. Fique de olho no seu
+                email <b><span id="userEmailDisplay" class="text-white"></span></b>.</p>
+            <button onclick="closeModal()"
+                class="interactive-element w-full py-3 px-4 bg-brand-500 text-slate-900 font-bold rounded-xl hover:bg-brand-400 transition-colors">
+                Entendi
+            </button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
