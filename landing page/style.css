@@ -1,34 +1,45 @@
-/* Modern Scrollbar */
+/* Modern Dark Scrollbar */
 ::-webkit-scrollbar {
     width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #f8fafc;
+    background: #020617;
+    /* dark-950 */
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #cbd5e1;
+    background: #334155;
+    /* slate-700 */
     border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #94a3b8;
+    background: #475569;
+    /* slate-600 */
 }
 
 html {
     scroll-behavior: smooth;
 }
 
-/* Custom Selection Color */
+/* Custom Selection Color for Dark Theme */
 ::selection {
-    background-color: #ccfbf1;
-    /* brand-100 */
-    color: #115e59;
-    /* brand-800 */
+    background-color: #14b8a6;
+    /* brand-500 */
+    color: #020617;
+    /* dark-950 */
 }
 
-/* Utility for text balance if needed */
+/* Utility for text balance */
 .text-balance {
     text-wrap: balance;
+}
+
+/* Glassmorphism Utilities if needed beyond Tailwind */
+.glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }

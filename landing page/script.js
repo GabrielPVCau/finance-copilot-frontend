@@ -47,10 +47,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const email = emailInput.value;
 
             if (!email || !email.includes('@')) {
-                // Visual feedback for error
-                emailInput.classList.add('ring-4', 'ring-red-300', 'bg-red-50');
+                // Visual feedback for error (Dark Mode optimized)
+                emailInput.classList.add('ring-2', 'ring-red-500', 'bg-red-500/10');
                 emailInput.focus();
-                setTimeout(() => emailInput.classList.remove('ring-4', 'ring-red-300', 'bg-red-50'), 2000);
+                setTimeout(() => emailInput.classList.remove('ring-2', 'ring-red-500', 'bg-red-500/10'), 2000);
                 return;
             }
 
@@ -63,8 +63,8 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 // Success State
                 submitBtn.innerText = 'Redirecionando...';
-                submitBtn.classList.remove('bg-brand-600', 'hover:bg-brand-700');
-                submitBtn.classList.add('bg-green-500', 'hover:bg-green-600');
+                submitBtn.classList.remove('bg-brand-500', 'hover:bg-brand-400');
+                submitBtn.classList.add('bg-green-500', 'hover:bg-green-400', 'text-white');
 
                 // Simulate redirect
                 alert(`Sucesso! Vamos iniciar sua análise para o email: ${email}`);
@@ -73,8 +73,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 setTimeout(() => {
                     submitBtn.innerText = originalText;
                     submitBtn.disabled = false;
-                    submitBtn.classList.remove('opacity-80', 'cursor-not-allowed', 'bg-green-500', 'hover:bg-green-600');
-                    submitBtn.classList.add('bg-brand-600', 'hover:bg-brand-700');
+                    submitBtn.classList.remove('opacity-80', 'cursor-not-allowed', 'bg-green-500', 'hover:bg-green-400', 'text-white');
+                    submitBtn.classList.add('bg-brand-500', 'hover:bg-brand-400');
                     emailInput.value = '';
                 }, 2000);
             }, 1500);
@@ -85,11 +85,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
         if (window.scrollY > 10) {
-            navbar.classList.add('shadow-md', 'bg-white/95');
-            navbar.classList.remove('bg-white/90');
+            navbar.classList.add('shadow-lg', 'bg-dark-950/90');
+            navbar.classList.remove('bg-dark-950/80');
         } else {
-            navbar.classList.remove('shadow-md', 'bg-white/95');
-            navbar.classList.add('bg-white/90');
+            navbar.classList.remove('shadow-lg', 'bg-dark-950/90');
+            navbar.classList.add('bg-dark-950/80');
         }
     });
 });
