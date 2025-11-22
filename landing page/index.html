@@ -4,11 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Copiloto Financeiro | Inteligência de Crédito para PMEs</title>
+    <title>Copiloto Financeiro | Crédito Inteligente para PMEs</title>
     <meta name="description"
-        content="Plataforma de inteligência financeira que conecta sua PME às melhores ofertas de crédito do mercado. Sem burocracia, 100% seguro.">
+        content="Crédito para PMEs baseado em fluxo de caixa real, não apenas Score. Aprovação em 48h via Open Finance.">
 
-    <!-- 1. PERFORMANCE: Speculation Rules para pré-renderização -->
+    <!-- 1. PERFORMANCE: Preload Critical Assets -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700;800&display=swap">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- 2. PERFORMANCE: Speculation Rules (Pre-render checkout/next steps) -->
     <script type="speculationrules">
     {
       "prerender": [
@@ -20,14 +29,14 @@
     }
     </script>
 
-    <!-- Fonts: Display Swap para evitar FOIT -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700;800&display=swap"
-        rel="stylesheet">
+    <!-- 3. EXTERNAL: GTM Placeholder (Manual Action Required) -->
+    <!-- <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-XXXXXX');</script> -->
 
-    <!-- Tailwind CSS -->
+    <!-- Tailwind CSS (Injected for single-file performance, ideally build step would extract this) -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -70,13 +79,125 @@
             }
         }
     </script>
-    <link rel="stylesheet" href="style.css">
+
+    <!-- Injected Vanilla CSS for SOTA Principles -->
+    <style>
+        :root {
+            --brand-500: #14b8a6;
+            --dark-950: #020617;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--dark-950);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #475569;
+        }
+
+        body {
+            background-color: var(--dark-950);
+        }
+
+        /* 4. UX: Micro-Interactions & INP Optimization */
+        .interactive-element {
+            transition: transform 0.1s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s ease, background-color 0.2s ease;
+            cursor: pointer;
+            touch-action: manipulation;
+            /* Improves touch response */
+        }
+
+        .interactive-element:active {
+            transform: scale(0.96);
+        }
+
+        .interactive-element:focus-visible {
+            outline: 2px solid var(--brand-500);
+            outline-offset: 2px;
+        }
+
+        /* Hero Effects */
+        .hero-orb {
+            position: absolute;
+            top: -200px;
+            left: 50%;
+            width: 900px;
+            height: 900px;
+            transform: translateX(-50%);
+            background: radial-gradient(circle, rgba(20, 184, 166, 0.15), transparent 60%);
+            filter: blur(60px);
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        .hero-grid {
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 120px 120px;
+            mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 0.9), transparent 70%);
+            pointer-events: none;
+        }
+
+        /* Glassmorphism */
+        .glass-card {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 20px 80px rgba(2, 6, 23, 0.6);
+        }
+
+        /* Bento Grid Cards */
+        .pain-card {
+            padding: 32px;
+            border-radius: 24px;
+            background: rgba(13, 18, 32, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: border 0.3s ease, transform 0.3s ease;
+        }
+
+        .pain-card:hover {
+            border-color: rgba(20, 184, 166, 0.3);
+            transform: translateY(-4px);
+        }
+
+        /* FAQ Animation */
+        details>summary {
+            list-style: none;
+        }
+
+        details>summary::-webkit-details-marker {
+            display: none;
+        }
+
+        details[open] summary~* {
+            animation: fadeInUp 0.3s ease-in-out;
+        }
+
+        @media (max-width: 768px) {
+            .pain-card {
+                padding: 24px;
+            }
+        }
+    </style>
 </head>
 
 <body
     class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-brand-400 selection:text-slate-900 pb-24 md:pb-0">
 
-    <!-- 2. UX: Navegação Thumb-Zone (Mobile Only) -->
+    <!-- 5. UX: Thumb-Zone Navigation (Mobile Only) -->
     <div
         class="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-slate-900/90 backdrop-blur-lg border-t border-slate-800 p-4 pb-6 shadow-[0_-4px_20px_rgba(0,0,0,0.3)]">
         <button onclick="scrollToCTA()"
@@ -85,13 +206,12 @@
         </button>
     </div>
 
-    <!-- Header Semântico -->
+    <!-- Header -->
     <header class="fixed w-full z-40 top-0 transition-all duration-300" id="navbar">
         <div class="absolute inset-0 bg-slate-950/80 backdrop-blur-md border-b border-white/5"></div>
         <div class="container mx-auto px-6 py-4 relative flex items-center justify-between">
             <a href="#" class="flex items-center gap-2 group interactive-element">
-                <div class="w-8 h-8 bg-brand-500 rounded-lg flex items-center justify-center text-slate-900 font-bold">
-                    C
+                <div class="w-8 h-8 bg-brand-500 rounded-lg flex items-center justify-center text-slate-900 font-bold">C
                 </div>
                 <span class="font-heading font-bold text-xl text-white">Copiloto<span
                         class="text-brand-400">Financeiro</span></span>
@@ -120,7 +240,7 @@
             <div class="hero-orb"></div>
             <div class="grid lg:grid-cols-2 gap-16 items-center relative z-10">
 
-                <!-- Copywriting: Identidade & Promessa -->
+                <!-- Copywriting: F-Pattern & Identity-Based Promise -->
                 <div class="max-w-2xl">
                     <div
                         class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-900/50 border border-brand-500/30 text-brand-300 text-xs font-bold uppercase tracking-wide mb-6">
@@ -129,15 +249,27 @@
                     </div>
 
                     <h1 class="font-heading text-4xl lg:text-6xl font-bold text-white leading-[1.1] mb-6">
-                        Não é empréstimo.<br>
-                        É <span
-                            class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-brand-200">Inteligência
-                            de Crédito.</span>
+                        Crédito para PMEs sem a <br>
+                        <span
+                            class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-brand-200">burocracia
+                            dos bancos.</span>
                     </h1>
 
                     <p class="text-lg text-slate-400 mb-8 leading-relaxed max-w-lg">
-                        <b>Pare de ser ignorado pelos grandes bancos.</b> Nossa IA analisa seu fluxo de caixa real e
-                        conecta sua empresa a ofertas de crédito que você nem sabia que existiam.
+                        <b>Sua empresa é mais que um Score.</b> Usamos IA para ler seu fluxo de caixa real e liberar
+                        capital em 48h.
+                    <ul class="space-y-2 mb-8 text-slate-400">
+                        <li class="flex items-center gap-2"><svg class="w-5 h-5 text-brand-500" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7" />
+                            </svg> Sem papelada física</li>
+                        <li class="flex items-center gap-2"><svg class="w-5 h-5 text-brand-500" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7" />
+                            </svg> Taxas personalizadas</li>
+                    </ul>
                     </p>
 
                     <div class="flex flex-col sm:flex-row gap-4 mb-12">
@@ -158,14 +290,14 @@
                     </div>
                 </div>
 
-                <!-- 4. Lógica de Conversão: Zero-Party Data Form (Multi-step) -->
+                <!-- 6. Lógica de Conversão: Zero-Party Data Form -->
                 <div class="relative" id="simulacao">
                     <div class="glass-card rounded-2xl p-8 relative z-10">
-                        <!-- Step 1: Preferências (Zero-Party Data) -->
+                        <!-- Step 1: Preferências -->
                         <div id="step1" class="space-y-6">
                             <div class="text-center">
                                 <h3 class="font-heading text-2xl font-bold text-white">Qual seu objetivo hoje?</h3>
-                                <p class="text-slate-400 text-sm mt-2">Personalizaremos sua análise com base nisso.</p>
+                                <p class="text-slate-400 text-sm mt-2">Personalizaremos sua oferta com base nisso.</p>
                             </div>
 
                             <div class="grid gap-3">
@@ -190,13 +322,12 @@
                             </div>
                         </div>
 
-                        <!-- Step 2: Contato (Hidden initially) -->
+                        <!-- Step 2: Contato -->
                         <form id="leadForm" class="hidden space-y-5" novalidate>
                             <div class="text-center mb-6">
                                 <button type="button" onclick="backToStep1()"
-                                    class="text-xs text-slate-500 hover:text-brand-400 mb-2 flex items-center justify-center gap-1 mx-auto transition-colors">
-                                    ← Voltar
-                                </button>
+                                    class="text-xs text-slate-500 hover:text-brand-400 mb-2 flex items-center justify-center gap-1 mx-auto transition-colors">←
+                                    Voltar</button>
                                 <h3 class="font-heading text-xl font-bold text-white">Quase lá!</h3>
                                 <p class="text-slate-400 text-sm">Onde devemos enviar seu Dossiê?</p>
                             </div>
@@ -227,9 +358,8 @@
                                 <input id="consent" type="checkbox"
                                     class="mt-1 h-4 w-4 text-brand-500 border-slate-700 rounded focus:ring-brand-500 bg-slate-900"
                                     required>
-                                <label for="consent" class="text-xs text-slate-500">
-                                    Concordo com a Política de Privacidade e autorizo a análise.
-                                </label>
+                                <label for="consent" class="text-xs text-slate-500">Concordo com a Política de
+                                    Privacidade e autorizo a análise.</label>
                             </div>
                         </form>
                     </div>
@@ -237,7 +367,55 @@
             </div>
         </section>
 
-        <!-- 2. Layout: Bento Grid Assimétrico -->
+        <!-- 7. Trust & Authenticity: Video Placeholders -->
+        <section class="container mx-auto px-6 mb-24">
+            <div class="text-center mb-12">
+                <h2 class="font-heading text-2xl font-bold text-white">Quem usa, cresce.</h2>
+            </div>
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Placeholder 1 -->
+                <div
+                    class="aspect-video bg-slate-800 rounded-xl flex items-center justify-center relative group interactive-element overflow-hidden border border-white/5">
+                    <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"></div>
+                    <div
+                        class="w-12 h-12 bg-white/10 backdrop-blur rounded-full flex items-center justify-center z-10 group-hover:scale-110 transition-transform">
+                        <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z" />
+                        </svg>
+                    </div>
+                    <span class="absolute bottom-4 left-4 text-white font-medium text-sm z-10">Case: Indústria
+                        Têxtil</span>
+                </div>
+                <!-- Placeholder 2 -->
+                <div
+                    class="aspect-video bg-slate-800 rounded-xl flex items-center justify-center relative group interactive-element overflow-hidden border border-white/5">
+                    <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"></div>
+                    <div
+                        class="w-12 h-12 bg-white/10 backdrop-blur rounded-full flex items-center justify-center z-10 group-hover:scale-110 transition-transform">
+                        <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z" />
+                        </svg>
+                    </div>
+                    <span class="absolute bottom-4 left-4 text-white font-medium text-sm z-10">Case: Varejo
+                        Digital</span>
+                </div>
+                <!-- Placeholder 3 -->
+                <div
+                    class="aspect-video bg-slate-800 rounded-xl flex items-center justify-center relative group interactive-element overflow-hidden border border-white/5">
+                    <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"></div>
+                    <div
+                        class="w-12 h-12 bg-white/10 backdrop-blur rounded-full flex items-center justify-center z-10 group-hover:scale-110 transition-transform">
+                        <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z" />
+                        </svg>
+                    </div>
+                    <span class="absolute bottom-4 left-4 text-white font-medium text-sm z-10">Case:
+                        Transportadora</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. Layout: Asymmetric Bento Grid -->
         <section id="beneficios" class="py-24 bg-slate-950 relative">
             <div class="hero-grid opacity-20"></div>
             <div class="container mx-auto px-6 relative z-10">
@@ -248,7 +426,7 @@
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[minmax(200px,auto)]">
-                    <!-- Large Card -->
+                    <!-- Large Card (Asymmetric) -->
                     <div class="md:col-span-2 pain-card">
                         <div
                             class="w-12 h-12 bg-brand-900/50 text-brand-400 rounded-xl flex items-center justify-center mb-6 border border-brand-500/20">
@@ -258,21 +436,30 @@
                             </svg>
                         </div>
                         <h3 class="font-heading text-xl font-bold text-white mb-2">Visão Além do Score</h3>
-                        <p class="text-slate-400">Enquanto o banco olha apenas seu Serasa, nós analisamos seu <b>fluxo
-                                de caixa, sazonalidade e notas emitidas</b>. Encontramos valor onde outros veem risco.
-                        </p>
+                        <p class="text-slate-400">O banco olha o passado (Serasa). Nós olhamos o presente: <b>fluxo de
+                                caixa, sazonalidade e notas emitidas</b>.</p>
                     </div>
 
-                    <!-- Tall Card -->
+                    <!-- Tall Card (Asymmetric) -->
                     <div
-                        class="md:row-span-2 bg-brand-600 rounded-2xl p-8 text-white flex flex-col justify-between shadow-glow relative overflow-hidden group">
+                        class="md:row-span-2 bg-brand-600 rounded-2xl p-8 text-white flex flex-col justify-between shadow-glow relative overflow-hidden group interactive-element">
                         <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/20"></div>
                         <div class="relative z-10">
                             <h3 class="font-heading text-xl font-bold mb-2">Ofertas Exclusivas</h3>
                             <p class="text-brand-100 text-sm">Negociamos taxas em lote para milhares de PMEs.</p>
                         </div>
+                        <!-- 9. PERFORMANCE: Hero Image Requirement (Placeholder for AVIF) -->
                         <div class="relative z-10 mt-8">
-                            <div class="text-5xl font-bold mb-1 tracking-tight">48h</div>
+                            <!-- Placeholder for AVIF Image -->
+                            <picture>
+                                <source srcset="https://placehold.co/400x300/14b8a6/ffffff?text=AVIF+Chart"
+                                    type="image/avif">
+                                <img src="https://placehold.co/400x300/14b8a6/ffffff?text=Dashboard"
+                                    alt="Dashboard Preview" fetchpriority="high"
+                                    class="rounded-lg shadow-lg transform group-hover:scale-105 transition-transform duration-300"
+                                    width="400" height="300">
+                            </picture>
+                            <div class="mt-4 text-5xl font-bold mb-1 tracking-tight">48h</div>
                             <div class="text-sm opacity-80">Tempo médio para propostas</div>
                         </div>
                     </div>
@@ -292,10 +479,10 @@
             </div>
         </section>
 
-        <!-- 3. Estrutura: FAQ Semântico -->
+        <!-- FAQ Semântico -->
         <section id="faq" class="py-24 bg-slate-900/50">
             <div class="container mx-auto px-6 max-w-2xl">
-                <h2 class="font-heading text-3xl font-bold text-white text-center mb-12">Perguntas Frequentes</h2>
+                <h2 class="font-heading text-3xl font-bold text-white text-center mb-12">Dúvidas?</h2>
 
                 <div class="space-y-4">
                     <details class="group faq-card">
@@ -303,17 +490,15 @@
                             class="flex justify-between items-center font-medium cursor-pointer list-none p-6 text-white hover:bg-white/5 transition-colors">
                             <span>Quanto custa o serviço?</span>
                             <span class="transition group-open:rotate-180 text-brand-400">
-                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor"
-                                    stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                <svg fill="none" height="24" stroke="currentColor" stroke-width="1.5"
                                     viewBox="0 0 24 24" width="24">
                                     <path d="M6 9l6 6 6-6"></path>
                                 </svg>
                             </span>
                         </summary>
                         <div class="text-slate-400 p-6 pt-0">
-                            <b>Zero.</b> O diagnóstico é 100% gratuito para sua empresa. Somos remunerados pelas
-                            instituições financeiras apenas se você fechar um contrato de crédito através da nossa
-                            plataforma.
+                            <b>Zero.</b> O diagnóstico é 100% gratuito. Somos remunerados pelos bancos apenas se você
+                            fechar o crédito.
                         </div>
                     </details>
 
@@ -322,17 +507,15 @@
                             class="flex justify-between items-center font-medium cursor-pointer list-none p-6 text-white hover:bg-white/5 transition-colors">
                             <span>É seguro conectar minha conta?</span>
                             <span class="transition group-open:rotate-180 text-brand-400">
-                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor"
-                                    stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                <svg fill="none" height="24" stroke="currentColor" stroke-width="1.5"
                                     viewBox="0 0 24 24" width="24">
                                     <path d="M6 9l6 6 6-6"></path>
                                 </svg>
                             </span>
                         </summary>
                         <div class="text-slate-400 p-6 pt-0">
-                            Sim. Utilizamos a infraestrutura oficial do <b>Open Finance</b>, regulada pelo Banco
-                            Central. Temos acesso apenas de <i>leitura</i> aos seus dados para análise. Nunca poderemos
-                            movimentar sua conta.
+                            Sim. Usamos <b>Open Finance</b> (regulado pelo BC). Temos acesso apenas de <i>leitura</i>.
+                            Nunca movimentamos sua conta.
                         </div>
                     </details>
                 </div>
@@ -369,13 +552,106 @@
             <p class="text-center text-slate-400 mb-8">Nossa IA já está processando seus dados. Fique de olho no seu
                 email <b><span id="userEmailDisplay" class="text-white"></span></b>.</p>
             <button onclick="closeModal()"
-                class="interactive-element w-full py-3 px-4 bg-brand-500 text-slate-900 font-bold rounded-xl hover:bg-brand-400 transition-colors">
-                Entendi
-            </button>
+                class="interactive-element w-full py-3 px-4 bg-brand-500 text-slate-900 font-bold rounded-xl hover:bg-brand-400 transition-colors">Entendi</button>
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <!-- Injected Vanilla JS for Performance -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Zero-Party Data Logic ---
+            window.selectObjective = (obj) => {
+                const step1 = document.getElementById('step1');
+                const form = document.getElementById('leadForm');
+                const input = document.getElementById('selectedObjective');
+
+                if (step1 && form && input) {
+                    input.value = obj;
+                    step1.style.opacity = '0';
+                    step1.style.transform = 'translateY(-10px)';
+                    setTimeout(() => {
+                        step1.classList.add('hidden');
+                        form.classList.remove('hidden');
+                        form.classList.add('animate-fade-in-up');
+                        setTimeout(() => document.getElementById('email')?.focus(), 100);
+                    }, 200);
+                }
+            };
+
+            window.backToStep1 = () => {
+                const step1 = document.getElementById('step1');
+                const form = document.getElementById('leadForm');
+                if (step1 && form) {
+                    form.classList.add('hidden');
+                    form.classList.remove('animate-fade-in-up');
+                    step1.classList.remove('hidden');
+                    setTimeout(() => {
+                        step1.style.opacity = '1';
+                        step1.style.transform = 'translateY(0)';
+                    }, 50);
+                }
+            };
+
+            // --- Form Submission & Modal ---
+            const form = document.getElementById('leadForm');
+            const modal = document.getElementById('successModal');
+            const modalOverlay = document.getElementById('modalOverlay');
+
+            if (form) {
+                form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const email = document.getElementById('email').value;
+                    const btn = form.querySelector('button[type="submit"]');
+                    const originalText = btn.innerText;
+
+                    btn.disabled = true;
+                    btn.innerText = 'Processando...';
+                    btn.classList.add('opacity-80');
+
+                    // CAPI / GTM Placeholder Event
+                    console.log('Conversion: Lead Generated', { email });
+
+                    setTimeout(() => {
+                        if (modal) {
+                            document.getElementById('userEmailDisplay').innerText = email;
+                            modal.classList.remove('hidden');
+                            modal.classList.add('flex');
+                        }
+                        btn.disabled = false;
+                        btn.innerText = originalText;
+                        btn.classList.remove('opacity-80');
+                    }, 1500);
+                });
+            }
+
+            window.closeModal = () => {
+                if (modal) {
+                    modal.classList.add('hidden');
+                    modal.classList.remove('flex');
+                    form.reset();
+                    window.backToStep1();
+                }
+            };
+
+            if (modalOverlay) modalOverlay.addEventListener('click', window.closeModal);
+
+            // --- Scroll & Navbar ---
+            window.scrollToCTA = () => {
+                document.getElementById('simulacao')?.scrollIntoView({ behavior: 'smooth' });
+            };
+
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 10) {
+                    navbar.classList.add('shadow-lg', 'bg-slate-950/95');
+                    navbar.classList.remove('bg-slate-950/80');
+                } else {
+                    navbar.classList.remove('shadow-lg', 'bg-slate-950/95');
+                    navbar.classList.add('bg-slate-950/80');
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
