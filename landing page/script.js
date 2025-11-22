@@ -5,11 +5,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const content = button.nextElementSibling;
         const icon = button.querySelector('span');
 
-        // Close all other FAQs (Accordion style - optional, but cleaner)
+        // Close all other FAQs for cleaner look
         document.querySelectorAll('#faq-container > div > div').forEach(el => {
-            if (el !== content) {
+            if (el !== content && !el.classList.contains('hidden')) {
                 el.classList.add('hidden');
-                el.previousElementSibling.querySelector('span').style.transform = 'rotate(0deg)';
+                const btn = el.previousElementSibling;
+                const icn = btn.querySelector('span');
+                if (icn) icn.style.transform = 'rotate(0deg)';
             }
         });
 
@@ -24,20 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // --- 2. Loan Calculator Logic ---
-    const loanRange = document.getElementById('loanRange');
-    const loanValue = document.getElementById('loanValue');
-
-    if (loanRange && loanValue) {
-        loanRange.addEventListener('input', (e) => {
-            const value = parseInt(e.target.value);
-            // Format as Currency BRL
-            const formatted = value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-            loanValue.textContent = formatted;
-        });
-    }
-
-    // --- 3. Scroll to CTA ---
+    // --- 2. Scroll to CTA ---
     window.scrollToCTA = () => {
         const ctaSection = document.getElementById('cta-final');
         if (ctaSection) {
@@ -49,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // --- 4. Form Submission Simulation ---
+    // --- 3. Form Submission Simulation ---
     const submitBtn = document.getElementById('final-submit-btn');
     const emailInput = document.getElementById('email-input');
 
@@ -58,17 +47,18 @@ document.addEventListener('DOMContentLoaded', () => {
             const email = emailInput.value;
 
             if (!email || !email.includes('@')) {
-                // Simple validation visual feedback
-                emailInput.classList.add('ring-2', 'ring-red-500');
-                setTimeout(() => emailInput.classList.remove('ring-2', 'ring-red-500'), 2000);
+                // Visual feedback for error
+                emailInput.classList.add('ring-4', 'ring-red-300', 'bg-red-50');
+                emailInput.focus();
+                setTimeout(() => emailInput.classList.remove('ring-4', 'ring-red-300', 'bg-red-50'), 2000);
                 return;
             }
 
             // Simulate loading state
             const originalText = submitBtn.innerText;
-            submitBtn.innerText = 'Processando...';
+            submitBtn.innerText = 'Analisando...';
             submitBtn.disabled = true;
-            submitBtn.classList.add('opacity-75', 'cursor-not-allowed');
+            submitBtn.classList.add('opacity-80', 'cursor-not-allowed');
 
             setTimeout(() => {
                 // Success State
@@ -76,28 +66,30 @@ document.addEventListener('DOMContentLoaded', () => {
                 submitBtn.classList.remove('bg-brand-600', 'hover:bg-brand-700');
                 submitBtn.classList.add('bg-green-500', 'hover:bg-green-600');
 
-                // Simulate redirect or success message
-                alert(`Sucesso! No ambiente real, você seria redirecionado para o onboarding do Open Finance com o email: ${email}`);
+                // Simulate redirect
+                alert(`Sucesso! Vamos iniciar sua análise para o email: ${email}`);
 
-                // Reset (for demo purposes)
+                // Reset (for demo)
                 setTimeout(() => {
                     submitBtn.innerText = originalText;
                     submitBtn.disabled = false;
-                    submitBtn.classList.remove('opacity-75', 'cursor-not-allowed', 'bg-green-500', 'hover:bg-green-600');
+                    submitBtn.classList.remove('opacity-80', 'cursor-not-allowed', 'bg-green-500', 'hover:bg-green-600');
                     submitBtn.classList.add('bg-brand-600', 'hover:bg-brand-700');
                     emailInput.value = '';
-                }, 3000);
+                }, 2000);
             }, 1500);
         });
     }
 
-    // --- 5. Navbar Scroll Effect ---
+    // --- 4. Navbar Scroll Effect ---
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
         if (window.scrollY > 10) {
-            navbar.classList.add('shadow-sm');
+            navbar.classList.add('shadow-md', 'bg-white/95');
+            navbar.classList.remove('bg-white/90');
         } else {
-            navbar.classList.remove('shadow-sm');
+            navbar.classList.remove('shadow-md', 'bg-white/95');
+            navbar.classList.add('bg-white/90');
         }
     });
 });
