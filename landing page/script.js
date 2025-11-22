@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             // Simulate loading state
-            const originalText = submitBtn.innerText;
+            const originalText = submitBtn.innerHTML; // Use innerHTML to keep SVG if needed, but here we change text
             submitBtn.innerText = 'Analisando...';
             submitBtn.disabled = true;
             submitBtn.classList.add('opacity-80', 'cursor-not-allowed');
@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Reset (for demo)
                 setTimeout(() => {
-                    submitBtn.innerText = originalText;
+                    submitBtn.innerHTML = 'Ver Ofertas'; // Reset text
                     submitBtn.disabled = false;
                     submitBtn.classList.remove('opacity-80', 'cursor-not-allowed', 'bg-green-500', 'hover:bg-green-400', 'text-white');
                     submitBtn.classList.add('bg-brand-500', 'hover:bg-brand-400');

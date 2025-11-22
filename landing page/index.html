@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Copiloto Financeiro | Crédito para sua Empresa</title>
+    <title>Copiloto Financeiro | Crédito Inteligente para Empresas</title>
     <meta name="description"
-        content="Crédito rápido para empresas. Usamos suas vendas para aprovar. Dinheiro na conta em 24h. Sem papelada.">
+        content="Crédito empresarial rápido usando suas vendas como garantia. Sem papelada, sem burocracia. Dinheiro na conta em 24h.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,12 +23,9 @@
                     },
                     colors: {
                         brand: {
-                            50: '#f0fdfa',
-                            100: '#ccfbf1',
-                            400: '#2dd4bf',
-                            500: '#14b8a6',
-                            600: '#0d9488',
-                            900: '#134e4a',
+                            400: '#2dd4bf', // Teal-400
+                            500: '#14b8a6', // Teal-500
+                            600: '#0d9488', // Teal-600
                             neon: '#00ff9d', // High contrast neon
                         },
                         dark: {
@@ -49,7 +46,6 @@
                         }
                     },
                     backgroundImage: {
-                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
                         'hero-glow': 'conic-gradient(from 180deg at 50% 50%, #14b8a633 0deg, #0f172a 360deg)',
                     }
                 }
@@ -78,27 +74,28 @@
 
                 <!-- Desktop Menu -->
                 <div class="hidden md:flex items-center gap-8">
+                    <a href="#problemas"
+                        class="text-sm font-medium text-slate-400 hover:text-brand-400 transition-colors">Por que
+                        nós?</a>
                     <a href="#como-funciona"
                         class="text-sm font-medium text-slate-400 hover:text-brand-400 transition-colors">Como
                         Funciona</a>
                     <a href="#depoimentos"
                         class="text-sm font-medium text-slate-400 hover:text-brand-400 transition-colors">Quem Usa</a>
-                    <a href="#faq"
-                        class="text-sm font-medium text-slate-400 hover:text-brand-400 transition-colors">Dúvidas</a>
                 </div>
 
                 <!-- CTA Button -->
                 <div>
                     <button onclick="scrollToCTA()"
                         class="bg-white/10 hover:bg-white/20 border border-white/10 text-white px-6 py-2.5 rounded-full font-bold text-sm transition-all hover:scale-105">
-                        Área do Cliente
+                        Simular Agora
                     </button>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section: Dark & Glowing -->
+    <!-- Hero Section: Value Proposition -->
     <header class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
         <!-- Ambient Glow -->
         <div
@@ -114,24 +111,25 @@
                     <div
                         class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-500/10 border border-brand-500/20 text-brand-400 text-xs font-bold uppercase tracking-wide mb-8 hover:bg-brand-500/20 transition-colors cursor-default">
                         <span class="w-2 h-2 rounded-full bg-brand-neon animate-pulse"></span>
-                        Crédito aprovado em 24 horas
+                        Crédito disponível hoje
                     </div>
 
                     <h1 class="text-5xl lg:text-7xl font-extrabold text-white leading-tight mb-6 tracking-tight">
-                        Dinheiro na conta.<br>
+                        Capital de giro.<br>
                         <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-blue-500">Sem
-                            burocracia.</span>
+                            papelada.</span>
                     </h1>
 
                     <p class="text-lg text-slate-400 mb-10 leading-relaxed max-w-lg mx-auto lg:mx-0">
-                        Esqueça a papelada do banco. Usamos o <strong>histórico de vendas</strong> da sua empresa para
-                        liberar crédito rápido. Simples assim.
+                        Transforme suas vendas futuras em dinheiro à vista. Sem garantia de imóveis, sem burocracia
+                        bancária.
+                        <strong>Seu dinheiro na conta em até 24 horas.</strong>
                     </p>
 
                     <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12">
                         <button onclick="scrollToCTA()"
                             class="group w-full sm:w-auto px-8 py-4 bg-brand-500 hover:bg-brand-400 text-dark-950 rounded-xl font-bold text-lg shadow-[0_0_20px_rgba(20,184,166,0.3)] hover:shadow-[0_0_30px_rgba(20,184,166,0.5)] transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2">
-                            Ver quanto posso pegar
+                            Quero meu crédito
                             <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none"
                                 stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -141,33 +139,49 @@
                         <div class="flex items-center justify-center gap-2 text-sm text-slate-500 px-4">
                             <svg class="w-5 h-5 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
-                                </path>
+                                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                             </svg>
-                            <span>Simulação Grátis</span>
+                            <span>Sem compromisso</span>
                         </div>
                     </div>
 
-                    <!-- Trust Badges (Monochrome) -->
-                    <div
-                        class="pt-8 border-t border-white/5 flex flex-wrap justify-center lg:justify-start gap-8 opacity-50 hover:opacity-100 transition-opacity">
-                        <div class="text-sm font-semibold tracking-widest uppercase">Banco Central</div>
-                        <div class="text-sm font-semibold tracking-widest uppercase">Open Finance</div>
-                        <div class="text-sm font-semibold tracking-widest uppercase">Segurança SSL</div>
+                    <!-- Social Proof Logos -->
+                    <div class="pt-8 border-t border-white/5">
+                        <p class="text-xs text-slate-500 uppercase tracking-widest mb-4 text-center lg:text-left">
+                            Segurança Bancária</p>
+                        <div
+                            class="flex flex-wrap justify-center lg:justify-start gap-6 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+                            <!-- Placeholder Logos using text for now, but styled like logos -->
+                            <div class="flex items-center gap-2 font-bold text-white text-lg"><svg class="w-6 h-6"
+                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
+                                    </path>
+                                </svg> SSL Secure</div>
+                            <div class="flex items-center gap-2 font-bold text-white text-lg"><svg class="w-6 h-6"
+                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"></path>
+                                </svg> Banco Central</div>
+                            <div class="flex items-center gap-2 font-bold text-white text-lg"><svg class="w-6 h-6"
+                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                </svg> Instant Pix</div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Visual: Dark Glass Card -->
+                <!-- Visual: Interactive Card -->
                 <div class="relative hidden lg:block animate-float">
-                    <!-- Card Container -->
                     <div
-                        class="relative z-10 bg-dark-800/40 backdrop-blur-xl rounded-3xl border border-white/10 p-8 max-w-md mx-auto shadow-2xl">
+                        class="relative z-10 bg-dark-800/60 backdrop-blur-xl rounded-3xl border border-white/10 p-8 max-w-md mx-auto shadow-2xl">
                         <!-- Header -->
                         <div class="flex items-center justify-between mb-8">
                             <div>
                                 <p class="text-xs text-slate-400 font-bold uppercase tracking-wider mb-1">Limite
-                                    Pré-Aprovado</p>
-                                <h3 class="text-4xl font-bold text-white tracking-tight">R$ 150.000</h3>
+                                    Aprovado</p>
+                                <h3 class="text-4xl font-bold text-white tracking-tight">R$ 85.000,00</h3>
                             </div>
                             <div
                                 class="w-12 h-12 bg-brand-500/20 rounded-full flex items-center justify-center text-brand-400 border border-brand-500/20">
@@ -178,125 +192,192 @@
                             </div>
                         </div>
 
-                        <!-- Graph Placeholder -->
-                        <div class="h-24 w-full mb-8 flex items-end gap-2">
-                            <div class="w-1/5 bg-brand-500/20 h-[40%] rounded-t-sm"></div>
-                            <div class="w-1/5 bg-brand-500/30 h-[60%] rounded-t-sm"></div>
-                            <div class="w-1/5 bg-brand-500/40 h-[50%] rounded-t-sm"></div>
-                            <div class="w-1/5 bg-brand-500/60 h-[80%] rounded-t-sm"></div>
+                        <!-- Graph -->
+                        <div class="h-32 w-full mb-8 flex items-end gap-3 px-2">
+                            <div class="w-1/5 bg-brand-500/10 h-[30%] rounded-t-md"></div>
+                            <div class="w-1/5 bg-brand-500/20 h-[50%] rounded-t-md"></div>
+                            <div class="w-1/5 bg-brand-500/40 h-[40%] rounded-t-md"></div>
+                            <div class="w-1/5 bg-brand-500/60 h-[70%] rounded-t-md"></div>
                             <div
-                                class="w-1/5 bg-brand-500 h-[100%] rounded-t-sm shadow-[0_0_15px_rgba(20,184,166,0.5)]">
+                                class="w-1/5 bg-brand-500 h-[90%] rounded-t-md shadow-[0_0_20px_rgba(20,184,166,0.4)] relative group">
+                                <div
+                                    class="absolute -top-8 left-1/2 -translate-x-1/2 bg-white text-dark-950 text-xs font-bold px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">
+                                    Hoje</div>
                             </div>
                         </div>
 
-                        <!-- Notification Item -->
+                        <!-- Notification -->
                         <div class="flex items-center gap-4 p-4 bg-white/5 rounded-xl border border-white/5">
                             <div
-                                class="w-10 h-10 bg-green-500/20 rounded-lg flex items-center justify-center text-green-400 font-bold text-lg">
-                                $
+                                class="w-10 h-10 bg-green-500/20 rounded-lg flex items-center justify-center text-green-400 font-bold">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
+                                    </path>
+                                </svg>
                             </div>
                             <div>
-                                <p class="text-white font-bold text-sm">Dinheiro Enviado</p>
-                                <p class="text-xs text-slate-400">Sua conta • Hoje, 14:30</p>
+                                <p class="text-white font-bold text-sm">Pix Recebido</p>
+                                <p class="text-xs text-slate-400">Disponível agora</p>
                             </div>
-                            <span class="ml-auto text-green-400 font-bold text-sm">+ R$ 50k</span>
+                            <span class="ml-auto text-green-400 font-bold text-sm">+ R$ 85k</span>
                         </div>
                     </div>
-
-                    <!-- Decorative Elements behind card -->
-                    <div class="absolute -top-10 -right-10 w-32 h-32 bg-brand-500/20 rounded-full blur-2xl"></div>
+                    <!-- Decorative Blobs -->
+                    <div class="absolute -top-10 -right-10 w-32 h-32 bg-brand-500/20 rounded-full blur-3xl"></div>
                     <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-blue-600/20 rounded-full blur-3xl"></div>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Problem Section: High Contrast -->
-    <section class="py-24 bg-dark-900 border-y border-white/5">
-        <div class="max-w-5xl mx-auto px-4 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold text-white mb-16">Por que o banco tradicional te diz "não"?</h2>
+    <!-- Problem Section: Why Traditional Banks Fail -->
+    <section id="problemas" class="py-24 bg-dark-900 border-y border-white/5">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Por que o banco tradicional te diz "não"?
+                </h2>
+                <p class="text-slate-400 max-w-2xl mx-auto">O sistema antigo não foi feito para quem empreende de
+                    verdade.</p>
+            </div>
 
             <div class="grid md:grid-cols-3 gap-8">
+                <!-- Card 1: Slow -->
                 <div
-                    class="p-8 rounded-2xl bg-white/5 border border-white/5 hover:border-white/10 transition-colors group">
-                    <div class="text-4xl mb-6 grayscale group-hover:grayscale-0 transition-all">🐢</div>
+                    class="p-8 rounded-2xl bg-white/5 border border-white/5 hover:border-brand-500/30 hover:bg-white/10 transition-all group">
+                    <div
+                        class="w-14 h-14 bg-red-500/10 rounded-xl flex items-center justify-center text-red-400 mb-6 group-hover:scale-110 transition-transform">
+                        <!-- Icon: Snail/Slow/Clock -->
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
                     <h3 class="text-xl font-bold text-white mb-3">Eles são lentos</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">Você precisa do dinheiro hoje. Eles demoram
-                        semanas para analisar um papel.</p>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Você precisa do dinheiro hoje. Eles demoram semanas para analisar um papel e te dão uma resposta
+                        vaga.
+                    </p>
                 </div>
+
+                <!-- Card 2: Bureaucracy -->
                 <div
-                    class="p-8 rounded-2xl bg-white/5 border border-white/5 hover:border-white/10 transition-colors group">
-                    <div class="text-4xl mb-6 grayscale group-hover:grayscale-0 transition-all">📄</div>
+                    class="p-8 rounded-2xl bg-white/5 border border-white/5 hover:border-brand-500/30 hover:bg-white/10 transition-all group">
+                    <div
+                        class="w-14 h-14 bg-orange-500/10 rounded-xl flex items-center justify-center text-orange-400 mb-6 group-hover:scale-110 transition-transform">
+                        <!-- Icon: Paper Stack -->
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+                            </path>
+                        </svg>
+                    </div>
                     <h3 class="text-xl font-bold text-white mb-3">Papelada Infinita</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">Balanço, DRE, Imposto de Renda... Burocracia que
-                        só contador entende.</p>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Balanço, DRE, Imposto de Renda... Uma montanha de burocracia que só contador entende e que trava
+                        seu negócio.
+                    </p>
                 </div>
+
+                <!-- Card 3: Past Focus -->
                 <div
-                    class="p-8 rounded-2xl bg-white/5 border border-white/5 hover:border-white/10 transition-colors group">
-                    <div class="text-4xl mb-6 grayscale group-hover:grayscale-0 transition-all">🚫</div>
+                    class="p-8 rounded-2xl bg-white/5 border border-white/5 hover:border-brand-500/30 hover:bg-white/10 transition-all group">
+                    <div
+                        class="w-14 h-14 bg-slate-700/50 rounded-xl flex items-center justify-center text-slate-300 mb-6 group-hover:scale-110 transition-transform">
+                        <!-- Icon: Rearview Mirror / History -->
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z">
+                            </path>
+                        </svg>
+                    </div>
                     <h3 class="text-xl font-bold text-white mb-3">Olham o Passado</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">Se você teve um problema há 5 anos, eles negam.
-                        Nós olhamos o seu hoje.</p>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Se você teve um problema há 5 anos, eles negam. Nós olhamos o seu <strong>hoje</strong> e seu
+                        potencial de venda.
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Solution Section: Step by Step -->
+    <!-- Solution Section: How it Works -->
     <section id="como-funciona" class="py-24 bg-dark-950 relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 relative z-10">
             <div class="text-center mb-20">
-                <span class="text-brand-400 font-bold uppercase tracking-wider text-xs">Simples e Rápido</span>
+                <span class="text-brand-400 font-bold uppercase tracking-wider text-xs">Processo Digital</span>
                 <h2 class="text-3xl md:text-5xl font-bold text-white mt-4">Como funciona?</h2>
             </div>
 
             <div class="grid md:grid-cols-3 gap-12 relative">
                 <!-- Connecting Line (Desktop) -->
                 <div
-                    class="hidden md:block absolute top-12 left-[15%] right-[15%] h-[2px] bg-gradient-to-r from-transparent via-brand-500/30 to-transparent">
+                    class="hidden md:block absolute top-12 left-[15%] right-[15%] h-[2px] bg-gradient-to-r from-transparent via-brand-500/20 to-transparent border-t border-dashed border-slate-700">
                 </div>
 
                 <!-- Step 1 -->
                 <div class="relative text-center group">
                     <div
-                        class="w-24 h-24 mx-auto bg-dark-800 rounded-2xl border border-white/10 flex items-center justify-center text-3xl mb-8 relative z-10 shadow-lg group-hover:border-brand-500/50 group-hover:shadow-[0_0_20px_rgba(20,184,166,0.2)] transition-all duration-500">
-                        <span class="group-hover:scale-110 transition-transform duration-300">🔗</span>
+                        class="w-24 h-24 mx-auto bg-dark-800 rounded-2xl border border-white/10 flex items-center justify-center text-brand-400 mb-8 relative z-10 shadow-lg group-hover:border-brand-500/50 group-hover:shadow-[0_0_20px_rgba(20,184,166,0.2)] transition-all duration-500">
+                        <!-- Icon: Link/Connect -->
+                        <svg class="w-10 h-10 group-hover:scale-110 transition-transform duration-300" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1">
+                            </path>
+                        </svg>
                     </div>
                     <h3 class="text-xl font-bold text-white mb-4">1. Conecte sua conta</h3>
                     <p class="text-slate-400 text-sm leading-relaxed px-4">
-                        Seguro e digital. Em 2 minutos você conecta sua conta PJ. Sem enviar nenhum papel.
+                        Seguro e digital. Em 2 minutos você conecta sua conta PJ. Sem enviar nenhum papel físico.
                     </p>
                 </div>
 
                 <!-- Step 2 -->
                 <div class="relative text-center group">
                     <div
-                        class="w-24 h-24 mx-auto bg-dark-800 rounded-2xl border border-white/10 flex items-center justify-center text-3xl mb-8 relative z-10 shadow-lg group-hover:border-brand-500/50 group-hover:shadow-[0_0_20px_rgba(20,184,166,0.2)] transition-all duration-500">
-                        <span class="group-hover:scale-110 transition-transform duration-300">🤖</span>
+                        class="w-24 h-24 mx-auto bg-dark-800 rounded-2xl border border-white/10 flex items-center justify-center text-brand-400 mb-8 relative z-10 shadow-lg group-hover:border-brand-500/50 group-hover:shadow-[0_0_20px_rgba(20,184,166,0.2)] transition-all duration-500">
+                        <!-- Icon: Robot/AI -->
+                        <svg class="w-10 h-10 group-hover:scale-110 transition-transform duration-300" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                            </path>
+                        </svg>
                     </div>
                     <h3 class="text-xl font-bold text-white mb-4">2. Análise Automática</h3>
                     <p class="text-slate-400 text-sm leading-relaxed px-4">
-                        Nosso sistema vê que sua empresa vende bem e aprova seu limite na hora.
+                        Nosso sistema vê que sua empresa vende bem e aprova seu limite na hora, sem intervenção humana.
                     </p>
                 </div>
 
                 <!-- Step 3 -->
                 <div class="relative text-center group">
                     <div
-                        class="w-24 h-24 mx-auto bg-dark-800 rounded-2xl border border-white/10 flex items-center justify-center text-3xl mb-8 relative z-10 shadow-lg group-hover:border-brand-500/50 group-hover:shadow-[0_0_20px_rgba(20,184,166,0.2)] transition-all duration-500">
-                        <span class="group-hover:scale-110 transition-transform duration-300">💸</span>
+                        class="w-24 h-24 mx-auto bg-dark-800 rounded-2xl border border-white/10 flex items-center justify-center text-brand-400 mb-8 relative z-10 shadow-lg group-hover:border-brand-500/50 group-hover:shadow-[0_0_20px_rgba(20,184,166,0.2)] transition-all duration-500">
+                        <!-- Icon: Money/Pix -->
+                        <svg class="w-10 h-10 group-hover:scale-110 transition-transform duration-300" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
+                            </path>
+                        </svg>
                     </div>
                     <h3 class="text-xl font-bold text-white mb-4">3. Dinheiro na Conta</h3>
                     <p class="text-slate-400 text-sm leading-relaxed px-4">
-                        Você escolhe a melhor oferta e recebe o Pix em até 24 horas úteis.
+                        Você escolhe a melhor oferta e recebe o Pix em até 24 horas úteis para usar como quiser.
                     </p>
                 </div>
             </div>
 
             <div class="mt-20 text-center">
                 <button onclick="scrollToCTA()"
-                    class="bg-white text-dark-950 hover:bg-slate-200 px-10 py-4 rounded-full font-bold text-lg transition-all transform hover:scale-105 shadow-xl">
+                    class="bg-white text-dark-950 hover:bg-slate-200 px-10 py-4 rounded-full font-bold text-lg transition-all transform hover:scale-105 shadow-xl flex items-center justify-center gap-2 mx-auto">
                     Começar Agora
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                    </svg>
                 </button>
             </div>
         </div>
@@ -305,12 +386,12 @@
     <!-- Social Proof: Testimonials -->
     <section id="depoimentos" class="py-24 bg-dark-900 border-y border-white/5">
         <div class="max-w-7xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center text-white mb-16">Quem usou, aprovou.</h2>
+            <h2 class="text-3xl font-bold text-center text-white mb-16">Quem usou, cresceu.</h2>
 
             <div class="grid md:grid-cols-3 gap-8">
                 <!-- Review 1 -->
-                <div class="bg-white/5 p-8 rounded-2xl border border-white/5">
-                    <div class="flex text-brand-400 mb-4 text-sm">★★★★★</div>
+                <div class="bg-white/5 p-8 rounded-2xl border border-white/5 hover:bg-white/10 transition-colors">
+                    <div class="flex text-yellow-400 mb-4 text-sm">★★★★★</div>
                     <p class="text-slate-300 italic mb-6 text-sm leading-relaxed">"O banco não me dava nem cartão de
                         crédito. Aqui conectei a conta e no dia seguinte tinha 40 mil liberado pra estoque."</p>
                     <div class="flex items-center gap-4">
@@ -325,8 +406,8 @@
                 </div>
 
                 <!-- Review 2 -->
-                <div class="bg-white/5 p-8 rounded-2xl border border-white/5">
-                    <div class="flex text-brand-400 mb-4 text-sm">★★★★★</div>
+                <div class="bg-white/5 p-8 rounded-2xl border border-white/5 hover:bg-white/10 transition-colors">
+                    <div class="flex text-yellow-400 mb-4 text-sm">★★★★★</div>
                     <p class="text-slate-300 italic mb-6 text-sm leading-relaxed">"Achei que era golpe porque foi muito
                         rápido. Mas é real. Salvou meu fluxo de caixa esse mês."</p>
                     <div class="flex items-center gap-4">
@@ -341,8 +422,8 @@
                 </div>
 
                 <!-- Review 3 -->
-                <div class="bg-white/5 p-8 rounded-2xl border border-white/5">
-                    <div class="flex text-brand-400 mb-4 text-sm">★★★★★</div>
+                <div class="bg-white/5 p-8 rounded-2xl border border-white/5 hover:bg-white/10 transition-colors">
+                    <div class="flex text-yellow-400 mb-4 text-sm">★★★★★</div>
                     <p class="text-slate-300 italic mb-6 text-sm leading-relaxed">"Sem aquela papelada chata de
                         cartório. Tudo digital. Taxa justa. Recomendo pra todo empresário."</p>
                     <div class="flex items-center gap-4">
@@ -362,7 +443,7 @@
     <!-- FAQ -->
     <section id="faq" class="py-20 bg-dark-950">
         <div class="max-w-3xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center text-white mb-12">Dúvidas?</h2>
+            <h2 class="text-3xl font-bold text-center text-white mb-12">Dúvidas Frequentes</h2>
 
             <div class="space-y-4" id="faq-container">
                 <div class="border border-white/10 rounded-xl overflow-hidden bg-white/5">
@@ -386,8 +467,8 @@
                         <span class="transform transition-transform text-brand-400">▼</span>
                     </button>
                     <div class="hidden px-6 py-5 text-slate-400 text-sm border-t border-white/5 bg-black/20">
-                        Sim, 100% seguro. Usamos a tecnologia oficial do Banco Central. Nós só conseguimos "ler" seu
-                        extrato para calcular seu limite. Nunca conseguimos mexer no seu dinheiro.
+                        Sim, 100% seguro. Usamos a tecnologia oficial do Banco Central (Open Finance). Nós só
+                        conseguimos "ler" seu extrato para calcular seu limite. Nunca conseguimos mexer no seu dinheiro.
                     </div>
                 </div>
 
