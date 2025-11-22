@@ -1,62 +1,246 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Copiloto Financeiro | Crédito Justo para PMEs</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Copiloto Financeiro | Crédito Inteligente para PMEs</title>
+    <meta name="description"
+        content="Desbloqueie capital de giro para sua empresa usando seu fluxo de caixa real, não apenas o Score. Conexão segura, ofertas em 24h.">
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0fdfa',
+                            100: '#ccfbf1',
+                            500: '#14b8a6', // Teal modern
+                            600: '#0d9488',
+                            900: '#134e4a',
+                        },
+                        dark: {
+                            900: '#0f172a',
+                            800: '#1e293b',
+                        }
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Utilities */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .hero-pattern {
+            background-image: radial-gradient(#14b8a6 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.1;
+        }
+    </style>
 </head>
 
-<body>
+<body class="font-sans text-slate-800 antialiased bg-slate-50 selection:bg-brand-100 selection:text-brand-900">
 
-    <!-- Navbar -->
-    <nav class="navbar">
-        <div class="container nav-container">
-            <div class="logo">Copiloto<span class="highlight">Financeiro</span></div>
-            <ul class="nav-links">
-                <li><a href="#problema">O Problema</a></li>
-                <li><a href="#como-funciona">Como Funciona</a></li>
-                <li><a href="#contato" class="btn-secondary">Login</a></li>
-            </ul>
+    <!-- Navbar: Clean & Trustworthy -->
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-slate-100 transition-all duration-300"
+        id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <div
+                        class="w-8 h-8 bg-brand-600 rounded-lg flex items-center justify-center text-white font-bold text-xl">
+                        C</div>
+                    <span class="font-bold text-xl tracking-tight text-slate-900">Copiloto<span
+                            class="text-brand-600">Financeiro</span></span>
+                </div>
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="#como-funciona"
+                        class="text-sm font-medium text-slate-600 hover:text-brand-600 transition-colors">Como
+                        Funciona</a>
+                    <a href="#beneficios"
+                        class="text-sm font-medium text-slate-600 hover:text-brand-600 transition-colors">Benefícios</a>
+                    <a href="#depoimentos"
+                        class="text-sm font-medium text-slate-600 hover:text-brand-600 transition-colors">Quem Usa</a>
+                </div>
+                <div class="flex items-center gap-4">
+                    <a href="#"
+                        class="hidden md:block text-sm font-semibold text-slate-600 hover:text-slate-900">Login</a>
+                    <button onclick="scrollToCTA()"
+                        class="bg-brand-600 hover:bg-brand-700 text-white px-6 py-2.5 rounded-full font-semibold text-sm transition-all shadow-lg shadow-brand-500/30 hover:shadow-brand-500/50 transform hover:-translate-y-0.5">
+                        Verificar meu Limite
+                    </button>
+                </div>
+            </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <header class="hero">
-        <div class="container hero-content">
-            <div class="hero-text fade-in">
-                <span class="badge">Inteligência Artificial Financeira</span>
-                <h1>Transforme seus dados em <span class="gradient-text">dinheiro no caixa.</span></h1>
-                <p>Seu Score está baixo, mas sua empresa vende bem? Nós somos o tradutor que prova aos bancos a sua real
-                    capacidade de pagamento. Sem burocracia, sem papelada.</p>
-                <div class="cta-group">
-                    <button id="cta-main" class="btn-primary">Quero desbloquear meu crédito</button>
-                    <p class="sub-cta"><small>Conexão segura via Open Finance 🔒</small></p>
-                </div>
-            </div>
-            <div class="hero-image fade-in delay-200">
-                <!-- Simulação visual do App -->
-                <div class="app-mockup">
-                    <div class="mockup-header">
-                        <div class="dot"></div>
-                        <div class="dot"></div>
+    <!-- Hero Section: AIDA - Attention & Interest -->
+    <header class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+        <div class="absolute inset-0 hero-pattern z-0"></div>
+        <div class="absolute top-0 right-0 -mt-20 -mr-20 w-96 h-96 bg-brand-500/20 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 -mb-20 -ml-20 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Copy -->
+                <div class="text-center lg:text-left max-w-2xl mx-auto lg:mx-0 animate-fade-in-up">
+                    <div
+                        class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-50 border border-brand-100 text-brand-700 text-xs font-bold uppercase tracking-wide mb-6">
+                        <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
+                        Nova Análise via Open Finance
                     </div>
-                    <div class="mockup-body">
-                        <div class="status-badge success">Saúde Financeira: Ótima</div>
-                        <h3>Dossiê de Crédito</h3>
-                        <div class="graph-placeholder">
-                            <div class="bar" style="height: 40%"></div>
-                            <div class="bar" style="height: 60%"></div>
-                            <div class="bar" style="height: 85%"></div>
-                            <div class="bar highlight-bar" style="height: 95%"></div>
+                    <h1 class="text-4xl lg:text-6xl font-extrabold text-slate-900 leading-tight mb-6">
+                        Seu banco diz "Não". <br>
+                        Seus dados dizem <span
+                            class="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-blue-600">"Sim".</span>
+                    </h1>
+                    <p class="text-lg text-slate-600 mb-8 leading-relaxed">
+                        Não deixe seu Score antigo travar o crescimento da sua empresa. Nossa IA analisa seu
+                        <strong>fluxo de caixa real</strong> para desbloquear crédito justo em mais de 15 instituições
+                        financeiras.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8">
+                        <button onclick="scrollToCTA()"
+                            class="w-full sm:w-auto px-8 py-4 bg-brand-600 hover:bg-brand-700 text-white rounded-xl font-bold text-lg shadow-xl shadow-brand-500/20 transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2">
+                            Simular Crédito Grátis
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                            </svg>
+                        </button>
+                        <button
+                            class="w-full sm:w-auto px-8 py-4 bg-white text-slate-700 border border-slate-200 hover:border-slate-300 hover:bg-slate-50 rounded-xl font-semibold transition-all flex items-center justify-center gap-2">
+                            <svg class="w-5 h-5 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z">
+                                </path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            Ver como funciona
+                        </button>
+                    </div>
+
+                    <div class="flex items-center justify-center lg:justify-start gap-4 text-sm text-slate-500">
+                        <div class="flex items-center gap-1">
+                            <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                            Sem consulta ao Serasa
                         </div>
-                        <div class="alert-box">
-                            <strong>Oportunidade Encontrada:</strong>
-                            <p>Capital de Giro aprovado pelo Banco X (Taxa 1.8% a.m)</p>
+                        <div class="flex items-center gap-1">
+                            <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                            Segurança Bancária
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Visual/Mockup -->
+                <div class="relative lg:h-[600px] flex items-center justify-center animate-float hidden lg:flex">
+                    <!-- Abstract Background Elements -->
+                    <div
+                        class="absolute w-[500px] h-[500px] bg-gradient-to-tr from-brand-100 to-blue-50 rounded-full opacity-50 blur-2xl">
+                    </div>
+
+                    <!-- Main Card -->
+                    <div
+                        class="relative w-96 bg-white rounded-2xl shadow-2xl border border-slate-100 p-6 z-10 transform rotate-[-5deg] hover:rotate-0 transition-transform duration-500">
+                        <div class="flex justify-between items-center mb-6">
+                            <div>
+                                <p class="text-xs text-slate-400 font-semibold uppercase">Limite Aprovado</p>
+                                <h3 class="text-3xl font-bold text-slate-900">R$ 150.000,00</h3>
+                            </div>
+                            <div
+                                class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center text-green-600">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center p-3 bg-slate-50 rounded-lg">
+                                <div class="flex items-center gap-3">
+                                    <div
+                                        class="w-8 h-8 rounded bg-blue-100 flex items-center justify-center text-blue-600 font-bold">
+                                        B</div>
+                                    <div>
+                                        <p class="text-sm font-bold text-slate-800">Banco Parceiro A</p>
+                                        <p class="text-xs text-slate-500">Taxa: 1.8% a.m.</p>
+                                    </div>
+                                </div>
+                                <button
+                                    class="text-xs font-bold text-brand-600 bg-brand-50 px-3 py-1 rounded-full">Aceitar</button>
+                            </div>
+                            <div class="flex justify-between items-center p-3 bg-slate-50 rounded-lg">
+                                <div class="flex items-center gap-3">
+                                    <div
+                                        class="w-8 h-8 rounded bg-purple-100 flex items-center justify-center text-purple-600 font-bold">
+                                        F</div>
+                                    <div>
+                                        <p class="text-sm font-bold text-slate-800">Fintech B</p>
+                                        <p class="text-xs text-slate-500">Taxa: 2.1% a.m.</p>
+                                    </div>
+                                </div>
+                                <button
+                                    class="text-xs font-bold text-brand-600 bg-brand-50 px-3 py-1 rounded-full">Aceitar</button>
+                            </div>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-slate-100 text-center">
+                            <p class="text-xs text-slate-400">Análise baseada em fluxo de caixa real</p>
+                        </div>
+                    </div>
+
+                    <!-- Floating Badge -->
+                    <div class="absolute bottom-20 -right-4 bg-white p-4 rounded-xl shadow-xl border border-slate-100 z-20 animate-bounce"
+                        style="animation-duration: 3s;">
+                        <div class="flex items-center gap-3">
+                            <div
+                                class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center text-white">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-500 font-semibold">Saúde Financeira</p>
+                                <p class="text-sm font-bold text-slate-900">Excelente (A+)</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -64,81 +248,366 @@
         </div>
     </header>
 
-    <!-- Stats Section (Validation) -->
-    <section id="problema" class="stats-section">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item fade-in">
-                    <h2>8 Milhões</h2>
-                    <p>de CNPJs negativados no Brasil</p>
+    <!-- Social Proof: Trust Bar -->
+    <section class="py-10 border-y border-slate-100 bg-white">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-8">Conectado às melhores
+                instituições</p>
+            <div
+                class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+                <!-- Placeholders for Logos -->
+                <div class="text-2xl font-bold text-slate-400">BANCO<span class="text-slate-600">ALPHA</span></div>
+                <div class="text-2xl font-bold text-slate-400">FIN<span class="text-slate-600">TECH</span></div>
+                <div class="text-2xl font-bold text-slate-400">CREDIT<span class="text-slate-600">CORP</span></div>
+                <div class="text-2xl font-bold text-slate-400">OPEN<span class="text-slate-600">BANK</span></div>
+                <div class="text-2xl font-bold text-slate-400">BIZ<span class="text-slate-600">CAPITAL</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem/Agitation: The "Why" -->
+    <section class="py-20 bg-slate-50">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-6">O sistema tradicional está quebrado.</h2>
+            <p class="text-lg text-slate-600 mb-12">
+                Bancos tradicionais olham para o seu passado (Score, Negativações). <br>
+                Nós olhamos para o seu presente (Vendas, Contratos, Pix).
+            </p>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- The Old Way -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-red-100 relative overflow-hidden group">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-red-500"></div>
+                    <div class="text-red-500 text-4xl mb-4 group-hover:scale-110 transition-transform">❌</div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Bancos Tradicionais</h3>
+                    <ul class="text-left space-y-3 text-slate-600 mt-6">
+                        <li class="flex items-center gap-2"><span class="text-red-500">●</span> Exigem garantias imóveis
+                        </li>
+                        <li class="flex items-center gap-2"><span class="text-red-500">●</span> Negam por Score baixo
+                        </li>
+                        <li class="flex items-center gap-2"><span class="text-red-500">●</span> Demoram semanas para
+                            analisar</li>
+                        <li class="flex items-center gap-2"><span class="text-red-500">●</span> Papelada infinita</li>
+                    </ul>
                 </div>
-                <div class="stat-item fade-in delay-100">
-                    <h2>95%</h2>
-                    <p>desses negócios são PMEs como a sua</p>
-                </div>
-                <div class="stat-item fade-in delay-200">
-                    <h2>O Erro:</h2>
-                    <p>O banco olha o Score, não o seu Fluxo de Caixa.</p>
+
+                <!-- The New Way -->
+                <div
+                    class="bg-white p-8 rounded-2xl shadow-xl border border-brand-100 relative overflow-hidden transform md:-translate-y-4 group">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-brand-500"></div>
+                    <div
+                        class="absolute top-0 right-0 bg-brand-500 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">
+                        RECOMENDADO</div>
+                    <div class="text-brand-500 text-4xl mb-4 group-hover:scale-110 transition-transform">✅</div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Copiloto Financeiro</h3>
+                    <ul class="text-left space-y-3 text-slate-600 mt-6">
+                        <li class="flex items-center gap-2"><span class="text-brand-500">●</span> Sem garantia real (na
+                            maioria)</li>
+                        <li class="flex items-center gap-2"><span class="text-brand-500">●</span> Análise de Fluxo de
+                            Caixa</li>
+                        <li class="flex items-center gap-2"><span class="text-brand-500">●</span> Ofertas em até 24
+                            horas</li>
+                        <li class="flex items-center gap-2"><span class="text-brand-500">●</span> 100% Digital e Seguro
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- How it Works -->
-    <section id="como-funciona" class="steps-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Pare de pedir. Comece a receber ofertas.</h2>
-                <p>Invertemos a lógica. Em vez de você correr atrás do banco, nossa IA faz o banco correr atrás de você.
-                </p>
+    <!-- Solution: How it Works (3 Steps) -->
+    <section id="como-funciona" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Como conseguimos crédito quando outros
+                    negam?</h2>
+                <p class="text-lg text-slate-600">Usamos a tecnologia do Open Finance para provar sua capacidade de
+                    pagamento diretamente aos bancos.</p>
             </div>
 
-            <div class="cards-grid">
-                <!-- Card 1 -->
-                <div class="card fade-in">
-                    <div class="icon-box">🔌</div>
-                    <h3>1. Conexão Segura</h3>
-                    <p>Você conecta seu ERP e conta bancária. Nosso "robô" apenas lê os dados, sem poder mexer em nada.
+            <div class="grid md:grid-cols-3 gap-12 relative">
+                <!-- Connecting Line (Desktop) -->
+                <div class="hidden md:block absolute top-12 left-1/6 right-1/6 h-0.5 bg-slate-100 z-0"></div>
+
+                <!-- Step 1 -->
+                <div class="relative z-10 text-center group">
+                    <div
+                        class="w-24 h-24 mx-auto bg-white border-2 border-slate-100 rounded-full flex items-center justify-center text-4xl mb-6 shadow-lg group-hover:border-brand-500 group-hover:scale-110 transition-all duration-300">
+                        🔌
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">1. Conexão Segura</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        Você conecta sua conta PJ em 2 minutos. Nosso sistema lê o histórico de vendas e recebíveis com
+                        criptografia de ponta a ponta.
                     </p>
                 </div>
 
-                <!-- Card 2 -->
-                <div class="card fade-in delay-100">
-                    <div class="icon-box">🤖</div>
-                    <h3>2. O Tradutor Atua</h3>
-                    <p>A IA analisa suas vendas e contratos futuros e cria um <strong>Dossiê de Crédito</strong>
-                        profissional provando que você é bom pagador.</p>
+                <!-- Step 2 -->
+                <div class="relative z-10 text-center group">
+                    <div
+                        class="w-24 h-24 mx-auto bg-white border-2 border-slate-100 rounded-full flex items-center justify-center text-4xl mb-6 shadow-lg group-hover:border-brand-500 group-hover:scale-110 transition-all duration-300">
+                        🧠
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">2. Análise IA</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        Nossa Inteligência Artificial gera um "Dossiê de Crédito" que traduz seus dados em confiança,
+                        mostrando que sua empresa é saudável.
+                    </p>
                 </div>
 
-                <!-- Card 3 -->
-                <div class="card fade-in delay-200">
-                    <div class="icon-box">💰</div>
-                    <h3>3. Match de Crédito</h3>
-                    <p>Enviamos esse dossiê para múltiplos parceiros (Fintechs e Bancos). Você recebe as melhores
-                        ofertas no seu painel.</p>
+                <!-- Step 3 -->
+                <div class="relative z-10 text-center group">
+                    <div
+                        class="w-24 h-24 mx-auto bg-white border-2 border-slate-100 rounded-full flex items-center justify-center text-4xl mb-6 shadow-lg group-hover:border-brand-500 group-hover:scale-110 transition-all duration-300">
+                        💰
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">3. Dinheiro na Conta</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        Enviamos seu dossiê para múltiplos parceiros. Você recebe as melhores ofertas e escolhe a taxa
+                        que cabe no bolso.
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA Final -->
-    <section class="final-cta">
-        <div class="container">
-            <h2>Sua empresa é mais do que um número no Serasa.</h2>
-            <p>Junte-se às PMEs que estão quebrando a armadilha do crédito.</p>
-            <button class="btn-primary btn-large"
-                onclick="alert('Funcionalidade de Demo: Aqui iniciaria o fluxo de conexão via Open Finance.')">Gerar meu
-                Dossiê Grátis</button>
+    <!-- Benefits/Features Grid -->
+    <section id="beneficios" class="py-24 bg-slate-900 text-white overflow-hidden relative">
+        <!-- Background Glow -->
+        <div
+            class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-brand-900/40 via-slate-900 to-slate-900">
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 relative z-10">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">Mais do que crédito.<br>Um motor de crescimento.
+                    </h2>
+                    <p class="text-slate-400 text-lg mb-8">
+                        Não somos apenas um correspondente bancário. Somos sua área financeira inteligente.
+                    </p>
+
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <div
+                                class="w-12 h-12 rounded-lg bg-brand-500/10 flex items-center justify-center text-brand-400 shrink-0">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold mb-1">Velocidade Recorde</h4>
+                                <p class="text-slate-400 text-sm">Do cadastro ao dinheiro na conta em até 48 horas
+                                    úteis.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div
+                                class="w-12 h-12 rounded-lg bg-brand-500/10 flex items-center justify-center text-brand-400 shrink-0">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold mb-1">Taxas Justas</h4>
+                                <p class="text-slate-400 text-sm">A partir de 1.5% a.m. (dependendo da análise de
+                                    risco).</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div
+                                class="w-12 h-12 rounded-lg bg-brand-500/10 flex items-center justify-center text-brand-400 shrink-0">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold mb-1">Privacidade Total</h4>
+                                <p class="text-slate-400 text-sm">Seus dados são lidos apenas para análise. Nunca
+                                    vendemos sua informação.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800 rounded-2xl p-8 border border-slate-700">
+                    <h3 class="text-xl font-bold mb-6">Simulação Rápida</h3>
+                    <form class="space-y-4" onsubmit="event.preventDefault(); scrollToCTA();">
+                        <div>
+                            <label class="block text-sm font-medium text-slate-400 mb-1">Quanto sua empresa
+                                precisa?</label>
+                            <input type="range"
+                                class="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-brand-500"
+                                min="10000" max="500000" step="5000" id="loanRange">
+                            <div class="flex justify-between text-xs text-slate-500 mt-2">
+                                <span>R$ 10k</span>
+                                <span class="text-brand-400 font-bold text-lg" id="loanValue">R$ 50.000</span>
+                                <span>R$ 500k</span>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-400 mb-1">Faturamento Mensal
+                                Médio</label>
+                            <select
+                                class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none">
+                                <option>Até R$ 50.000</option>
+                                <option>R$ 50.000 a R$ 100.000</option>
+                                <option>R$ 100.000 a R$ 500.000</option>
+                                <option>Acima de R$ 500.000</option>
+                            </select>
+                        </div>
+                        <button
+                            class="w-full bg-brand-600 hover:bg-brand-700 text-white font-bold py-4 rounded-lg transition-colors shadow-lg shadow-brand-500/20">
+                            Verificar Disponibilidade
+                        </button>
+                        <p class="text-center text-xs text-slate-500">Simulação sem compromisso. Não afeta seu Score.
+                        </p>
+                    </form>
+                </div>
+            </div>
         </div>
     </section>
 
-    <footer>
-        <div class="container footer-content">
-            <p>&copy; 2025 Copiloto Financeiro. Todos os direitos reservados.</p>
-            <div class="socials">
-                <a href="#">Termos</a>
-                <a href="#">Privacidade</a>
+    <!-- Testimonials (Social Proof) -->
+    <section id="depoimentos" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-slate-900 mb-12">Quem usou, aprovou.</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100">
+                    <div class="flex text-yellow-400 mb-4">★★★★★</div>
+                    <p class="text-slate-600 mb-6">"Estava com o CNPJ negativado por uma conta antiga e nenhum banco me
+                        dava crédito. O Copiloto olhou meu faturamento real e consegui R$ 40 mil para estoque."</p>
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="w-10 h-10 bg-slate-200 rounded-full flex items-center justify-center font-bold text-slate-500">
+                            RC</div>
+                        <div>
+                            <p class="font-bold text-slate-900">Ricardo Costa</p>
+                            <p class="text-xs text-slate-500">Dono de E-commerce</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100">
+                    <div class="flex text-yellow-400 mb-4">★★★★★</div>
+                    <p class="text-slate-600 mb-6">"A velocidade me impressionou. Conectei a conta na terça, na quinta o
+                        dinheiro estava na conta. Taxa muito melhor que a do meu banco atual."</p>
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="w-10 h-10 bg-slate-200 rounded-full flex items-center justify-center font-bold text-slate-500">
+                            MJ</div>
+                        <div>
+                            <p class="font-bold text-slate-900">Maria Júlia</p>
+                            <p class="text-xs text-slate-500">Clínica de Estética</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100">
+                    <div class="flex text-yellow-400 mb-4">★★★★★</div>
+                    <p class="text-slate-600 mb-6">"Sem burocracia de enviar 500 papéis. O sistema leu tudo automático.
+                        É assim que deveria ser todo banco."</p>
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="w-10 h-10 bg-slate-200 rounded-full flex items-center justify-center font-bold text-slate-500">
+                            FS</div>
+                        <div>
+                            <p class="font-bold text-slate-900">Felipe Santos</p>
+                            <p class="text-xs text-slate-500">Agência de Marketing</p>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-3xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-slate-900 mb-12">Dúvidas Frequentes</h2>
+            <div class="space-y-4" id="faq-container">
+                <!-- FAQ Items will be handled by JS or static here -->
+                <div class="border border-slate-200 rounded-lg overflow-hidden">
+                    <button
+                        class="w-full px-6 py-4 text-left bg-slate-50 hover:bg-slate-100 font-semibold text-slate-800 flex justify-between items-center transition-colors"
+                        onclick="toggleFaq(this)">
+                        Preciso ter CNPJ limpo?
+                        <span class="transform transition-transform">▼</span>
+                    </button>
+                    <div class="hidden px-6 py-4 text-slate-600 bg-white">
+                        Não necessariamente. Diferente dos bancos tradicionais, nossos parceiros analisam principalmente
+                        sua capacidade de pagamento atual (fluxo de caixa). Se sua empresa vende bem, você tem grandes
+                        chances.
+                    </div>
+                </div>
+                <div class="border border-slate-200 rounded-lg overflow-hidden">
+                    <button
+                        class="w-full px-6 py-4 text-left bg-slate-50 hover:bg-slate-100 font-semibold text-slate-800 flex justify-between items-center transition-colors"
+                        onclick="toggleFaq(this)">
+                        É seguro conectar minha conta bancária?
+                        <span class="transform transition-transform">▼</span>
+                    </button>
+                    <div class="hidden px-6 py-4 text-slate-600 bg-white">
+                        Sim, 100% seguro. Utilizamos a tecnologia oficial do Open Finance, regulada pelo Banco Central.
+                        Nós temos acesso apenas de "leitura" para analisar seu extrato. Não conseguimos fazer
+                        movimentações na sua conta.
+                    </div>
+                </div>
+                <div class="border border-slate-200 rounded-lg overflow-hidden">
+                    <button
+                        class="w-full px-6 py-4 text-left bg-slate-50 hover:bg-slate-100 font-semibold text-slate-800 flex justify-between items-center transition-colors"
+                        onclick="toggleFaq(this)">
+                        Quanto custa para fazer a análise?
+                        <span class="transform transition-transform">▼</span>
+                    </button>
+                    <div class="hidden px-6 py-4 text-slate-600 bg-white">
+                        Zero. A análise e a emissão do Dossiê de Crédito são totalmente gratuitas. Você só paga os juros
+                        do empréstimo se decidir aceitar alguma oferta.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA: Frictionless -->
+    <section id="cta-final" class="py-24 bg-brand-900 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]">
+        </div>
+        <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+            <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">Pronto para destravar seu caixa?</h2>
+            <p class="text-xl text-brand-100 mb-10">Junte-se a mais de 1.000 empresas que já conseguiram crédito justo.
+            </p>
+
+            <div
+                class="bg-white p-2 rounded-full max-w-lg mx-auto flex shadow-2xl transform hover:scale-105 transition-transform duration-300">
+                <input type="email" placeholder="Digite seu e-mail corporativo"
+                    class="flex-1 appearance-none rounded-full py-3 px-6 text-slate-700 leading-tight focus:outline-none focus:ring-2 focus:ring-brand-500 border-none"
+                    id="email-input">
+                <button id="final-submit-btn"
+                    class="bg-brand-600 text-white font-bold py-3 px-8 rounded-full hover:bg-brand-700 transition-colors whitespace-nowrap">
+                    Ver Ofertas
+                </button>
+            </div>
+            <p class="mt-4 text-sm text-brand-200 opacity-80">🔒 Seus dados estão protegidos. Sem spam.</p>
+        </div>
+    </section>
+
+    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-4 md:mb-0">
+                <span class="font-bold text-xl text-white">Copiloto<span class="text-brand-500">Financeiro</span></span>
+                <p class="text-sm mt-2">Tecnologia a favor do seu negócio.</p>
+            </div>
+            <div class="flex gap-6 text-sm">
+                <a href="#" class="hover:text-white transition-colors">Termos de Uso</a>
+                <a href="#" class="hover:text-white transition-colors">Política de Privacidade</a>
+                <a href="#" class="hover:text-white transition-colors">Contato</a>
+            </div>
+        </div>
+        <div class="text-center text-xs mt-8 opacity-50">
+            &copy; 2025 Copiloto Financeiro. Todos os direitos reservados.
         </div>
     </footer>
 
