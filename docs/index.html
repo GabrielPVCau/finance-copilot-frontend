@@ -11,51 +11,30 @@
     <link rel="stylesheet" href="style.css">
     <script defer src="script.js"></script>
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FinancialService",
-      "name": "Copiloto Financeiro",
-      "description": "Plataforma de crédito inteligente que usa Open Finance e IA para criar dossiês de crédito de PMEs brasileiras.",
-      "url": "https://copilotofinanceiro.com",
-      "telephone": "+55-11-5555-0101",
-      "foundingDate": "2023",
-      "founder": {
-        "@type": "Person",
-        "name": "Gabriel Cau"
-      },
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Av. Paulista, 1000",
-        "addressLocality": "São Paulo",
-        "addressRegion": "SP",
-        "postalCode": "01310-100",
-        "addressCountry": "BR"
-      },
-      "areaServed": {
-        "@type": "AdministrativeArea",
-        "name": "Brasil"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": "-23.561732",
-        "longitude": "-46.656139"
-      },
-      "makesOffer": {
-        "@type": "Offer",
-        "name": "Dossiê de Crédito Open Finance",
-        "price": "0",
-        "priceCurrency": "BRL",
-        "availability": "InStock",
-        "availabilityEnds": "2025-12-15"
-      }
-    }
+        {
+            "@context": "https://schema.org",
+            "@type": "ResearchProject",
+            "name": "Copiloto Financeiro",
+            "description": "Projeto acadêmico da UTFPR que testa um tradutor de dados operacionais para crédito justo em PMEs brasileiras.",
+            "url": "https://copilotofinanceiro.com",
+            "startDate": "2025",
+            "sponsor": {
+                "@type": "CollegeOrUniversity",
+                "name": "Universidade Tecnológica Federal do Paraná"
+            },
+            "audience": {
+                "@type": "BusinessAudience",
+                "audienceType": "Pequenas e médias empresas"
+            },
+            "keywords": ["Open Finance", "crédito justo", "dossiê de crédito", "PME"]
+        }
     </script>
 </head>
 <body>
     <a class="skip-link" href="#conteudo-principal">Pular para o conteúdo</a>
     <div class="sticky-cta" id="mobileStickyBar" role="region" aria-label="Barra de CTA móvel">
-        <p>Prazo de onboarding até 15/12/2025</p>
-        <button class="btn primary" data-scroll="#conversational-form">Destravar crédito</button>
+        <p>Piloto acadêmico aberto até 30/06/2025</p>
+        <button class="btn primary" data-scroll="#conversational-form">Participar do piloto</button>
     </div>
     <header class="site-header" role="banner">
         <div class="container header-content">
@@ -75,7 +54,7 @@
                 <a href="#demos">Demos</a>
                 <a href="#founder">Founder-led</a>
                 <a href="#faq">FAQ</a>
-                <button class="btn ghost" data-scroll="#conversational-form">Simular agora</button>
+                <button class="btn ghost" data-scroll="#conversational-form">Solicitar acesso antecipado</button>
             </nav>
         </div>
     </header>
@@ -83,63 +62,63 @@
         <section id="hero" class="section hero" aria-labelledby="hero-title">
             <div class="container hero-layout">
                 <div class="hero-copy cascade" data-cascade="0">
-                    <p class="eyebrow">Open Finance + IA validado pelo Banco Central</p>
+                    <p class="eyebrow">Projeto de inovação UTFPR · MVP 2025</p>
                     <h1 id="hero-title">
-                        <span class="hero-dtr" data-dtr data-dtr-default="Crédito justo para PMEs brasileiras">Crédito justo para PMEs brasileiras</span>
+                        <span class="hero-dtr" data-dtr data-dtr-default="Traduzimos operações em narrativa de crédito">Traduzimos operações em narrativa de crédito</span>
                     </h1>
                     <p class="lead">
-                        O Copiloto Financeiro lê suas vendas, recebíveis e boletos reais para produzir um dossiê de crédito em 48h — uma prova viva de performance para sair da armadilha do Score.
+                        O Copiloto Financeiro é um MVP construído em ambiente acadêmico para ajudar PMEs a contar, com dados reais, por que merecem melhores condições de crédito. Estamos convidando empresas para co-criar o piloto conosco.
                     </p>
                     <ul class="hero-points" aria-label="Benefícios principais">
                         <li>
                             <span class="icon">
                                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
                             </span>
-                            Sem papelada física, tudo via Open Finance autorizado.
+                            Conecte dados financeiros com segurança e mantenha controle sobre o que será compartilhado.
                         </li>
                         <li>
                             <span class="icon">
                                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18m9-9H3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
                             </span>
-                            Taxas negociadas em lote com parceiros regionais.
+                            Use um tradutor de negócios que transforma fluxo de caixa em argumentos compreensíveis para analistas humanos.
                         </li>
                         <li>
                             <span class="icon">
                                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
                             </span>
-                            Histórico operacional vira narrativa para o comitê de crédito.
+                            Receba feedback guiado e ajude a definir quais dados compõem o dossiê ideal para PMEs.
                         </li>
                     </ul>
                     <div class="hero-cta">
-                        <button class="btn primary" data-scroll="#conversational-form">Rodar diagnóstico</button>
-                        <button class="btn secondary" data-scroll="#demos">Ver demo guiada</button>
-                        <small>Agenda de onboarding aberta até 15/12/2025 ou preenchimento de 200 PMEs.</small>
+                        <button class="btn primary" data-scroll="#conversational-form">Participar do piloto</button>
+                        <button class="btn secondary" data-scroll="#demos">Explorar protótipo</button>
+                        <small>Buscamos até 20 PMEs para a primeira rodada de testes supervisionados.</small>
                     </div>
-                    <dl class="trust-grid" aria-label="Indicadores de confiança">
+                    <dl class="problem-grid" aria-label="Indicadores do problema">
                         <div>
-                            <dt>R$ 220M</dt>
-                            <dd>em crédito destravado desde 2023</dd>
+                            <dt>7,6 milhões</dt>
+                            <dd>de PMEs negativadas no Brasil (Serasa Experian, 2024).</dd>
                         </div>
                         <div>
-                            <dt>48h</dt>
-                            <dd>para receber o dossiê completo</dd>
+                            <dt>45 dias</dt>
+                            <dd>é a espera média para resposta de crédito segundo dados do SEBRAE.</dd>
                         </div>
                         <div>
-                            <dt>27 estados</dt>
-                            <dd>com bancos parceiros ativos</dd>
+                            <dt>1 narrativa</dt>
+                            <dd>bem construída pode mudar o risco percebido. Queremos provar isso em co-criação.</dd>
                         </div>
                     </dl>
                 </div>
                 <div class="hero-media cascade" data-cascade="1">
                     <figure class="vertical-video" aria-label="Vídeo vertical mostrando cliente real">
-                        <video controls preload="metadata" poster="https://placehold.co/360x640/0f172a/ffffff?text=Lo-Fi+UGC" playsinline>
+                        <video controls preload="metadata" poster="https://placehold.co/360x640/0f172a/ffffff?text=Prot%C3%B3tipo+MVP" playsinline>
                             <source src="videos/case 1.mp4" type="video/mp4">
                         </video>
-                        <figcaption>UGC Lo-Fi gravado no celular da CEO da Fio&Arte, 03/10/2025.</figcaption>
+                        <figcaption>Protótipo funcional testado em laboratório didático da UTFPR (2025).</figcaption>
                     </figure>
                     <div class="hero-card">
-                        <p>"O Copiloto virou nosso tradutor financeiro. Chegamos a uma taxa 23% menor sem oferecer mais garantias."</p>
-                        <span>Juliana Naves · Indústria Têxtil em MG</span>
+                        <p>“O sistema criado para medir o risco está, na prática, garantindo que o risco se materialize.”</p>
+                        <span>Trecho do nosso roteiro de pitch · UTFPR 2025</span>
                     </div>
                 </div>
             </div>
@@ -147,9 +126,9 @@
         <section id="insights" class="section insights" aria-labelledby="insights-title">
             <div class="container">
                 <div class="section-header">
-                    <p class="eyebrow">Escuta ativa com 400 PMEs</p>
-                    <h2 id="insights-title">O que aprisiona as PMEs brasileiras</h2>
-                    <p>80% das empresas que entrevistamos tinham receita crescente, mas eram punidas por atrasos pontuais no Score. A armadilha nasce quando falta narrativa baseada em dados operacionais.</p>
+                    <p class="eyebrow">Dados públicos + entrevistas com mentores</p>
+                    <h2 id="insights-title">A armadilha que queremos desarmar</h2>
+                    <p>Para milhões de PMEs, o Score ignora sinais de vitalidade presentes no ERP, no Open Finance e até nos boletos pagos em dia. Queremos testar se uma narrativa baseada nesses dados muda a conversa com o banco.</p>
                 </div>
                 <div class="insight-grid">
                     <article class="insight-card cascade" data-cascade="2">
@@ -159,7 +138,7 @@
                             </span>
                             <h3>Fluxo real ignorado</h3>
                         </header>
-                        <p>Seu recebível confirmado vale menos que um atraso antigo. Nossa IA cruza ERP, marketplaces e Open Finance para provar vitalidade hoje.</p>
+                        <p>Recebíveis confirmados valem menos que um atraso de meses atrás. O piloto busca provar que o histórico recente deve pesar mais.</p>
                     </article>
                     <article class="insight-card cascade" data-cascade="3">
                         <header>
@@ -168,7 +147,7 @@
                             </span>
                             <h3>Negociação assimétrica</h3>
                         </header>
-                        <p>Bancos tradicionais levam 45 dias e pedem garantias excessivas. O dossiê Copiloto fala a linguagem deles e reduz o ciclo para 48h.</p>
+                        <p>Enquanto o banco leva mais de 40 dias para responder, o empreendedor precisa de capital para ontem. Usaremos o MVP como tradutor entre as duas pontas.</p>
                     </article>
                     <article class="insight-card cascade" data-cascade="4">
                         <header>
@@ -177,7 +156,7 @@
                             </span>
                             <h3>Credibilidade portátil</h3>
                         </header>
-                        <p>Com dados auditáveis, você apresenta o mesmo laudo em múltiplos bancos regionais sem reiniciar o processo.</p>
+                        <p>Coletando uma vez, o empresário deveria poder apresentar o mesmo dossiê para vários agentes financeiros. A hipótese do Copiloto é validar esse reaproveitamento.</p>
                     </article>
                 </div>
             </div>
@@ -185,37 +164,37 @@
         <section id="features" class="section bento" aria-labelledby="features-title">
             <div class="container">
                 <div class="section-header">
-                    <p class="eyebrow">Arquitetura Bento Grid</p>
-                    <h2 id="features-title">Como o Copiloto entrega crédito justo</h2>
-                    <p>Cada bloco representa um estágio do dossiê, pensado para ser consumido por analistas humanos e motores automáticos.</p>
+                    <p class="eyebrow">Analogia do tradutor de negócios</p>
+                    <h2 id="features-title">Como pretendemos construir o dossiê</h2>
+                    <p>Simplificamos em três etapas que queremos validar com você. Nada de jargão secreto: apenas passos que façam sentido para quem vive a operação.</p>
                 </div>
                 <div class="bento-grid" role="list">
                     <article class="bento-card span-2 cascade" data-cascade="5" role="listitem">
-                        <h3>Telemetry Layer</h3>
-                        <p>Conectamos Open Finance, ERP e notas fiscais e aplicamos modelos proprietários para entender sazonalidade.</p>
+                        <h3>1. Conexão segura de dados</h3>
+                        <p>Você escolhe quais fontes abrir (Open Finance, planilhas, ERP) e definimos juntos o escopo mínimo viável. Tudo ficará registrado para auditoria acadêmica.</p>
                         <ul>
-                            <li>Normalizamos até 36 meses de dados</li>
-                            <li>Detectamos eventos críticos em tempo real</li>
+                            <li>Transparência sobre quais dados foram sincronizados</li>
+                            <li>Possibilidade de desconectar a qualquer momento</li>
                         </ul>
                     </article>
                     <article class="bento-card cascade" data-cascade="6" role="listitem">
-                        <h3>Risk Canvas</h3>
-                        <p>Dashboard pronto para comitês com cenários de alavancagem e limites recomendados.</p>
-                        <span class="tag">Atualizado a cada 2h</span>
+                        <h3>2. Análise inteligível</h3>
+                        <p>Aplicamos regras visuais simples (tendência, sazonalidade, concentração) para contar a história do seu fluxo de caixa.</p>
+                        <span class="tag">Primeira versão em planilhas vivas</span>
                     </article>
                     <article class="bento-card tall cascade" data-cascade="7" role="listitem">
-                        <h3>Negociação assistida</h3>
-                        <p>Time de especialistas coapresenta seu caso por vídeo com o banco parceiro.</p>
-                        <button class="btn ghost" data-scroll="#founder">Conhecer o time</button>
+                        <h3>3. Geração do dossiê</h3>
+                        <p>Comparamos os dados com critérios públicos (Serasa, Bacen) e sugerimos uma narrativa pronta para copiar e apresentar.</p>
+                        <button class="btn ghost" data-scroll="#founder">Ver quem está construindo</button>
                     </article>
                     <article class="bento-card cascade" data-cascade="8" role="listitem">
-                        <h3>Compliance automático</h3>
-                        <p>Logs WORM e trilha de auditoria pronta para reguladores.</p>
+                        <h3>Testes com diferentes bancos</h3>
+                        <p>A mesma história precisa fazer sentido para cooperativas e fintechs. Mediremos como cada instituição interpreta o dossiê.</p>
                     </article>
                     <article class="bento-card span-2 cascade" data-cascade="9" role="listitem">
-                        <h3>Playbooks geolocalizados</h3>
-                        <p>Mapeamos fundos regionais e cooperativas por CEP para reduzir o custo final.</p>
-                        <span class="tag">Cobertura nacional</span>
+                        <h3>Próximos experimentos</h3>
+                        <p>Queremos testar alertas preventivos, simulações de prazo e templates por segmento (agro, varejo, serviços). As primeiras PMEs podem priorizar o backlog.</p>
+                        <span class="tag">Co-criação aberta</span>
                     </article>
                 </div>
             </div>
@@ -223,24 +202,24 @@
         <section id="demos" class="section demos" aria-labelledby="demos-title">
             <div class="container">
                 <div class="section-header">
-                    <p class="eyebrow">Experimente antes</p>
-                    <h2 id="demos-title">Interactive Demos</h2>
-                    <p>Testes guiados com dados sintéticos para treinar seu time em 5 minutos.</p>
+                    <p class="eyebrow">Peças em validação</p>
+                    <h2 id="demos-title">Demonstrações do MVP</h2>
+                    <p>São protótipos navegáveis construídos no laboratório de engenharia da UTFPR. Servem para alinharmos expectativas antes de conectar dados reais.</p>
                 </div>
                 <div class="demos-grid">
                     <article class="demo-card cascade" data-cascade="10">
                         <div>
                             <h3>Simulação de fluxo</h3>
-                            <p>Arraste receitas e despesas para ver a variação automática do limite proposto.</p>
+                            <p>Ajuste receitas e despesas fictícias e veja como o dossiê explica cada oscilação.</p>
                         </div>
                         <button class="btn primary" type="button">Abrir sandbox</button>
                     </article>
                     <article class="demo-card cascade" data-cascade="11">
                         <div>
-                            <h3>Checklist de Open Finance</h3>
-                            <p>Checklist interativo que indica quais contas já estão conectadas.</p>
+                            <h3>Checklist de dados</h3>
+                            <p>Entenda quais fontes pretendemos conectar em cada fase e escolha o mínimo necessário.</p>
                         </div>
-                        <button class="btn secondary" type="button">Testar checklist</button>
+                        <button class="btn secondary" type="button">Ver protótipo</button>
                     </article>
                 </div>
             </div>
@@ -248,28 +227,28 @@
         <section id="videos" class="section videos" aria-labelledby="videos-title">
             <div class="container">
                 <div class="section-header">
-                    <p class="eyebrow">Vídeos verticais 9:16</p>
-                    <h2 id="videos-title">Lo-Fi & UGC reais</h2>
-                    <p>Cortes curtos, autênticos, filmados pelos próprios fundadores.</p>
+                    <p class="eyebrow">Registros do processo</p>
+                    <h2 id="videos-title">Protótipos em campo</h2>
+                    <p>Compartilhamos trechos de testes feitos com mentores e professores para mostrar o estado atual da solução.</p>
                 </div>
                 <div class="video-grid">
                     <figure class="vertical-video cascade" data-cascade="12">
-                        <video controls playsinline preload="metadata" poster="https://placehold.co/360x640/1c2431/ffffff?text=Cliente+MG">
+                        <video controls playsinline preload="metadata" poster="https://placehold.co/360x640/1c2431/ffffff?text=Prot%C3%B3tipo+1">
                             <source src="videos/case 1.mp4" type="video/mp4">
                         </video>
-                        <figcaption>Transportadora de Contagem (01/09/2025).</figcaption>
+                        <figcaption>Teste guiado com professores de finanças corporativas (set/2025).</figcaption>
                     </figure>
                     <figure class="vertical-video cascade" data-cascade="13">
-                        <video controls playsinline preload="metadata" poster="https://placehold.co/360x640/111827/ffffff?text=Cliente+SC">
+                        <video controls playsinline preload="metadata" poster="https://placehold.co/360x640/111827/ffffff?text=Prot%C3%B3tipo+2">
                             <source src="videos/case 2.mp4" type="video/mp4">
                         </video>
-                        <figcaption>Loja D2C de Joinville (18/10/2025).</figcaption>
+                        <figcaption>Iteração sobre a narrativa de crédito com mentoria do programa UTFPR (out/2025).</figcaption>
                     </figure>
                     <figure class="vertical-video cascade" data-cascade="14">
-                        <video controls playsinline preload="metadata" poster="https://placehold.co/360x640/0f172a/ffffff?text=Cliente+BA">
+                        <video controls playsinline preload="metadata" poster="https://placehold.co/360x640/0f172a/ffffff?text=Prot%C3%B3tipo+3">
                             <source src="videos/case 3.mp4" type="video/mp4">
                         </video>
-                        <figcaption>Rede de clínicas em Salvador (05/11/2025).</figcaption>
+                        <figcaption>Apresentação interna para banca avaliadora da UTFPR (nov/2025).</figcaption>
                     </figure>
                 </div>
             </div>
@@ -277,19 +256,28 @@
         <section id="founder" class="section founder" aria-labelledby="founder-title">
             <div class="container founder-layout">
                 <article class="founder-card cascade" data-cascade="15">
-                    <p class="eyebrow">Founder-led</p>
-                    <h2 id="founder-title">Carta da fundadora</h2>
-                    <p>“Passei 12 anos em bancos médios. Vi empresas incríveis recusadas por não saberem traduzir operação em credibilidade. Criei o Copiloto para contar essa história por você.”</p>
-                    <p class="signature">Marina Rios · CEO & Co-founder</p>
-                    <button class="btn ghost" data-scroll="#conversational-form">Agendar call de 15 min</button>
+                    <p class="eyebrow">Idealizadores</p>
+                    <h2 id="founder-title">Nossa equipe multidisciplinar</h2>
+                    <p>O Copiloto nasce das competências complementares de cinco estudantes-pesquisadores da UTFPR.</p>
+                    <ul class="team-list">
+                        <li><strong>Mario</strong> · Engenharia de Software · orquestra integrações e prototipação.</li>
+                        <li><strong>Douglas</strong> · Agronegócio · conecta o produto às dores do campo e do interior.</li>
+                        <li><strong>Matheus</strong> · Data Science · lidera análises e construção das narrativas.</li>
+                        <li><strong>Welyson</strong> · Sistemas de Informação · cuida da experiência e da comunicação com PMEs.</li>
+                        <li><strong>Gabriel</strong> · Negócios · conduz validações com especialistas em crédito.</li>
+                    </ul>
+                    <p class="signature">Unimos tecnologia, finanças e operações para entender o problema em profundidade.</p>
                 </article>
-                <figure class="founder-video cascade" data-cascade="16" aria-label="Vídeo vertical com a fundadora">
-                    <video controls playsinline preload="metadata" poster="https://placehold.co/360x640/0a0f1e/ffffff?text=Founder">
+                <figure class="founder-video cascade" data-cascade="16" aria-label="Vídeo com bastidores da equipe">
+                    <video controls playsinline preload="metadata" poster="https://placehold.co/360x640/0a0f1e/ffffff?text=Equipe+UTFPR">
                         <source src="videos/case 2.mp4" type="video/mp4">
                     </video>
-                    <figcaption>Marina gravou este update em 07/11/2025.</figcaption>
+                    <figcaption>Registro dos testes com mentores do ecossistema UTFPR (nov/2025).</figcaption>
                 </figure>
             </div>
+            <blockquote class="team-quote">
+                “Os dados existem, mas chegam aos bancos como ruído. Sem contexto, toda PME parece igual.” — Insight coletado em mentoria UTFPR 2025
+            </blockquote>
         </section>
         <section id="conversational-form" class="section form-section" aria-labelledby="form-title">
             <div class="container form-grid">
@@ -343,9 +331,9 @@
         <section id="quiz" class="section quiz" aria-labelledby="quiz-title">
             <div class="container">
                 <div class="section-header">
-                    <p class="eyebrow">Auto-qualificação</p>
-                    <h2 id="quiz-title">Descubra se seu negócio está pronto</h2>
-                    <p>Responda 3 perguntas rápidas e veja a recomendação do Copiloto.</p>
+                    <p class="eyebrow">Pré-diagnóstico</p>
+                    <h2 id="quiz-title">Veja se o piloto faz sentido</h2>
+                    <p>Três perguntas rápidas ajudam a priorizar as PMEs que mais se beneficiam da primeira rodada.</p>
                 </div>
                 <form id="qualifyQuiz" class="quiz-grid">
                     <fieldset class="quiz-question" data-question>
@@ -386,15 +374,19 @@
                 <div class="faq-list" role="list">
                     <details class="faq-item" role="listitem">
                         <summary>Quanto custa o Copiloto?</summary>
-                        <p>O dossiê custa R$ 0. Somos remunerados pelos bancos apenas quando o crédito é liberado.</p>
+                        <p>Durante a fase piloto, o acesso à plataforma e a geração do dossiê serão gratuitos para as PMEs selecionadas. Queremos validar o produto e colher feedbacks. No futuro, planejamos um modelo de assinatura acessível somado a uma taxa de sucesso apenas quando o crédito for aprovado.</p>
                     </details>
                     <details class="faq-item" role="listitem">
                         <summary>É seguro conectar Open Finance?</summary>
-                        <p>Sim. O acesso é somente leitura e totalmente rastreado conforme Resolução 185/2024 do BC.</p>
+                        <p>Sim. Trabalhamos apenas com conexões de leitura e registramos cada permissão concedida. Durante o MVP você poderá simular com dados fictícios antes de autorizar qualquer integração real.</p>
                     </details>
                     <details class="faq-item" role="listitem">
                         <summary>Posso usar com meu banco atual?</summary>
-                        <p>Claro. Você escolhe o parceiro e usamos o dossiê como arma de negociação.</p>
+                        <p>Nosso objetivo é que o dossiê seja aceito por diferentes instituições. Nesta etapa, coletamos feedback de bancos e cooperativas parceiros para entender como adaptar a narrativa. Você poderá levar o material gerado para seu banco atual e contar pra gente como foi.</p>
+                    </details>
+                    <details class="faq-item" role="listitem">
+                        <summary>Quem pode participar do piloto?</summary>
+                        <p>Buscamos PMEs com faturamento acima de R$ 150 mil/mês, histórico de vendas consistente e abertura para compartilhar dados de forma acompanhada. Se esse é o seu caso, preencha o formulário conversacional e vamos avaliar juntos.</p>
                     </details>
                 </div>
             </div>
@@ -402,12 +394,12 @@
         <section id="final-cta" class="section final-cta" aria-labelledby="final-title">
             <div class="container final-grid">
                 <div>
-                    <p class="eyebrow">Próxima turma</p>
-                    <h2 id="final-title">Garantimos resposta até 72h para cadastros enviados antes de 30/11/2025.</h2>
+                    <p class="eyebrow">Convite ao piloto</p>
+                    <h2 id="final-title">Selecionaremos até 20 PMEs para testar o Copiloto entre março e junho de 2025. Respondemos em até 5 dias úteis.</h2>
                 </div>
                 <div class="cta-actions">
-                    <button class="btn primary" data-scroll="#conversational-form">Entrar na fila</button>
-                    <button class="btn ghost" data-scroll="#quiz">Rodar auto-qualificação</button>
+                    <button class="btn primary" data-scroll="#conversational-form">Participar do piloto</button>
+                    <button class="btn ghost" data-scroll="#quiz">Ver critérios do quiz</button>
                 </div>
             </div>
         </section>
@@ -416,11 +408,11 @@
         <div class="container footer-grid">
             <div>
                 <span class="brand-text">Copiloto <strong>Financeiro</strong></span>
-                <p>Correspondente bancário autorizado · CNPJ 45.123.789/0001-00</p>
+                <p>Projeto de inovação desenvolvido na Universidade Tecnológica Federal do Paraná.</p>
             </div>
             <div>
-                <p>Av. Paulista, 1000 · São Paulo/SP</p>
-                <p>© 2025 Copiloto Financeiro</p>
+                <p>Copiloto Financeiro © 2025 · Em fase de desenvolvimento.</p>
+                <p>Dúvidas? Use o formulário e retornaremos durante o piloto.</p>
             </div>
         </div>
     </footer>
