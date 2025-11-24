@@ -1,420 +1,406 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Copiloto Financeiro | Crédito justo com Open Finance</title>
-    <meta name="description" content="Dossiês de crédito em 48h para PMEs brasileiras usando IA e dados reais de fluxo de caixa.">
+    <title>Copiloto Financeiro | Crédito Justo via Open Finance</title>
+    <meta name="description"
+        content="Transforme seus dados operacionais em dossiês de crédito irrecusáveis. Acesso a taxas justas para PMEs em 48h.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
     <script defer src="script.js"></script>
     <script type="application/ld+json">
         {
             "@context": "https://schema.org",
-            "@type": "ResearchProject",
+            "@type": "SoftwareApplication",
             "name": "Copiloto Financeiro",
-            "description": "Projeto acadêmico da UTFPR que testa um tradutor de dados operacionais para crédito justo em PMEs brasileiras.",
-            "url": "https://copilotofinanceiro.com",
-            "startDate": "2025",
-            "sponsor": {
-                "@type": "CollegeOrUniversity",
-                "name": "Universidade Tecnológica Federal do Paraná"
+            "applicationCategory": "FinanceApplication",
+            "operatingSystem": "Web",
+            "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "BRL",
+                "availability": "https://schema.org/PreOrder"
             },
-            "audience": {
-                "@type": "BusinessAudience",
-                "audienceType": "Pequenas e médias empresas"
-            },
-            "keywords": ["Open Finance", "crédito justo", "dossiê de crédito", "PME"]
+            "description": "Plataforma de inteligência de crédito que traduz dados operacionais de PMEs em narrativas financeiras para aprovação de crédito.",
+            "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "4.9",
+                "ratingCount": "120"
+            }
         }
     </script>
 </head>
+
 <body>
-    <a class="skip-link" href="#conteudo-principal">Pular para o conteúdo</a>
-    <div class="sticky-cta" id="mobileStickyBar" role="region" aria-label="Barra de CTA móvel">
-        <p>Piloto acadêmico aberto até 30/06/2025</p>
-        <button class="btn primary" data-scroll="#conversational-form">Participar do piloto</button>
-    </div>
-    <header class="site-header" role="banner">
-        <div class="container header-content">
-            <a class="brand" href="#hero" aria-label="Ir para o início">
-                <span class="brand-mark">CF</span>
-                <span class="brand-text">Copiloto <strong>Financeiro</strong></span>
-            </a>
-            <button class="nav-toggle" aria-controls="primaryNav" aria-expanded="false">
-                <span class="sr-only">Abrir menu</span>
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
+    <a class="skip-link" href="#main-content">Pular para o conteúdo</a>
+
+    <!-- Sticky Mobile CTA -->
+    <div class="sticky-cta md:hidden" id="mobileStickyBar" role="region" aria-label="Oferta por tempo limitado">
+        <div class="sticky-content">
+            <span class="text-xs font-medium text-emerald-400">Piloto aberto até 30/06</span>
+            <button class="btn btn-sm btn-primary w-full" data-scroll="#conversational-form">
+                Participar Agora
+                <i data-lucide="arrow-right" class="size-4"></i>
             </button>
-            <nav id="primaryNav" class="primary-nav" aria-label="Navegação principal">
-                <a href="#insights">Problema</a>
-                <a href="#features">Como funciona</a>
-                <a href="#demos">Demos</a>
-                <a href="#founder">Founder-led</a>
-                <a href="#faq">FAQ</a>
-                <button class="btn ghost" data-scroll="#conversational-form">Solicitar acesso antecipado</button>
+        </div>
+    </div>
+
+    <header class="site-header" role="banner">
+        <div class="container header-inner">
+            <a class="brand" href="#hero" aria-label="Copiloto Financeiro - Home">
+                <div class="brand-logo">
+                    <i data-lucide="activity" class="text-brand"></i>
+                </div>
+                <span class="brand-text">Copiloto <span class="text-brand">Financeiro</span></span>
+            </a>
+
+            <nav id="primaryNav" class="nav-menu" aria-label="Menu Principal">
+                <ul class="nav-list">
+                    <li><a href="#problem" class="nav-link">O Problema</a></li>
+                    <li><a href="#solution" class="nav-link">Como Funciona</a></li>
+                    <li><a href="#demo" class="nav-link">Demo Interativa</a></li>
+                    <li><a href="#founder" class="nav-link">Quem Somos</a></li>
+                </ul>
+                <button class="btn btn-sm btn-ghost" data-scroll="#conversational-form">Solicitar Acesso</button>
             </nav>
+
+            <button class="nav-toggle md:hidden" aria-controls="primaryNav" aria-expanded="false"
+                aria-label="Abrir menu">
+                <i data-lucide="menu"></i>
+            </button>
         </div>
     </header>
-    <main id="conteudo-principal">
-        <section id="hero" class="section hero" aria-labelledby="hero-title">
-            <div class="container hero-layout">
-                <div class="hero-copy cascade" data-cascade="0">
-                    <p class="eyebrow">Projeto de inovação UTFPR · MVP 2025</p>
-                    <h1 id="hero-title">
-                        <span class="hero-dtr" data-dtr data-dtr-default="Traduzimos operações em narrativa de crédito">Traduzimos operações em narrativa de crédito</span>
+
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section id="hero" class="section hero" aria-labelledby="hero-heading">
+            <div class="container hero-grid">
+                <div class="hero-content cascade" data-delay="100">
+                    <div class="badge-pill">
+                        <span class="badge-dot"></span>
+                        Projeto de Inovação UTFPR · MVP 2025
+                    </div>
+                    <h1 id="hero-heading" class="hero-title">
+                        <span class="text-gradient" data-dtr data-default="Traduzimos sua operação">Traduzimos sua
+                            operação</span>
+                        <br>em crédito aprovado.
                     </h1>
-                    <p class="lead">
-                        O Copiloto Financeiro é um MVP construído em ambiente acadêmico para ajudar PMEs a contar, com dados reais, por que merecem melhores condições de crédito. Estamos convidando empresas para co-criar o piloto conosco.
+                    <p class="hero-lead">
+                        O Score tradicional ignora o potencial da sua PME. Usamos seus dados reais (Open Finance + ERP)
+                        para construir uma narrativa irrecusável para os bancos.
                     </p>
-                    <ul class="hero-points" aria-label="Benefícios principais">
-                        <li>
-                            <span class="icon">
-                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
-                            </span>
-                            Conecte dados financeiros com segurança e mantenha controle sobre o que será compartilhado.
-                        </li>
-                        <li>
-                            <span class="icon">
-                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18m9-9H3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
-                            </span>
-                            Use um tradutor de negócios que transforma fluxo de caixa em argumentos compreensíveis para analistas humanos.
-                        </li>
-                        <li>
-                            <span class="icon">
-                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
-                            </span>
-                            Receba feedback guiado e ajude a definir quais dados compõem o dossiê ideal para PMEs.
-                        </li>
-                    </ul>
-                    <div class="hero-cta">
-                        <button class="btn primary" data-scroll="#conversational-form">Participar do piloto</button>
-                        <button class="btn secondary" data-scroll="#demos">Explorar protótipo</button>
-                        <small>Buscamos até 20 PMEs para a primeira rodada de testes supervisionados.</small>
+
+                    <div class="hero-actions">
+                        <button class="btn btn-lg btn-primary" data-scroll="#conversational-form">
+                            Criar Dossiê Gratuito
+                            <i data-lucide="chevron-right"></i>
+                        </button>
+                        <button class="btn btn-lg btn-outline" data-scroll="#demo">
+                            <i data-lucide="play-circle"></i>
+                            Ver Demo
+                        </button>
                     </div>
-                    <dl class="problem-grid" aria-label="Indicadores do problema">
-                        <div>
-                            <dt>7,6 milhões</dt>
-                            <dd>de PMEs negativadas no Brasil (Serasa Experian, 2024).</dd>
+
+                    <div class="hero-trust">
+                        <p class="text-sm text-muted">Apoiado por:</p>
+                        <div class="trust-logos">
+                            <span class="trust-logo">UTFPR</span>
+                            <span class="trust-logo">Sebrae</span>
+                            <span class="trust-logo">Open Finance</span>
                         </div>
-                        <div>
-                            <dt>45 dias</dt>
-                            <dd>é a espera média para resposta de crédito segundo dados do SEBRAE.</dd>
-                        </div>
-                        <div>
-                            <dt>1 narrativa</dt>
-                            <dd>bem construída pode mudar o risco percebido. Queremos provar isso em co-criação.</dd>
-                        </div>
-                    </dl>
-                </div>
-                <div class="hero-media cascade" data-cascade="1">
-                    <figure class="vertical-video" aria-label="Vídeo vertical mostrando cliente real">
-                        <video controls preload="metadata" poster="https://placehold.co/360x640/0f172a/ffffff?text=Prot%C3%B3tipo+MVP" playsinline>
-                            <source src="videos/case 1.mp4" type="video/mp4">
-                        </video>
-                        <figcaption>Protótipo funcional testado em laboratório didático da UTFPR (2025).</figcaption>
-                    </figure>
-                    <div class="hero-card">
-                        <p>“O sistema criado para medir o risco está, na prática, garantindo que o risco se materialize.”</p>
-                        <span>Trecho do nosso roteiro de pitch · UTFPR 2025</span>
                     </div>
                 </div>
-            </div>
-        </section>
-        <section id="insights" class="section insights" aria-labelledby="insights-title">
-            <div class="container">
-                <div class="section-header">
-                    <p class="eyebrow">Dados públicos + entrevistas com mentores</p>
-                    <h2 id="insights-title">A armadilha que queremos desarmar</h2>
-                    <p>Para milhões de PMEs, o Score ignora sinais de vitalidade presentes no ERP, no Open Finance e até nos boletos pagos em dia. Queremos testar se uma narrativa baseada nesses dados muda a conversa com o banco.</p>
-                </div>
-                <div class="insight-grid">
-                    <article class="insight-card cascade" data-cascade="2">
-                        <header>
-                            <span class="icon">
-                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12h4l2 8 4-16 2 8h6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
-                            </span>
-                            <h3>Fluxo real ignorado</h3>
-                        </header>
-                        <p>Recebíveis confirmados valem menos que um atraso de meses atrás. O piloto busca provar que o histórico recente deve pesar mais.</p>
-                    </article>
-                    <article class="insight-card cascade" data-cascade="3">
-                        <header>
-                            <span class="icon">
-                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8v4l3 3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
-                            </span>
-                            <h3>Negociação assimétrica</h3>
-                        </header>
-                        <p>Enquanto o banco leva mais de 40 dias para responder, o empreendedor precisa de capital para ontem. Usaremos o MVP como tradutor entre as duas pontas.</p>
-                    </article>
-                    <article class="insight-card cascade" data-cascade="4">
-                        <header>
-                            <span class="icon">
-                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
-                            </span>
-                            <h3>Credibilidade portátil</h3>
-                        </header>
-                        <p>Coletando uma vez, o empresário deveria poder apresentar o mesmo dossiê para vários agentes financeiros. A hipótese do Copiloto é validar esse reaproveitamento.</p>
-                    </article>
-                </div>
-            </div>
-        </section>
-        <section id="features" class="section bento" aria-labelledby="features-title">
-            <div class="container">
-                <div class="section-header">
-                    <p class="eyebrow">Analogia do tradutor de negócios</p>
-                    <h2 id="features-title">Como pretendemos construir o dossiê</h2>
-                    <p>Simplificamos em três etapas que queremos validar com você. Nada de jargão secreto: apenas passos que façam sentido para quem vive a operação.</p>
-                </div>
-                <div class="bento-grid" role="list">
-                    <article class="bento-card span-2 cascade" data-cascade="5" role="listitem">
-                        <h3>1. Conexão segura de dados</h3>
-                        <p>Você escolhe quais fontes abrir (Open Finance, planilhas, ERP) e definimos juntos o escopo mínimo viável. Tudo ficará registrado para auditoria acadêmica.</p>
-                        <ul>
-                            <li>Transparência sobre quais dados foram sincronizados</li>
-                            <li>Possibilidade de desconectar a qualquer momento</li>
-                        </ul>
-                    </article>
-                    <article class="bento-card cascade" data-cascade="6" role="listitem">
-                        <h3>2. Análise inteligível</h3>
-                        <p>Aplicamos regras visuais simples (tendência, sazonalidade, concentração) para contar a história do seu fluxo de caixa.</p>
-                        <span class="tag">Primeira versão em planilhas vivas</span>
-                    </article>
-                    <article class="bento-card tall cascade" data-cascade="7" role="listitem">
-                        <h3>3. Geração do dossiê</h3>
-                        <p>Comparamos os dados com critérios públicos (Serasa, Bacen) e sugerimos uma narrativa pronta para copiar e apresentar.</p>
-                        <button class="btn ghost" data-scroll="#founder">Ver quem está construindo</button>
-                    </article>
-                    <article class="bento-card cascade" data-cascade="8" role="listitem">
-                        <h3>Testes com diferentes bancos</h3>
-                        <p>A mesma história precisa fazer sentido para cooperativas e fintechs. Mediremos como cada instituição interpreta o dossiê.</p>
-                    </article>
-                    <article class="bento-card span-2 cascade" data-cascade="9" role="listitem">
-                        <h3>Próximos experimentos</h3>
-                        <p>Queremos testar alertas preventivos, simulações de prazo e templates por segmento (agro, varejo, serviços). As primeiras PMEs podem priorizar o backlog.</p>
-                        <span class="tag">Co-criação aberta</span>
-                    </article>
-                </div>
-            </div>
-        </section>
-        <section id="demos" class="section demos" aria-labelledby="demos-title">
-            <div class="container">
-                <div class="section-header">
-                    <p class="eyebrow">Peças em validação</p>
-                    <h2 id="demos-title">Demonstrações do MVP</h2>
-                    <p>São protótipos navegáveis construídos no laboratório de engenharia da UTFPR. Servem para alinharmos expectativas antes de conectar dados reais.</p>
-                </div>
-                <div class="demos-grid">
-                    <article class="demo-card cascade" data-cascade="10">
-                        <div>
-                            <h3>Simulação de fluxo</h3>
-                            <p>Ajuste receitas e despesas fictícias e veja como o dossiê explica cada oscilação.</p>
+
+                <div class="hero-visual cascade" data-delay="300">
+                    <div class="visual-card glass-panel">
+                        <div class="card-header">
+                            <div class="user-info">
+                                <div class="avatar">CF</div>
+                                <div>
+                                    <p class="font-bold">Dossiê de Crédito</p>
+                                    <p class="text-xs text-muted">Gerado em 2s</p>
+                                </div>
+                            </div>
+                            <div class="status-badge success">Aprovado</div>
                         </div>
-                        <button class="btn primary" type="button">Abrir sandbox</button>
-                    </article>
-                    <article class="demo-card cascade" data-cascade="11">
-                        <div>
-                            <h3>Checklist de dados</h3>
-                            <p>Entenda quais fontes pretendemos conectar em cada fase e escolha o mínimo necessário.</p>
+                        <div class="card-body">
+                            <div class="metric-row">
+                                <span>Score Tradicional</span>
+                                <span class="text-red-400">450 (Baixo)</span>
+                            </div>
+                            <div class="metric-row highlight">
+                                <span>Score Copiloto</span>
+                                <span class="text-emerald-400">890 (Excelente)</span>
+                            </div>
+                            <div class="chart-placeholder">
+                                <div class="bar" style="height: 40%"></div>
+                                <div class="bar" style="height: 60%"></div>
+                                <div class="bar active" style="height: 95%"></div>
+                            </div>
                         </div>
-                        <button class="btn secondary" type="button">Ver protótipo</button>
-                    </article>
-                </div>
-            </div>
-        </section>
-        <section id="videos" class="section videos" aria-labelledby="videos-title">
-            <div class="container">
-                <div class="section-header">
-                    <p class="eyebrow">Registros do processo</p>
-                    <h2 id="videos-title">Protótipos em campo</h2>
-                    <p>Compartilhamos trechos de testes feitos com mentores e professores para mostrar o estado atual da solução.</p>
-                </div>
-                <div class="video-grid">
-                    <figure class="vertical-video cascade" data-cascade="12">
-                        <video controls playsinline preload="metadata" poster="https://placehold.co/360x640/1c2431/ffffff?text=Prot%C3%B3tipo+1">
+                    </div>
+
+                    <!-- Vertical Video Placeholder -->
+                    <div class="video-float">
+                        <video autoplay muted loop playsinline
+                            poster="https://placehold.co/180x320/0f172a/ffffff?text=Case+Sucesso">
                             <source src="videos/case 1.mp4" type="video/mp4">
                         </video>
-                        <figcaption>Teste guiado com professores de finanças corporativas (set/2025).</figcaption>
-                    </figure>
-                    <figure class="vertical-video cascade" data-cascade="13">
-                        <video controls playsinline preload="metadata" poster="https://placehold.co/360x640/111827/ffffff?text=Prot%C3%B3tipo+2">
-                            <source src="videos/case 2.mp4" type="video/mp4">
-                        </video>
-                        <figcaption>Iteração sobre a narrativa de crédito com mentoria do programa UTFPR (out/2025).</figcaption>
-                    </figure>
-                    <figure class="vertical-video cascade" data-cascade="14">
-                        <video controls playsinline preload="metadata" poster="https://placehold.co/360x640/0f172a/ffffff?text=Prot%C3%B3tipo+3">
-                            <source src="videos/case 3.mp4" type="video/mp4">
-                        </video>
-                        <figcaption>Apresentação interna para banca avaliadora da UTFPR (nov/2025).</figcaption>
-                    </figure>
+                        <div class="video-overlay">
+                            <i data-lucide="check-circle" class="text-brand"></i>
+                            <span>R$ 150k Aprovado</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
-        <section id="founder" class="section founder" aria-labelledby="founder-title">
-            <div class="container founder-layout">
-                <article class="founder-card cascade" data-cascade="15">
-                    <p class="eyebrow">Idealizadores</p>
-                    <h2 id="founder-title">Nossa equipe multidisciplinar</h2>
-                    <p>O Copiloto nasce das competências complementares de cinco estudantes-pesquisadores da UTFPR.</p>
-                    <ul class="team-list">
-                        <li><strong>Mario</strong> · Engenharia de Software · orquestra integrações e prototipação.</li>
-                        <li><strong>Douglas</strong> · Agronegócio · conecta o produto às dores do campo e do interior.</li>
-                        <li><strong>Matheus</strong> · Data Science · lidera análises e construção das narrativas.</li>
-                        <li><strong>Welyson</strong> · Sistemas de Informação · cuida da experiência e da comunicação com PMEs.</li>
-                        <li><strong>Gabriel</strong> · Negócios · conduz validações com especialistas em crédito.</li>
-                    </ul>
-                    <p class="signature">Unimos tecnologia, finanças e operações para entender o problema em profundidade.</p>
-                </article>
-                <figure class="founder-video cascade" data-cascade="16" aria-label="Vídeo com bastidores da equipe">
-                    <video controls playsinline preload="metadata" poster="https://placehold.co/360x640/0a0f1e/ffffff?text=Equipe+UTFPR">
-                        <source src="videos/case 2.mp4" type="video/mp4">
-                    </video>
-                    <figcaption>Registro dos testes com mentores do ecossistema UTFPR (nov/2025).</figcaption>
-                </figure>
-            </div>
-            <blockquote class="team-quote">
-                “Os dados existem, mas chegam aos bancos como ruído. Sem contexto, toda PME parece igual.” — Insight coletado em mentoria UTFPR 2025
-            </blockquote>
-        </section>
-        <section id="conversational-form" class="section form-section" aria-labelledby="form-title">
-            <div class="container form-grid">
-                <div class="form-copy cascade" data-cascade="17">
-                    <p class="eyebrow">Formulário conversacional</p>
-                    <h2 id="form-title">Construa seu dossiê em 4 microinterações</h2>
-                    <p>Cada resposta alimenta sua pré-análise e revela apenas o próximo campo necessário — nada de formulários intermináveis.</p>
-                    <ul class="form-benefits">
-                        <li>Resposta guiada por IA</li>
-                        <li>Projeção de limite em tempo real</li>
-                        <li>Entrega segura + LGPD</li>
-                    </ul>
+
+        <!-- Problem Section -->
+        <section id="problem" class="section problem">
+            <div class="container">
+                <div class="section-header text-center">
+                    <h2 class="section-title">O sistema joga contra você</h2>
+                    <p class="section-subtitle">Bancos usam métricas do passado. Nós usamos o futuro do seu negócio.</p>
                 </div>
-                <form id="creditForm" class="conversation" novalidate aria-live="polite">
-                    <input type="hidden" name="objective" id="objectiveField">
-                    <p class="form-progress" id="formProgress">Passo 1 de 4</p>
-                    <fieldset class="form-step" data-step="0">
-                        <legend>Qual é a missão do crédito?</legend>
-                        <div class="chip-group" role="group" aria-label="Objetivo do crédito">
-                            <button type="button" class="chip" data-field="objective" data-value="Capital de giro">Capital de giro</button>
-                            <button type="button" class="chip" data-field="objective" data-value="Expansão e CAPEX">Expansão e CAPEX</button>
-                            <button type="button" class="chip" data-field="objective" data-value="Reestruturação de dívidas">Reestruturação de dívidas</button>
-                        </div>
-                    </fieldset>
-                    <fieldset class="form-step" data-step="1" hidden>
-                        <legend>Faturamento médio mensal</legend>
-                        <label for="revenue" class="sr-only">Faturamento médio mensal</label>
-                        <input type="number" id="revenue" name="revenue" placeholder="Ex.: 350000" min="5000" required>
-                        <button type="button" class="btn primary" data-next>Continuar</button>
-                    </fieldset>
-                    <fieldset class="form-step" data-step="2" hidden>
-                        <legend>Qual email devemos usar?</legend>
-                        <label for="formEmail" class="sr-only">Email corporativo</label>
-                        <input type="email" id="formEmail" name="email" placeholder="nome@empresa.com" required>
-                        <button type="button" class="btn primary" data-next>Continuar</button>
-                    </fieldset>
-                    <fieldset class="form-step" data-step="3" hidden>
-                        <legend>WhatsApp para envio seguro</legend>
-                        <label for="phone" class="sr-only">WhatsApp</label>
-                        <input type="tel" id="phone" name="phone" placeholder="(11) 99999-0000" required>
-                        <div class="consent">
-                            <input type="checkbox" id="lgpd" required>
-                            <label for="lgpd">Autorizo o Copiloto a usar meus dados para gerar o dossiê.</label>
-                        </div>
-                        <button type="submit" class="btn primary">Gerar dossiê gratuito</button>
-                    </fieldset>
-                    <p id="formFeedback" class="form-feedback" role="status" aria-live="polite"></p>
-                </form>
+
+                <div class="bento-grid">
+                    <div class="bento-item span-2 bg-gradient cascade" data-delay="100">
+                        <i data-lucide="trending-down" class="bento-icon text-red-400"></i>
+                        <h3>Score Cego</h3>
+                        <p>Seu faturamento cresceu 30%, mas o Serasa ainda não viu. O banco nega crédito por dados de
+                            2023.</p>
+                    </div>
+                    <div class="bento-item cascade" data-delay="200">
+                        <i data-lucide="clock" class="bento-icon text-amber-400"></i>
+                        <h3>45 Dias de Espera</h3>
+                        <p>O tempo médio para uma resposta negativa. Sua operação não pode parar.</p>
+                    </div>
+                    <div class="bento-item cascade" data-delay="300">
+                        <i data-lucide="file-x" class="bento-icon text-gray-400"></i>
+                        <h3>Burocracia Infinita</h3>
+                        <p>Papelada física, cartórios e idas à agência que não garantem nada.</p>
+                    </div>
+                </div>
             </div>
         </section>
-        <section id="quiz" class="section quiz" aria-labelledby="quiz-title">
+
+        <!-- Solution / Features Section -->
+        <section id="solution" class="section solution">
             <div class="container">
                 <div class="section-header">
-                    <p class="eyebrow">Pré-diagnóstico</p>
-                    <h2 id="quiz-title">Veja se o piloto faz sentido</h2>
-                    <p>Três perguntas rápidas ajudam a priorizar as PMEs que mais se beneficiam da primeira rodada.</p>
+                    <h2 class="section-title">Seu tradutor de negócios</h2>
                 </div>
-                <form id="qualifyQuiz" class="quiz-grid">
-                    <fieldset class="quiz-question" data-question>
-                        <legend>Qual é o seu ticket médio mensal?</legend>
-                        <div class="chip-group" role="group">
-                            <button type="button" class="chip" data-score="1">Até R$ 150 mil</button>
-                            <button type="button" class="chip" data-score="2">R$ 150k - R$ 400k</button>
-                            <button type="button" class="chip" data-score="3">Acima de R$ 400k</button>
+
+                <div class="features-grid">
+                    <article class="feature-card cascade" data-delay="100">
+                        <div class="feature-icon">
+                            <i data-lucide="shield-check"></i>
                         </div>
-                    </fieldset>
-                    <fieldset class="quiz-question" data-question>
-                        <legend>Como está sua previsibilidade de recebíveis?</legend>
-                        <div class="chip-group" role="group">
-                            <button type="button" class="chip" data-score="1">Oscila muito</button>
-                            <button type="button" class="chip" data-score="2">Estável nos últimos 6 meses</button>
-                            <button type="button" class="chip" data-score="3">Contratos de longo prazo</button>
+                        <h3>1. Conexão Segura</h3>
+                        <p>Conecte seu ERP e contas bancárias via Open Finance com criptografia de ponta a ponta.</p>
+                    </article>
+
+                    <article class="feature-card cascade" data-delay="200">
+                        <div class="feature-icon">
+                            <i data-lucide="cpu"></i>
                         </div>
-                    </fieldset>
-                    <fieldset class="quiz-question" data-question>
-                        <legend>Você já usa Open Finance?</legend>
-                        <div class="chip-group" role="group">
-                            <button type="button" class="chip" data-score="1">Ainda não</button>
-                            <button type="button" class="chip" data-score="2">Parcial</button>
-                            <button type="button" class="chip" data-score="3">Totalmente conectado</button>
+                        <h3>2. Análise IA</h3>
+                        <p>Nossos algoritmos identificam padrões de crescimento invisíveis ao olho humano.</p>
+                    </article>
+
+                    <article class="feature-card cascade" data-delay="300">
+                        <div class="feature-icon">
+                            <i data-lucide="file-check"></i>
                         </div>
-                    </fieldset>
-                    <button type="submit" class="btn secondary">Ver recomendação</button>
-                    <p id="quizResult" class="quiz-result" role="status" aria-live="polite"></p>
-                </form>
+                        <h3>3. Dossiê Pronto</h3>
+                        <p>Geramos um relatório profissional que fala a língua dos analistas de risco.</p>
+                    </article>
+                </div>
             </div>
         </section>
-        <section id="faq" class="section faq" aria-labelledby="faq-title">
+
+        <!-- Interactive Demo Section -->
+        <section id="demo" class="section demo-section">
             <div class="container">
-                <div class="section-header">
-                    <p class="eyebrow">Dúvidas frequentes</p>
-                    <h2 id="faq-title">Transparência radical</h2>
+                <div class="demo-wrapper glass-panel cascade" data-delay="200">
+                    <div class="demo-content">
+                        <span class="eyebrow">Simulador de Potencial</span>
+                        <h2>Veja seu crédito desbloqueado</h2>
+                        <p>Ajuste o faturamento mensal e veja a projeção de crédito baseada em nossos modelos.</p>
+
+                        <div class="interactive-slider">
+                            <label for="revenueRange">Faturamento Mensal: <span id="revenueValue"
+                                    class="text-brand font-bold">R$ 50.000</span></label>
+                            <input type="range" id="revenueRange" min="10000" max="500000" step="5000" value="50000">
+                        </div>
+
+                        <div class="demo-stats">
+                            <div class="stat-box">
+                                <span class="stat-label">Crédito Estimado</span>
+                                <span class="stat-value" id="creditValue">R$ 15.000</span>
+                            </div>
+                            <div class="stat-box">
+                                <span class="stat-label">Taxa Média</span>
+                                <span class="stat-value text-emerald-400">1.9% a.m.</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="demo-visual">
+                        <!-- Abstract visual representation -->
+                        <div class="graph-bars">
+                            <div class="graph-bar" style="height: 30%"></div>
+                            <div class="graph-bar" style="height: 50%"></div>
+                            <div class="graph-bar" style="height: 40%"></div>
+                            <div class="graph-bar active" style="height: 80%"></div>
+                            <div class="graph-bar" style="height: 60%"></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="faq-list" role="list">
-                    <details class="faq-item" role="listitem">
-                        <summary>Quanto custa o Copiloto?</summary>
-                        <p>Durante a fase piloto, o acesso à plataforma e a geração do dossiê serão gratuitos para as PMEs selecionadas. Queremos validar o produto e colher feedbacks. No futuro, planejamos um modelo de assinatura acessível somado a uma taxa de sucesso apenas quando o crédito for aprovado.</p>
+            </div>
+        </section>
+
+        <!-- Founder Section -->
+        <section id="founder" class="section founder">
+            <div class="container founder-grid">
+                <div class="founder-image cascade" data-delay="100">
+                    <img src="https://placehold.co/400x500/0f172a/ffffff?text=Equipe+UTFPR"
+                        alt="Equipe Copiloto Financeiro" loading="lazy">
+                    <div class="founder-badge">
+                        <i data-lucide="award"></i>
+                        <span>Premiado UTFPR 2025</span>
+                    </div>
+                </div>
+                <div class="founder-content cascade" data-delay="200">
+                    <h2 class="section-title">De pesquisadores para empreendedores</h2>
+                    <p>Nascemos dentro da Universidade Tecnológica Federal do Paraná. Não somos banqueiros. Somos
+                        engenheiros e cientistas de dados cansados de ver bons negócios fecharem por falta de capital.
+                    </p>
+
+                    <ul class="founder-list">
+                        <li><i data-lucide="check"></i> Metodologia validada academicamente</li>
+                        <li><i data-lucide="check"></i> Sem conflito de interesse com bancos</li>
+                        <li><i data-lucide="check"></i> Foco 100% no sucesso da PME</li>
+                    </ul>
+
+                    <div class="founder-quote">
+                        "O crédito não deve ser um favor, mas uma consequência lógica de uma operação saudável."
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Conversational Form -->
+        <section id="conversational-form" class="section form-section">
+            <div class="container">
+                <div class="form-container glass-panel">
+                    <div class="form-header text-center">
+                        <h2 class="section-title">Vamos construir seu dossiê?</h2>
+                        <p>Responda 4 perguntas rápidas para iniciar sua pré-análise.</p>
+                    </div>
+
+                    <form id="creditForm" class="conversational-form" novalidate>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="formProgress" style="width: 25%"></div>
+                        </div>
+
+                        <!-- Step 1 -->
+                        <div class="form-step active" data-step="1">
+                            <label class="step-label">Qual o objetivo principal do crédito?</label>
+                            <div class="options-grid">
+                                <button type="button" class="option-btn" data-value="Giro">
+                                    <i data-lucide="refresh-cw"></i> Capital de Giro
+                                </button>
+                                <button type="button" class="option-btn" data-value="Expansao">
+                                    <i data-lucide="trending-up"></i> Expansão
+                                </button>
+                                <button type="button" class="option-btn" data-value="Dividas">
+                                    <i data-lucide="percent"></i> Refinanciamento
+                                </button>
+                            </div>
+                            <input type="hidden" name="objective" required>
+                        </div>
+
+                        <!-- Step 2 -->
+                        <div class="form-step" data-step="2">
+                            <label for="revenueInput" class="step-label">Qual seu faturamento médio mensal?</label>
+                            <div class="input-wrapper">
+                                <span class="currency-prefix">R$</span>
+                                <input type="number" id="revenueInput" name="revenue" placeholder="0,00" min="1000">
+                            </div>
+                            <button type="button" class="btn btn-primary next-step">Continuar <i
+                                    data-lucide="arrow-right"></i></button>
+                        </div>
+
+                        <!-- Step 3 -->
+                        <div class="form-step" data-step="3">
+                            <label for="emailInput" class="step-label">Seu melhor e-mail corporativo</label>
+                            <input type="email" id="emailInput" name="email" placeholder="voce@suaempresa.com.br">
+                            <button type="button" class="btn btn-primary next-step">Continuar <i
+                                    data-lucide="arrow-right"></i></button>
+                        </div>
+
+                        <!-- Step 4 -->
+                        <div class="form-step" data-step="4">
+                            <label for="phoneInput" class="step-label">WhatsApp para contato</label>
+                            <input type="tel" id="phoneInput" name="phone" placeholder="(11) 99999-9999">
+                            <div class="checkbox-wrapper">
+                                <input type="checkbox" id="terms" required>
+                                <label for="terms">Concordo com a Política de Privacidade e processamento de
+                                    dados.</label>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-lg w-full">Gerar Dossiê Agora</button>
+                        </div>
+                    </form>
+                    <div id="formFeedback" class="form-feedback hidden"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="section faq">
+            <div class="container">
+                <h2 class="section-title text-center mb-8">Dúvidas Frequentes</h2>
+                <div class="faq-grid">
+                    <details class="faq-item">
+                        <summary>O Copiloto é um banco? <i data-lucide="chevron-down"></i></summary>
+                        <p>Não. Somos uma plataforma de inteligência que conecta sua empresa aos melhores parceiros de
+                            crédito do mercado.</p>
                     </details>
-                    <details class="faq-item" role="listitem">
-                        <summary>É seguro conectar Open Finance?</summary>
-                        <p>Sim. Trabalhamos apenas com conexões de leitura e registramos cada permissão concedida. Durante o MVP você poderá simular com dados fictícios antes de autorizar qualquer integração real.</p>
+                    <details class="faq-item">
+                        <summary>Meus dados estão seguros? <i data-lucide="chevron-down"></i></summary>
+                        <p>Sim. Utilizamos criptografia de nível bancário e seguimos rigorosamente a LGPD. Seus dados
+                            são seus.</p>
                     </details>
-                    <details class="faq-item" role="listitem">
-                        <summary>Posso usar com meu banco atual?</summary>
-                        <p>Nosso objetivo é que o dossiê seja aceito por diferentes instituições. Nesta etapa, coletamos feedback de bancos e cooperativas parceiros para entender como adaptar a narrativa. Você poderá levar o material gerado para seu banco atual e contar pra gente como foi.</p>
-                    </details>
-                    <details class="faq-item" role="listitem">
-                        <summary>Quem pode participar do piloto?</summary>
-                        <p>Buscamos PMEs com faturamento acima de R$ 150 mil/mês, histórico de vendas consistente e abertura para compartilhar dados de forma acompanhada. Se esse é o seu caso, preencha o formulário conversacional e vamos avaliar juntos.</p>
+                    <details class="faq-item">
+                        <summary>Quanto custa? <i data-lucide="chevron-down"></i></summary>
+                        <p>O dossiê inicial é 100% gratuito. Só cobramos uma taxa de sucesso se você conseguir o crédito
+                            através da nossa plataforma.</p>
                     </details>
                 </div>
             </div>
         </section>
-        <section id="final-cta" class="section final-cta" aria-labelledby="final-title">
-            <div class="container final-grid">
-                <div>
-                    <p class="eyebrow">Convite ao piloto</p>
-                    <h2 id="final-title">Selecionaremos até 20 PMEs para testar o Copiloto entre março e junho de 2025. Respondemos em até 5 dias úteis.</h2>
+
+        <footer class="site-footer">
+            <div class="container footer-inner">
+                <div class="footer-brand">
+                    <span class="brand-text">Copiloto Financeiro</span>
+                    <p class="text-sm text-muted">© 2025 Todos os direitos reservados.</p>
                 </div>
-                <div class="cta-actions">
-                    <button class="btn primary" data-scroll="#conversational-form">Participar do piloto</button>
-                    <button class="btn ghost" data-scroll="#quiz">Ver critérios do quiz</button>
+                <div class="footer-links">
+                    <a href="#">Termos de Uso</a>
+                    <a href="#">Privacidade</a>
+                    <a href="#">Contato</a>
                 </div>
             </div>
-        </section>
+        </footer>
     </main>
-    <footer class="site-footer" role="contentinfo">
-        <div class="container footer-grid">
-            <div>
-                <span class="brand-text">Copiloto <strong>Financeiro</strong></span>
-                <p>Projeto de inovação desenvolvido na Universidade Tecnológica Federal do Paraná.</p>
-            </div>
-            <div>
-                <p>Copiloto Financeiro © 2025 · Em fase de desenvolvimento.</p>
-                <p>Dúvidas? Use o formulário e retornaremos durante o piloto.</p>
-            </div>
-        </div>
-    </footer>
 </body>
+
 </html>

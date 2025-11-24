@@ -1,163 +1,206 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const scrollButtons = document.querySelectorAll('[data-scroll]');
-    scrollButtons.forEach((btn) => {
-        btn.addEventListener('click', () => {
-            const target = document.querySelector(btn.dataset.scroll);
-            target?.scrollIntoView({ behavior: 'smooth' });
+    // Initialize Lucide Icons
+    if (window.lucide) {
+        lucide.createIcons();
+    }
+
+    // Smooth Scroll
+    document.querySelectorAll('[data-scroll]').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = btn.getAttribute('data-scroll');
+            const target = document.querySelector(targetId);
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
         });
     });
 
+    // Mobile Nav Toggle
     const navToggle = document.querySelector('.nav-toggle');
-    const nav = document.getElementById('primaryNav');
-    if (navToggle && nav) {
-        navToggle.setAttribute('aria-expanded', 'false');
-        nav.setAttribute('aria-expanded', 'false');
+    const navMenu = document.getElementById('primaryNav');
+    if (navToggle && navMenu) {
         navToggle.addEventListener('click', () => {
-            const expanded = navToggle.getAttribute('aria-expanded') === 'true';
-            navToggle.setAttribute('aria-expanded', (!expanded).toString());
-            nav.setAttribute('aria-expanded', (!expanded).toString());
+            const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
+            navToggle.setAttribute('aria-expanded', !isExpanded);
+            navMenu.classList.toggle('active');
+            // Simple toggle for mobile menu visibility if needed by CSS, 
+            // though CSS currently handles it via media queries. 
+            // Let's add a class for the mobile state if strictly needed, 
+            // but the current CSS uses display:none/flex based on media query.
+            // For a true mobile menu overlay, we'd need extra CSS. 
+            // Assuming the CSS provided handles the 'nav-menu' visibility on mobile 
+            // via a class or similar if it was hidden. 
+            // Looking at my CSS, .nav-menu is display:none on mobile. 
+            // I need to add a rule for .nav-menu.active in CSS or handle it here inline for safety.
+            if (!isExpanded) {
+                navMenu.style.display = 'flex';
+                navMenu.style.flexDirection = 'column';
+                navMenu.style.position = 'absolute';
+                navMenu.style.top = '100%';
+                navMenu.style.left = '0';
+                navMenu.style.right = '0';
+                navMenu.style.background = '#0f172a';
+                navMenu.style.padding = '1rem';
+                navMenu.style.zIndex = '49';
+            } else {
+                navMenu.style.display = '';
+            }
         });
     }
 
-    const dtrTarget = document.querySelector('[data-dtr]');
-    if (dtrTarget) {
+    // Dynamic Text Replacement (DTR)
+    const dtrElement = document.querySelector('[data-dtr]');
+    if (dtrElement) {
         const params = new URLSearchParams(window.location.search);
-        const segmento = params.get('segmento') || params.get('setor');
-        const cidade = params.get('cidade');
-        const uf = params.get('uf');
-        let text = dtrTarget.getAttribute('data-dtr-default');
-        if (segmento) {
-            text = `Crédito justo para ${segmento}`;
-        } else if (cidade) {
-            text = `Crédito justo para PMEs de ${cidade}${uf ? ` - ${uf}` : ''}`;
+        const utmSource = params.get('utm_source');
+        const segment = params.get('segment');
+
+        if (segment) {
+            dtrElement.textContent = `Crédito especializado para ${segment}`;
+        } else if (utmSource === 'instagram') {
+            dtrElement.textContent = 'Sua audiência virando crédito real';
         }
-        dtrTarget.textContent = text;
     }
 
-    const cascadeTargets = document.querySelectorAll('.cascade');
+    // Cascade Animations
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
     const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
+        entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
+                const delay = entry.target.getAttribute('data-delay') || 0;
+                setTimeout(() => {
+                    entry.target.classList.add('visible');
+                }, delay);
                 observer.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.2 });
-    cascadeTargets.forEach((el) => observer.observe(el));
+    }, observerOptions);
 
-    const buttons = document.querySelectorAll('.btn, .chip');
-    buttons.forEach((item) => {
-        item.addEventListener('pointerdown', () => {
-            item.classList.add('is-pressed');
-        });
-        item.addEventListener('pointerup', () => {
-            item.classList.remove('is-pressed');
-        });
-        item.addEventListener('pointerleave', () => {
-            item.classList.remove('is-pressed');
-        });
-    });
+    document.querySelectorAll('.cascade').forEach(el => observer.observe(el));
 
+    // Interactive Demo Logic
+    const revenueRange = document.getElementById('revenueRange');
+    const revenueValue = document.getElementById('revenueValue');
+    const creditValue = document.getElementById('creditValue');
+
+    if (revenueRange && revenueValue && creditValue) {
+        const formatCurrency = (val) => new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(val);
+
+        revenueRange.addEventListener('input', (e) => {
+            const val = parseInt(e.target.value);
+            revenueValue.textContent = formatCurrency(val);
+
+            // Simple logic: Credit is roughly 30% of revenue
+            const credit = val * 0.3;
+            creditValue.textContent = formatCurrency(credit);
+
+            // Animate graph bars randomly for effect
+            document.querySelectorAll('.graph-bar').forEach(bar => {
+                const randomHeight = Math.floor(Math.random() * 60) + 20;
+                bar.style.height = `${randomHeight}%`;
+            });
+        });
+    }
+
+    // Conversational Form Logic
     const form = document.getElementById('creditForm');
-    const progressLabel = document.getElementById('formProgress');
-    const feedback = document.getElementById('formFeedback');
-    if (form && progressLabel && feedback) {
-        const steps = Array.from(form.querySelectorAll('.form-step'));
-        let currentStep = 0;
+    if (form) {
+        const steps = form.querySelectorAll('.form-step');
+        const progressFill = document.getElementById('formProgress');
+        let currentStep = 1;
+        const totalSteps = steps.length;
 
         const updateProgress = () => {
-            progressLabel.textContent = `Passo ${currentStep + 1} de ${steps.length}`;
+            const percentage = (currentStep / totalSteps) * 100;
+            progressFill.style.width = `${percentage}%`;
         };
 
-        const showStep = (index) => {
-            steps.forEach((step, i) => {
-                step.hidden = i !== index;
+        const showStep = (stepNumber) => {
+            steps.forEach(step => {
+                step.classList.remove('active');
+                if (parseInt(step.dataset.step) === stepNumber) {
+                    step.classList.add('active');
+                }
             });
-            currentStep = index;
+            currentStep = stepNumber;
             updateProgress();
         };
 
-        const chips = form.querySelectorAll('.form-step[data-step="0"] .chip');
-        const objectiveField = document.getElementById('objectiveField');
-        chips.forEach((chip) => {
-            chip.addEventListener('click', () => {
-                chips.forEach((c) => c.classList.remove('active'));
-                chip.classList.add('active');
-                objectiveField.value = chip.dataset.value || '';
-                showStep(1);
+        // Step 1: Option Buttons
+        form.querySelectorAll('.option-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const value = btn.dataset.value;
+                const input = form.querySelector('input[name="objective"]');
+                if (input) input.value = value;
+
+                // Visual feedback
+                form.querySelectorAll('.option-btn').forEach(b => b.style.borderColor = '');
+                btn.style.borderColor = 'var(--brand-primary)';
+
+                setTimeout(() => showStep(2), 300);
             });
         });
 
-        form.addEventListener('click', (event) => {
-            const target = event.target;
-            if (target instanceof HTMLElement && target.hasAttribute('data-next')) {
-                const fieldset = target.closest('.form-step');
-                if (!fieldset) return;
-                const input = fieldset.querySelector('input');
+        // Next Buttons
+        form.querySelectorAll('.next-step').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const currentStepEl = form.querySelector(`.form-step[data-step="${currentStep}"]`);
+                const input = currentStepEl.querySelector('input');
+
                 if (input && !input.checkValidity()) {
                     input.reportValidity();
                     return;
                 }
-                const nextIndex = currentStep + 1;
-                if (nextIndex < steps.length) {
-                    showStep(nextIndex);
-                }
-            }
+
+                showStep(currentStep + 1);
+            });
         });
 
-        form.addEventListener('submit', (event) => {
-            event.preventDefault();
-            const valid = form.checkValidity();
-            if (!valid) {
-                form.reportValidity();
-                return;
-            }
-            feedback.textContent = 'Analisando dados em tempo real...';
-            const formData = new FormData(form);
-            console.log('Lead submitted', Object.fromEntries(formData.entries()));
-            setTimeout(() => {
-                feedback.textContent = 'Tudo certo! Enviamos o link seguro para o seu email.';
-                form.reset();
-                steps.forEach((step) => {
-                    const chipsInner = step.querySelectorAll('.chip');
-                    chipsInner.forEach((chip) => chip.classList.remove('active'));
-                });
-                showStep(0);
-            }, 1200);
-        });
+        // Form Submission
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const feedback = document.getElementById('formFeedback');
+            const btn = form.querySelector('button[type="submit"]');
 
-        showStep(0);
+            if (btn) {
+                const originalText = btn.textContent;
+                btn.textContent = 'Gerando Dossiê...';
+                btn.disabled = true;
+
+                // Simulate API call
+                setTimeout(() => {
+                    form.style.display = 'none';
+                    feedback.classList.remove('hidden');
+                    feedback.innerHTML = `
+                        <div class="text-center">
+                            <i data-lucide="check-circle" class="text-brand mx-auto mb-4" style="width: 48px; height: 48px;"></i>
+                            <h3 class="text-xl font-bold mb-2">Dossiê Solicitado!</h3>
+                            <p class="text-muted">Enviamos um link de confirmação para o seu email.</p>
+                        </div>
+                    `;
+                    lucide.createIcons();
+                }, 1500);
+            }
+        });
     }
 
-    const quizForm = document.getElementById('qualifyQuiz');
-    const quizResult = document.getElementById('quizResult');
-    if (quizForm && quizResult) {
-        const quizChips = quizForm.querySelectorAll('.quiz-question .chip');
-        quizChips.forEach((chip) => {
-            chip.addEventListener('click', () => {
-                const parent = chip.closest('.chip-group');
-                parent?.querySelectorAll('.chip').forEach((c) => c.classList.remove('active'));
-                chip.classList.add('active');
-            });
-        });
+    // Hide Sticky CTA when near form
+    const stickyBar = document.getElementById('mobileStickyBar');
+    const formSection = document.getElementById('conversational-form');
 
-        quizForm.addEventListener('submit', (event) => {
-            event.preventDefault();
-            const picked = Array.from(quizForm.querySelectorAll('.quiz-question')).map((question) => {
-                const selected = question.querySelector('.chip.active');
-                return selected ? Number(selected.dataset.score) : 0;
-            });
-            if (picked.includes(0)) {
-                quizResult.textContent = 'Selecione uma resposta para cada pergunta.';
-                return;
-            }
-            const score = picked.reduce((sum, value) => sum + value, 0);
-            if (score >= 8) {
-                quizResult.textContent = 'Sinal verde! Vamos liberar o dossiê prioritário e conectar você a taxas agressivas.';
-            } else if (score >= 6) {
-                quizResult.textContent = 'Você está pronto, mas indicamos revisar previsibilidade de recebíveis. Nosso time ajuda nisso na etapa 1.';
+    if (stickyBar && formSection) {
+        window.addEventListener('scroll', () => {
+            const formRect = formSection.getBoundingClientRect();
+            if (formRect.top < window.innerHeight && formRect.bottom > 0) {
+                stickyBar.style.transform = 'translateY(100%)';
+                stickyBar.style.transition = 'transform 0.3s ease';
             } else {
-                quizResult.textContent = 'Ainda dá tempo: conecte seu Open Finance e normalize fluxo para subir de faixa. Nosso playbook envia o passo a passo.';
+                stickyBar.style.transform = 'translateY(0)';
             }
         });
     }
