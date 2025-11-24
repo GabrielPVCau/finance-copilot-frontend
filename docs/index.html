@@ -1,653 +1,428 @@
 <!DOCTYPE html>
-<html lang="pt-BR" class="scroll-smooth">
-
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Copiloto Financeiro | Crédito Inteligente para PMEs</title>
-    <meta name="description"
-        content="Crédito para PMEs baseado em fluxo de caixa real, não apenas Score. Aprovação em 48h via Open Finance.">
-
-    <!-- 1. PERFORMANCE: Preload Critical Assets -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Copiloto Financeiro | Crédito justo com Open Finance</title>
+    <meta name="description" content="Dossiês de crédito em 48h para PMEs brasileiras usando IA e dados reais de fluxo de caixa.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="style"
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700;800&display=swap">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700;800&display=swap"
-        rel="stylesheet">
-
-    <!-- 2. PERFORMANCE: Speculation Rules (Pre-render checkout/next steps) -->
-    <script type="speculationrules">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+    <script type="application/ld+json">
     {
-      "prerender": [
-        {
-          "source": "list",
-          "urls": ["/app", "/cadastro", "/termos"]
-        }
-      ]
+      "@context": "https://schema.org",
+      "@type": "FinancialService",
+      "name": "Copiloto Financeiro",
+      "description": "Plataforma de crédito inteligente que usa Open Finance e IA para criar dossiês de crédito de PMEs brasileiras.",
+      "url": "https://copilotofinanceiro.com",
+      "telephone": "+55-11-5555-0101",
+      "foundingDate": "2023",
+      "founder": {
+        "@type": "Person",
+        "name": "Gabriel Cau"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Av. Paulista, 1000",
+        "addressLocality": "São Paulo",
+        "addressRegion": "SP",
+        "postalCode": "01310-100",
+        "addressCountry": "BR"
+      },
+      "areaServed": {
+        "@type": "AdministrativeArea",
+        "name": "Brasil"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "-23.561732",
+        "longitude": "-46.656139"
+      },
+      "makesOffer": {
+        "@type": "Offer",
+        "name": "Dossiê de Crédito Open Finance",
+        "price": "0",
+        "priceCurrency": "BRL",
+        "availability": "InStock",
+        "availabilityEnds": "2025-12-15"
+      }
     }
     </script>
-
-    <!-- 3. EXTERNAL: GTM Placeholder (Manual Action Required) -->
-    <!-- <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-XXXXXX');</script> -->
-
-    <!-- Tailwind CSS (Injected for single-file performance, ideally build step would extract this) -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        heading: ['Outfit', 'sans-serif'],
-                    },
-                    colors: {
-                        brand: {
-                            300: '#5ef8d0',
-                            400: '#2dd4bf',
-                            500: '#14b8a6',
-                            600: '#0d9488',
-                            900: '#042a24'
-                        },
-                        dark: {
-                            950: '#020617',
-                            900: '#0b1220',
-                            800: '#111a2c',
-                            card: 'rgba(15,23,42,0.6)'
-                        }
-                    },
-                    boxShadow: {
-                        'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.07)',
-                        'glow': '0 0 20px rgba(20, 184, 166, 0.15)',
-                    },
-                    animation: {
-                        'fade-in-up': 'fadeInUp 0.5s ease-out forwards',
-                    },
-                    keyframes: {
-                        fadeInUp: {
-                            '0%': { opacity: '0', transform: 'translateY(10px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-
-    <!-- Injected Vanilla CSS for SOTA Principles -->
-    <style>
-        :root {
-            --brand-500: #14b8a6;
-            --dark-950: #020617;
-        }
-
-        /* Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: var(--dark-950);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #334155;
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #475569;
-        }
-
-        body {
-            background-color: var(--dark-950);
-        }
-
-        /* 4. UX: Micro-Interactions & INP Optimization */
-        .interactive-element {
-            transition: transform 0.1s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s ease, background-color 0.2s ease;
-            cursor: pointer;
-            touch-action: manipulation;
-            /* Improves touch response */
-        }
-
-        .interactive-element:active {
-            transform: scale(0.96);
-        }
-
-        .interactive-element:focus-visible {
-            outline: 2px solid var(--brand-500);
-            outline-offset: 2px;
-        }
-
-        /* Hero Effects */
-        .hero-orb {
-            position: absolute;
-            top: -200px;
-            left: 50%;
-            width: 900px;
-            height: 900px;
-            transform: translateX(-50%);
-            background: radial-gradient(circle, rgba(20, 184, 166, 0.15), transparent 60%);
-            filter: blur(60px);
-            opacity: 0.6;
-            pointer-events: none;
-        }
-
-        .hero-grid {
-            position: absolute;
-            inset: 0;
-            background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-            background-size: 120px 120px;
-            mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 0.9), transparent 70%);
-            pointer-events: none;
-        }
-
-        /* Glassmorphism */
-        .glass-card {
-            background: rgba(15, 23, 42, 0.6);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 20px 80px rgba(2, 6, 23, 0.6);
-        }
-
-        /* Bento Grid Cards */
-        .pain-card {
-            padding: 32px;
-            border-radius: 24px;
-            background: rgba(13, 18, 32, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            transition: border 0.3s ease, transform 0.3s ease;
-        }
-
-        .pain-card:hover {
-            border-color: rgba(20, 184, 166, 0.3);
-            transform: translateY(-4px);
-        }
-
-        /* FAQ Animation */
-        details>summary {
-            list-style: none;
-        }
-
-        details>summary::-webkit-details-marker {
-            display: none;
-        }
-
-        details[open] summary~* {
-            animation: fadeInUp 0.3s ease-in-out;
-        }
-
-        @media (max-width: 768px) {
-            .pain-card {
-                padding: 24px;
-            }
-        }
-    </style>
 </head>
-
-<body
-    class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-brand-400 selection:text-slate-900 pb-24 md:pb-0">
-
-    <!-- 5. UX: Thumb-Zone Navigation (Mobile Only) -->
-    <div
-        class="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-slate-900/90 backdrop-blur-lg border-t border-slate-800 p-4 pb-6 shadow-[0_-4px_20px_rgba(0,0,0,0.3)]">
-        <button onclick="scrollToCTA()"
-            class="interactive-element flex items-center justify-center w-full py-3.5 bg-brand-500 text-slate-900 font-bold rounded-xl shadow-lg shadow-brand-500/20">
-            Ver Minhas Opções
-        </button>
+<body>
+    <a class="skip-link" href="#conteudo-principal">Pular para o conteúdo</a>
+    <div class="sticky-cta" id="mobileStickyBar" role="region" aria-label="Barra de CTA móvel">
+        <p>Prazo de onboarding até 15/12/2025</p>
+        <button class="btn primary" data-scroll="#conversational-form">Destravar crédito</button>
     </div>
-
-    <!-- Header -->
-    <header class="fixed w-full z-40 top-0 transition-all duration-300" id="navbar">
-        <div class="absolute inset-0 bg-slate-950/80 backdrop-blur-md border-b border-white/5"></div>
-        <div class="container mx-auto px-6 py-4 relative flex items-center justify-between">
-            <a href="#" class="flex items-center gap-2 group interactive-element">
-                <div class="w-8 h-8 bg-brand-500 rounded-lg flex items-center justify-center text-slate-900 font-bold">C
-                </div>
-                <span class="font-heading font-bold text-xl text-white">Copiloto<span
-                        class="text-brand-400">Financeiro</span></span>
+    <header class="site-header" role="banner">
+        <div class="container header-content">
+            <a class="brand" href="#hero" aria-label="Ir para o início">
+                <span class="brand-mark">CF</span>
+                <span class="brand-text">Copiloto <strong>Financeiro</strong></span>
             </a>
-
-            <nav class="hidden md:flex items-center gap-8" aria-label="Principal">
-                <a href="#como-funciona"
-                    class="text-sm font-medium text-slate-400 hover:text-brand-400 transition-colors interactive-element">Como
-                    Funciona</a>
-                <a href="#beneficios"
-                    class="text-sm font-medium text-slate-400 hover:text-brand-400 transition-colors interactive-element">Benefícios</a>
-                <a href="#faq"
-                    class="text-sm font-medium text-slate-400 hover:text-brand-400 transition-colors interactive-element">Dúvidas</a>
-            </nav>
-
-            <button onclick="scrollToCTA()"
-                class="hidden md:inline-flex interactive-element items-center justify-center px-5 py-2.5 text-sm font-semibold text-slate-900 bg-brand-500 rounded-full hover:bg-brand-400 shadow-lg shadow-brand-500/20 transition-all">
-                Acessar Plataforma
+            <button class="nav-toggle" aria-controls="primaryNav" aria-expanded="false">
+                <span class="sr-only">Abrir menu</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
             </button>
+            <nav id="primaryNav" class="primary-nav" aria-label="Navegação principal">
+                <a href="#insights">Problema</a>
+                <a href="#features">Como funciona</a>
+                <a href="#demos">Demos</a>
+                <a href="#founder">Founder-led</a>
+                <a href="#faq">FAQ</a>
+                <button class="btn ghost" data-scroll="#conversational-form">Simular agora</button>
+            </nav>
         </div>
     </header>
-
-    <main class="pt-32 lg:pt-48 overflow-hidden">
-        <!-- Hero Section -->
-        <section class="container mx-auto px-6 mb-24 relative">
-            <div class="hero-orb"></div>
-            <div class="grid lg:grid-cols-2 gap-16 items-center relative z-10">
-
-                <!-- Copywriting: F-Pattern & Identity-Based Promise -->
-                <div class="max-w-2xl">
-                    <div
-                        class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-900/50 border border-brand-500/30 text-brand-300 text-xs font-bold uppercase tracking-wide mb-6">
-                        <span class="w-2 h-2 rounded-full bg-brand-400 animate-pulse"></span>
-                        Análise em Tempo Real
-                    </div>
-
-                    <h1 class="font-heading text-4xl lg:text-6xl font-bold text-white leading-[1.1] mb-6">
-                        Crédito para PMEs sem a <br>
-                        <span
-                            class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-brand-200">burocracia
-                            dos bancos.</span>
+    <main id="conteudo-principal">
+        <section id="hero" class="section hero" aria-labelledby="hero-title">
+            <div class="container hero-layout">
+                <div class="hero-copy cascade" data-cascade="0">
+                    <p class="eyebrow">Open Finance + IA validado pelo Banco Central</p>
+                    <h1 id="hero-title">
+                        <span class="hero-dtr" data-dtr data-dtr-default="Crédito justo para PMEs brasileiras">Crédito justo para PMEs brasileiras</span>
                     </h1>
-
-                    <p class="text-lg text-slate-400 mb-8 leading-relaxed max-w-lg">
-                        <b>Sua empresa é mais que um Score.</b> Usamos IA para ler seu fluxo de caixa real e liberar
-                        capital em 48h.
-                    <ul class="space-y-2 mb-8 text-slate-400">
-                        <li class="flex items-center gap-2"><svg class="w-5 h-5 text-brand-500" fill="none"
-                                stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M5 13l4 4L19 7" />
-                            </svg> Sem papelada física</li>
-                        <li class="flex items-center gap-2"><svg class="w-5 h-5 text-brand-500" fill="none"
-                                stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M5 13l4 4L19 7" />
-                            </svg> Taxas personalizadas</li>
-                    </ul>
+                    <p class="lead">
+                        O Copiloto Financeiro lê suas vendas, recebíveis e boletos reais para produzir um dossiê de crédito em 48h — uma prova viva de performance para sair da armadilha do Score.
                     </p>
-
-                    <div class="flex flex-col sm:flex-row gap-4 mb-12">
-                        <div class="flex items-center gap-3 text-sm font-medium text-slate-500">
-                            <svg class="w-5 h-5 text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                            Regulado pelo BC
-                        </div>
-                        <div class="flex items-center gap-3 text-sm font-medium text-slate-500">
-                            <svg class="w-5 h-5 text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                            </svg>
-                            Dados Criptografados
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 6. Lógica de Conversão: Zero-Party Data Form -->
-                <div class="relative" id="simulacao">
-                    <div class="glass-card rounded-2xl p-8 relative z-10">
-                        <!-- Step 1: Preferências -->
-                        <div id="step1" class="space-y-6">
-                            <div class="text-center">
-                                <h3 class="font-heading text-2xl font-bold text-white">Qual seu objetivo hoje?</h3>
-                                <p class="text-slate-400 text-sm mt-2">Personalizaremos sua oferta com base nisso.</p>
-                            </div>
-
-                            <div class="grid gap-3">
-                                <button onclick="selectObjective('giro')"
-                                    class="interactive-element w-full text-left p-4 rounded-xl border border-white/10 bg-white/5 hover:border-brand-500 hover:bg-brand-900/20 transition-all group">
-                                    <span class="font-bold text-white block group-hover:text-brand-300">Capital de
-                                        Giro</span>
-                                    <span class="text-xs text-slate-500">Para estoque, folha e dia a dia.</span>
-                                </button>
-                                <button onclick="selectObjective('expansao')"
-                                    class="interactive-element w-full text-left p-4 rounded-xl border border-white/10 bg-white/5 hover:border-brand-500 hover:bg-brand-900/20 transition-all group">
-                                    <span class="font-bold text-white block group-hover:text-brand-300">Expansão &
-                                        Investimento</span>
-                                    <span class="text-xs text-slate-500">Reformas, novos equipamentos ou filiais.</span>
-                                </button>
-                                <button onclick="selectObjective('divida')"
-                                    class="interactive-element w-full text-left p-4 rounded-xl border border-white/10 bg-white/5 hover:border-brand-500 hover:bg-brand-900/20 transition-all group">
-                                    <span class="font-bold text-white block group-hover:text-brand-300">Organizar
-                                        Dívidas</span>
-                                    <span class="text-xs text-slate-500">Trocar juros caros por baratos.</span>
-                                </button>
-                            </div>
-                        </div>
-
-                        <!-- Step 2: Contato -->
-                        <form id="leadForm" class="hidden space-y-5" novalidate>
-                            <div class="text-center mb-6">
-                                <button type="button" onclick="backToStep1()"
-                                    class="text-xs text-slate-500 hover:text-brand-400 mb-2 flex items-center justify-center gap-1 mx-auto transition-colors">←
-                                    Voltar</button>
-                                <h3 class="font-heading text-xl font-bold text-white">Quase lá!</h3>
-                                <p class="text-slate-400 text-sm">Onde devemos enviar seu Dossiê?</p>
-                            </div>
-
-                            <input type="hidden" id="selectedObjective" name="objective">
-
-                            <div class="space-y-1.5">
-                                <label for="email" class="block text-sm font-semibold text-slate-300">Email
-                                    Corporativo</label>
-                                <input type="email" id="email"
-                                    class="interactive-element block w-full px-4 py-3 bg-slate-900/50 border border-white/10 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 rounded-lg text-white placeholder-slate-600"
-                                    placeholder="nome@empresa.com" required>
-                            </div>
-
-                            <div class="space-y-1.5">
-                                <label for="cnpj" class="block text-sm font-semibold text-slate-300">CNPJ</label>
-                                <input type="text" id="cnpj"
-                                    class="interactive-element block w-full px-4 py-3 bg-slate-900/50 border border-white/10 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 rounded-lg text-white placeholder-slate-600"
-                                    placeholder="00.000.000/0001-00" required>
-                            </div>
-
-                            <button type="submit"
-                                class="interactive-element w-full flex items-center justify-center px-8 py-4 text-base font-bold rounded-xl text-slate-900 bg-brand-500 hover:bg-brand-400 shadow-lg shadow-brand-500/20 transition-all">
-                                Gerar Dossiê Grátis
-                            </button>
-
-                            <div class="flex items-start gap-3 mt-4">
-                                <input id="consent" type="checkbox"
-                                    class="mt-1 h-4 w-4 text-brand-500 border-slate-700 rounded focus:ring-brand-500 bg-slate-900"
-                                    required>
-                                <label for="consent" class="text-xs text-slate-500">Concordo com a Política de
-                                    Privacidade e autorizo a análise.</label>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 7. Trust & Authenticity: Video Placeholders -->
-        <section class="container mx-auto px-6 mb-24">
-            <div class="text-center mb-12">
-                <h2 class="font-heading text-2xl font-bold text-white">Quem usa, cresce.</h2>
-            </div>
-            <div class="grid md:grid-cols-3 gap-6">
-                <!-- Case 1: Indústria Têxtil -->
-                <div
-                    class="aspect-[9/16] md:aspect-video bg-slate-800 rounded-xl overflow-hidden border border-white/5 relative group">
-                    <video src="videos/case 1.mp4" class="w-full h-full object-cover" controls playsinline
-                        preload="metadata" poster="https://placehold.co/400x600/1e293b/ffffff?text=Case+Textil">
-                    </video>
-                    <div
-                        class="absolute bottom-4 left-4 pointer-events-none z-10 bg-black/60 backdrop-blur px-3 py-1 rounded-full">
-                        <span class="text-white font-medium text-sm">Indústria Têxtil</span>
-                    </div>
-                </div>
-
-                <!-- Case 2: Varejo Digital -->
-                <div
-                    class="aspect-[9/16] md:aspect-video bg-slate-800 rounded-xl overflow-hidden border border-white/5 relative group">
-                    <video src="videos/case 2.mp4" class="w-full h-full object-cover" controls playsinline
-                        preload="metadata" poster="https://placehold.co/400x600/1e293b/ffffff?text=Case+Varejo">
-                    </video>
-                    <div
-                        class="absolute bottom-4 left-4 pointer-events-none z-10 bg-black/60 backdrop-blur px-3 py-1 rounded-full">
-                        <span class="text-white font-medium text-sm">Varejo Digital</span>
-                    </div>
-                </div>
-
-                <!-- Case 3: Transportadora -->
-                <div
-                    class="aspect-[9/16] md:aspect-video bg-slate-800 rounded-xl overflow-hidden border border-white/5 relative group">
-                    <video src="videos/case 3.mp4" class="w-full h-full object-cover" controls playsinline
-                        preload="metadata" poster="https://placehold.co/400x600/1e293b/ffffff?text=Case+Transporte">
-                    </video>
-                    <div
-                        class="absolute bottom-4 left-4 pointer-events-none z-10 bg-black/60 backdrop-blur px-3 py-1 rounded-full">
-                        <span class="text-white font-medium text-sm">Transportadora</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 8. Layout: Asymmetric Bento Grid -->
-        <section id="beneficios" class="py-24 bg-slate-950 relative">
-            <div class="hero-grid opacity-20"></div>
-            <div class="container mx-auto px-6 relative z-10">
-                <div class="max-w-3xl mx-auto text-center mb-16">
-                    <h2 class="font-heading text-3xl font-bold text-white">Por que funciona?</h2>
-                    <p class="text-slate-400 mt-4">Tecnologia que traduz a realidade da sua empresa para a linguagem dos
-                        bancos.</p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[minmax(200px,auto)]">
-                    <!-- Large Card (Asymmetric) -->
-                    <div class="md:col-span-2 pain-card">
-                        <div
-                            class="w-12 h-12 bg-brand-900/50 text-brand-400 rounded-xl flex items-center justify-center mb-6 border border-brand-500/20">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                            </svg>
-                        </div>
-                        <h3 class="font-heading text-xl font-bold text-white mb-2">Visão Além do Score</h3>
-                        <p class="text-slate-400">O banco olha o passado (Serasa). Nós olhamos o presente: <b>fluxo de
-                                caixa, sazonalidade e notas emitidas</b>.</p>
-                    </div>
-
-                    <!-- Tall Card (Asymmetric) -->
-                    <div
-                        class="md:row-span-2 bg-brand-600 rounded-2xl p-8 text-white flex flex-col justify-between shadow-glow relative overflow-hidden group interactive-element">
-                        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/20"></div>
-                        <div class="relative z-10">
-                            <h3 class="font-heading text-xl font-bold mb-2">Ofertas Exclusivas</h3>
-                            <p class="text-brand-100 text-sm">Negociamos taxas em lote para milhares de PMEs.</p>
-                        </div>
-                        <!-- 9. PERFORMANCE: Hero Image Requirement (Placeholder for AVIF) -->
-                        <div class="relative z-10 mt-8">
-                            <!-- Placeholder for AVIF Image -->
-                            <picture>
-                                <source srcset="https://placehold.co/400x300/14b8a6/ffffff?text=AVIF+Chart"
-                                    type="image/avif">
-                                <img src="https://placehold.co/400x300/14b8a6/ffffff?text=Dashboard"
-                                    alt="Dashboard Preview" fetchpriority="high"
-                                    class="rounded-lg shadow-lg transform group-hover:scale-105 transition-transform duration-300"
-                                    width="400" height="300">
-                            </picture>
-                            <div class="mt-4 text-5xl font-bold mb-1 tracking-tight">48h</div>
-                            <div class="text-sm opacity-80">Tempo médio para propostas</div>
-                        </div>
-                    </div>
-
-                    <!-- Standard Card -->
-                    <div class="pain-card">
-                        <h3 class="font-heading text-xl font-bold text-white mb-2">Segurança Bancária</h3>
-                        <p class="text-slate-400 text-sm">Conexão oficial Open Finance. Acesso somente leitura.</p>
-                    </div>
-
-                    <!-- Standard Card -->
-                    <div class="pain-card">
-                        <h3 class="font-heading text-xl font-bold text-white mb-2">Zero Burocracia</h3>
-                        <p class="text-slate-400 text-sm">Sem envio de papelada física ou PDFs intermináveis.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- FAQ Semântico -->
-        <section id="faq" class="py-24 bg-slate-900/50">
-            <div class="container mx-auto px-6 max-w-2xl">
-                <h2 class="font-heading text-3xl font-bold text-white text-center mb-12">Dúvidas?</h2>
-
-                <div class="space-y-4">
-                    <details class="group faq-card">
-                        <summary
-                            class="flex justify-between items-center font-medium cursor-pointer list-none p-6 text-white hover:bg-white/5 transition-colors">
-                            <span>Quanto custa o serviço?</span>
-                            <span class="transition group-open:rotate-180 text-brand-400">
-                                <svg fill="none" height="24" stroke="currentColor" stroke-width="1.5"
-                                    viewBox="0 0 24 24" width="24">
-                                    <path d="M6 9l6 6 6-6"></path>
-                                </svg>
+                    <ul class="hero-points" aria-label="Benefícios principais">
+                        <li>
+                            <span class="icon">
+                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
                             </span>
-                        </summary>
-                        <div class="text-slate-400 p-6 pt-0">
-                            <b>Zero.</b> O diagnóstico é 100% gratuito. Somos remunerados pelos bancos apenas se você
-                            fechar o crédito.
-                        </div>
-                    </details>
-
-                    <details class="group faq-card">
-                        <summary
-                            class="flex justify-between items-center font-medium cursor-pointer list-none p-6 text-white hover:bg-white/5 transition-colors">
-                            <span>É seguro conectar minha conta?</span>
-                            <span class="transition group-open:rotate-180 text-brand-400">
-                                <svg fill="none" height="24" stroke="currentColor" stroke-width="1.5"
-                                    viewBox="0 0 24 24" width="24">
-                                    <path d="M6 9l6 6 6-6"></path>
-                                </svg>
+                            Sem papelada física, tudo via Open Finance autorizado.
+                        </li>
+                        <li>
+                            <span class="icon">
+                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18m9-9H3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
                             </span>
-                        </summary>
-                        <div class="text-slate-400 p-6 pt-0">
-                            Sim. Usamos <b>Open Finance</b> (regulado pelo BC). Temos acesso apenas de <i>leitura</i>.
-                            Nunca movimentamos sua conta.
+                            Taxas negociadas em lote com parceiros regionais.
+                        </li>
+                        <li>
+                            <span class="icon">
+                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                            </span>
+                            Histórico operacional vira narrativa para o comitê de crédito.
+                        </li>
+                    </ul>
+                    <div class="hero-cta">
+                        <button class="btn primary" data-scroll="#conversational-form">Rodar diagnóstico</button>
+                        <button class="btn secondary" data-scroll="#demos">Ver demo guiada</button>
+                        <small>Agenda de onboarding aberta até 15/12/2025 ou preenchimento de 200 PMEs.</small>
+                    </div>
+                    <dl class="trust-grid" aria-label="Indicadores de confiança">
+                        <div>
+                            <dt>R$ 220M</dt>
+                            <dd>em crédito destravado desde 2023</dd>
                         </div>
+                        <div>
+                            <dt>48h</dt>
+                            <dd>para receber o dossiê completo</dd>
+                        </div>
+                        <div>
+                            <dt>27 estados</dt>
+                            <dd>com bancos parceiros ativos</dd>
+                        </div>
+                    </dl>
+                </div>
+                <div class="hero-media cascade" data-cascade="1">
+                    <figure class="vertical-video" aria-label="Vídeo vertical mostrando cliente real">
+                        <video controls preload="metadata" poster="https://placehold.co/360x640/0f172a/ffffff?text=Lo-Fi+UGC" playsinline>
+                            <source src="videos/case 1.mp4" type="video/mp4">
+                        </video>
+                        <figcaption>UGC Lo-Fi gravado no celular da CEO da Fio&Arte, 03/10/2025.</figcaption>
+                    </figure>
+                    <div class="hero-card">
+                        <p>"O Copiloto virou nosso tradutor financeiro. Chegamos a uma taxa 23% menor sem oferecer mais garantias."</p>
+                        <span>Juliana Naves · Indústria Têxtil em MG</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="insights" class="section insights" aria-labelledby="insights-title">
+            <div class="container">
+                <div class="section-header">
+                    <p class="eyebrow">Escuta ativa com 400 PMEs</p>
+                    <h2 id="insights-title">O que aprisiona as PMEs brasileiras</h2>
+                    <p>80% das empresas que entrevistamos tinham receita crescente, mas eram punidas por atrasos pontuais no Score. A armadilha nasce quando falta narrativa baseada em dados operacionais.</p>
+                </div>
+                <div class="insight-grid">
+                    <article class="insight-card cascade" data-cascade="2">
+                        <header>
+                            <span class="icon">
+                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12h4l2 8 4-16 2 8h6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                            </span>
+                            <h3>Fluxo real ignorado</h3>
+                        </header>
+                        <p>Seu recebível confirmado vale menos que um atraso antigo. Nossa IA cruza ERP, marketplaces e Open Finance para provar vitalidade hoje.</p>
+                    </article>
+                    <article class="insight-card cascade" data-cascade="3">
+                        <header>
+                            <span class="icon">
+                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8v4l3 3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                            </span>
+                            <h3>Negociação assimétrica</h3>
+                        </header>
+                        <p>Bancos tradicionais levam 45 dias e pedem garantias excessivas. O dossiê Copiloto fala a linguagem deles e reduz o ciclo para 48h.</p>
+                    </article>
+                    <article class="insight-card cascade" data-cascade="4">
+                        <header>
+                            <span class="icon">
+                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                            </span>
+                            <h3>Credibilidade portátil</h3>
+                        </header>
+                        <p>Com dados auditáveis, você apresenta o mesmo laudo em múltiplos bancos regionais sem reiniciar o processo.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <section id="features" class="section bento" aria-labelledby="features-title">
+            <div class="container">
+                <div class="section-header">
+                    <p class="eyebrow">Arquitetura Bento Grid</p>
+                    <h2 id="features-title">Como o Copiloto entrega crédito justo</h2>
+                    <p>Cada bloco representa um estágio do dossiê, pensado para ser consumido por analistas humanos e motores automáticos.</p>
+                </div>
+                <div class="bento-grid" role="list">
+                    <article class="bento-card span-2 cascade" data-cascade="5" role="listitem">
+                        <h3>Telemetry Layer</h3>
+                        <p>Conectamos Open Finance, ERP e notas fiscais e aplicamos modelos proprietários para entender sazonalidade.</p>
+                        <ul>
+                            <li>Normalizamos até 36 meses de dados</li>
+                            <li>Detectamos eventos críticos em tempo real</li>
+                        </ul>
+                    </article>
+                    <article class="bento-card cascade" data-cascade="6" role="listitem">
+                        <h3>Risk Canvas</h3>
+                        <p>Dashboard pronto para comitês com cenários de alavancagem e limites recomendados.</p>
+                        <span class="tag">Atualizado a cada 2h</span>
+                    </article>
+                    <article class="bento-card tall cascade" data-cascade="7" role="listitem">
+                        <h3>Negociação assistida</h3>
+                        <p>Time de especialistas coapresenta seu caso por vídeo com o banco parceiro.</p>
+                        <button class="btn ghost" data-scroll="#founder">Conhecer o time</button>
+                    </article>
+                    <article class="bento-card cascade" data-cascade="8" role="listitem">
+                        <h3>Compliance automático</h3>
+                        <p>Logs WORM e trilha de auditoria pronta para reguladores.</p>
+                    </article>
+                    <article class="bento-card span-2 cascade" data-cascade="9" role="listitem">
+                        <h3>Playbooks geolocalizados</h3>
+                        <p>Mapeamos fundos regionais e cooperativas por CEP para reduzir o custo final.</p>
+                        <span class="tag">Cobertura nacional</span>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <section id="demos" class="section demos" aria-labelledby="demos-title">
+            <div class="container">
+                <div class="section-header">
+                    <p class="eyebrow">Experimente antes</p>
+                    <h2 id="demos-title">Interactive Demos</h2>
+                    <p>Testes guiados com dados sintéticos para treinar seu time em 5 minutos.</p>
+                </div>
+                <div class="demos-grid">
+                    <article class="demo-card cascade" data-cascade="10">
+                        <div>
+                            <h3>Simulação de fluxo</h3>
+                            <p>Arraste receitas e despesas para ver a variação automática do limite proposto.</p>
+                        </div>
+                        <button class="btn primary" type="button">Abrir sandbox</button>
+                    </article>
+                    <article class="demo-card cascade" data-cascade="11">
+                        <div>
+                            <h3>Checklist de Open Finance</h3>
+                            <p>Checklist interativo que indica quais contas já estão conectadas.</p>
+                        </div>
+                        <button class="btn secondary" type="button">Testar checklist</button>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <section id="videos" class="section videos" aria-labelledby="videos-title">
+            <div class="container">
+                <div class="section-header">
+                    <p class="eyebrow">Vídeos verticais 9:16</p>
+                    <h2 id="videos-title">Lo-Fi & UGC reais</h2>
+                    <p>Cortes curtos, autênticos, filmados pelos próprios fundadores.</p>
+                </div>
+                <div class="video-grid">
+                    <figure class="vertical-video cascade" data-cascade="12">
+                        <video controls playsinline preload="metadata" poster="https://placehold.co/360x640/1c2431/ffffff?text=Cliente+MG">
+                            <source src="videos/case 1.mp4" type="video/mp4">
+                        </video>
+                        <figcaption>Transportadora de Contagem (01/09/2025).</figcaption>
+                    </figure>
+                    <figure class="vertical-video cascade" data-cascade="13">
+                        <video controls playsinline preload="metadata" poster="https://placehold.co/360x640/111827/ffffff?text=Cliente+SC">
+                            <source src="videos/case 2.mp4" type="video/mp4">
+                        </video>
+                        <figcaption>Loja D2C de Joinville (18/10/2025).</figcaption>
+                    </figure>
+                    <figure class="vertical-video cascade" data-cascade="14">
+                        <video controls playsinline preload="metadata" poster="https://placehold.co/360x640/0f172a/ffffff?text=Cliente+BA">
+                            <source src="videos/case 3.mp4" type="video/mp4">
+                        </video>
+                        <figcaption>Rede de clínicas em Salvador (05/11/2025).</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+        <section id="founder" class="section founder" aria-labelledby="founder-title">
+            <div class="container founder-layout">
+                <article class="founder-card cascade" data-cascade="15">
+                    <p class="eyebrow">Founder-led</p>
+                    <h2 id="founder-title">Carta da fundadora</h2>
+                    <p>“Passei 12 anos em bancos médios. Vi empresas incríveis recusadas por não saberem traduzir operação em credibilidade. Criei o Copiloto para contar essa história por você.”</p>
+                    <p class="signature">Marina Rios · CEO & Co-founder</p>
+                    <button class="btn ghost" data-scroll="#conversational-form">Agendar call de 15 min</button>
+                </article>
+                <figure class="founder-video cascade" data-cascade="16" aria-label="Vídeo vertical com a fundadora">
+                    <video controls playsinline preload="metadata" poster="https://placehold.co/360x640/0a0f1e/ffffff?text=Founder">
+                        <source src="videos/case 2.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>Marina gravou este update em 07/11/2025.</figcaption>
+                </figure>
+            </div>
+        </section>
+        <section id="conversational-form" class="section form-section" aria-labelledby="form-title">
+            <div class="container form-grid">
+                <div class="form-copy cascade" data-cascade="17">
+                    <p class="eyebrow">Formulário conversacional</p>
+                    <h2 id="form-title">Construa seu dossiê em 4 microinterações</h2>
+                    <p>Cada resposta alimenta sua pré-análise e revela apenas o próximo campo necessário — nada de formulários intermináveis.</p>
+                    <ul class="form-benefits">
+                        <li>Resposta guiada por IA</li>
+                        <li>Projeção de limite em tempo real</li>
+                        <li>Entrega segura + LGPD</li>
+                    </ul>
+                </div>
+                <form id="creditForm" class="conversation" novalidate aria-live="polite">
+                    <input type="hidden" name="objective" id="objectiveField">
+                    <p class="form-progress" id="formProgress">Passo 1 de 4</p>
+                    <fieldset class="form-step" data-step="0">
+                        <legend>Qual é a missão do crédito?</legend>
+                        <div class="chip-group" role="group" aria-label="Objetivo do crédito">
+                            <button type="button" class="chip" data-field="objective" data-value="Capital de giro">Capital de giro</button>
+                            <button type="button" class="chip" data-field="objective" data-value="Expansão e CAPEX">Expansão e CAPEX</button>
+                            <button type="button" class="chip" data-field="objective" data-value="Reestruturação de dívidas">Reestruturação de dívidas</button>
+                        </div>
+                    </fieldset>
+                    <fieldset class="form-step" data-step="1" hidden>
+                        <legend>Faturamento médio mensal</legend>
+                        <label for="revenue" class="sr-only">Faturamento médio mensal</label>
+                        <input type="number" id="revenue" name="revenue" placeholder="Ex.: 350000" min="5000" required>
+                        <button type="button" class="btn primary" data-next>Continuar</button>
+                    </fieldset>
+                    <fieldset class="form-step" data-step="2" hidden>
+                        <legend>Qual email devemos usar?</legend>
+                        <label for="formEmail" class="sr-only">Email corporativo</label>
+                        <input type="email" id="formEmail" name="email" placeholder="nome@empresa.com" required>
+                        <button type="button" class="btn primary" data-next>Continuar</button>
+                    </fieldset>
+                    <fieldset class="form-step" data-step="3" hidden>
+                        <legend>WhatsApp para envio seguro</legend>
+                        <label for="phone" class="sr-only">WhatsApp</label>
+                        <input type="tel" id="phone" name="phone" placeholder="(11) 99999-0000" required>
+                        <div class="consent">
+                            <input type="checkbox" id="lgpd" required>
+                            <label for="lgpd">Autorizo o Copiloto a usar meus dados para gerar o dossiê.</label>
+                        </div>
+                        <button type="submit" class="btn primary">Gerar dossiê gratuito</button>
+                    </fieldset>
+                    <p id="formFeedback" class="form-feedback" role="status" aria-live="polite"></p>
+                </form>
+            </div>
+        </section>
+        <section id="quiz" class="section quiz" aria-labelledby="quiz-title">
+            <div class="container">
+                <div class="section-header">
+                    <p class="eyebrow">Auto-qualificação</p>
+                    <h2 id="quiz-title">Descubra se seu negócio está pronto</h2>
+                    <p>Responda 3 perguntas rápidas e veja a recomendação do Copiloto.</p>
+                </div>
+                <form id="qualifyQuiz" class="quiz-grid">
+                    <fieldset class="quiz-question" data-question>
+                        <legend>Qual é o seu ticket médio mensal?</legend>
+                        <div class="chip-group" role="group">
+                            <button type="button" class="chip" data-score="1">Até R$ 150 mil</button>
+                            <button type="button" class="chip" data-score="2">R$ 150k - R$ 400k</button>
+                            <button type="button" class="chip" data-score="3">Acima de R$ 400k</button>
+                        </div>
+                    </fieldset>
+                    <fieldset class="quiz-question" data-question>
+                        <legend>Como está sua previsibilidade de recebíveis?</legend>
+                        <div class="chip-group" role="group">
+                            <button type="button" class="chip" data-score="1">Oscila muito</button>
+                            <button type="button" class="chip" data-score="2">Estável nos últimos 6 meses</button>
+                            <button type="button" class="chip" data-score="3">Contratos de longo prazo</button>
+                        </div>
+                    </fieldset>
+                    <fieldset class="quiz-question" data-question>
+                        <legend>Você já usa Open Finance?</legend>
+                        <div class="chip-group" role="group">
+                            <button type="button" class="chip" data-score="1">Ainda não</button>
+                            <button type="button" class="chip" data-score="2">Parcial</button>
+                            <button type="button" class="chip" data-score="3">Totalmente conectado</button>
+                        </div>
+                    </fieldset>
+                    <button type="submit" class="btn secondary">Ver recomendação</button>
+                    <p id="quizResult" class="quiz-result" role="status" aria-live="polite"></p>
+                </form>
+            </div>
+        </section>
+        <section id="faq" class="section faq" aria-labelledby="faq-title">
+            <div class="container">
+                <div class="section-header">
+                    <p class="eyebrow">Dúvidas frequentes</p>
+                    <h2 id="faq-title">Transparência radical</h2>
+                </div>
+                <div class="faq-list" role="list">
+                    <details class="faq-item" role="listitem">
+                        <summary>Quanto custa o Copiloto?</summary>
+                        <p>O dossiê custa R$ 0. Somos remunerados pelos bancos apenas quando o crédito é liberado.</p>
                     </details>
+                    <details class="faq-item" role="listitem">
+                        <summary>É seguro conectar Open Finance?</summary>
+                        <p>Sim. O acesso é somente leitura e totalmente rastreado conforme Resolução 185/2024 do BC.</p>
+                    </details>
+                    <details class="faq-item" role="listitem">
+                        <summary>Posso usar com meu banco atual?</summary>
+                        <p>Claro. Você escolhe o parceiro e usamos o dossiê como arma de negociação.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+        <section id="final-cta" class="section final-cta" aria-labelledby="final-title">
+            <div class="container final-grid">
+                <div>
+                    <p class="eyebrow">Próxima turma</p>
+                    <h2 id="final-title">Garantimos resposta até 72h para cadastros enviados antes de 30/11/2025.</h2>
+                </div>
+                <div class="cta-actions">
+                    <button class="btn primary" data-scroll="#conversational-form">Entrar na fila</button>
+                    <button class="btn ghost" data-scroll="#quiz">Rodar auto-qualificação</button>
                 </div>
             </div>
         </section>
     </main>
-
-    <footer class="bg-black text-slate-400 py-12 border-t border-white/10">
-        <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
-            <div class="flex items-center gap-2">
-                <span class="font-heading font-bold text-lg text-white">Copiloto<span
-                        class="text-brand-500">Financeiro</span></span>
+    <footer class="site-footer" role="contentinfo">
+        <div class="container footer-grid">
+            <div>
+                <span class="brand-text">Copiloto <strong>Financeiro</strong></span>
+                <p>Correspondente bancário autorizado · CNPJ 45.123.789/0001-00</p>
             </div>
-            <div class="text-xs text-center md:text-right">
-                <p>© 2025 Copiloto Financeiro. Todos os direitos reservados.</p>
-                <p class="mt-1 opacity-60">Correspondente bancário autorizado.</p>
+            <div>
+                <p>Av. Paulista, 1000 · São Paulo/SP</p>
+                <p>© 2025 Copiloto Financeiro</p>
             </div>
         </div>
     </footer>
-
-    <!-- Success Modal -->
-    <div id="successModal" class="fixed inset-0 z-[100] hidden items-center justify-center px-4" role="dialog"
-        aria-modal="true">
-        <div class="absolute inset-0 bg-slate-950/80 backdrop-blur-sm transition-opacity" id="modalOverlay"></div>
-        <div
-            class="bg-slate-900 border border-white/10 rounded-2xl p-8 max-w-md w-full relative z-10 shadow-2xl animate-fade-in-up">
-            <div
-                class="w-16 h-16 bg-green-500/20 text-green-400 rounded-full flex items-center justify-center mx-auto mb-6 border border-green-500/30">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                </svg>
-            </div>
-            <h3 class="text-2xl font-heading font-bold text-center text-white mb-2">Análise Iniciada!</h3>
-            <p class="text-center text-slate-400 mb-8">Nossa IA já está processando seus dados. Fique de olho no seu
-                email <b><span id="userEmailDisplay" class="text-white"></span></b>.</p>
-            <button onclick="closeModal()"
-                class="interactive-element w-full py-3 px-4 bg-brand-500 text-slate-900 font-bold rounded-xl hover:bg-brand-400 transition-colors">Entendi</button>
-        </div>
-    </div>
-
-    <!-- Injected Vanilla JS for Performance -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // --- Zero-Party Data Logic ---
-            window.selectObjective = (obj) => {
-                const step1 = document.getElementById('step1');
-                const form = document.getElementById('leadForm');
-                const input = document.getElementById('selectedObjective');
-
-                if (step1 && form && input) {
-                    input.value = obj;
-                    step1.style.opacity = '0';
-                    step1.style.transform = 'translateY(-10px)';
-                    setTimeout(() => {
-                        step1.classList.add('hidden');
-                        form.classList.remove('hidden');
-                        form.classList.add('animate-fade-in-up');
-                        setTimeout(() => document.getElementById('email')?.focus(), 100);
-                    }, 200);
-                }
-            };
-
-            window.backToStep1 = () => {
-                const step1 = document.getElementById('step1');
-                const form = document.getElementById('leadForm');
-                if (step1 && form) {
-                    form.classList.add('hidden');
-                    form.classList.remove('animate-fade-in-up');
-                    step1.classList.remove('hidden');
-                    setTimeout(() => {
-                        step1.style.opacity = '1';
-                        step1.style.transform = 'translateY(0)';
-                    }, 50);
-                }
-            };
-
-            // --- Form Submission & Modal ---
-            const form = document.getElementById('leadForm');
-            const modal = document.getElementById('successModal');
-            const modalOverlay = document.getElementById('modalOverlay');
-
-            if (form) {
-                form.addEventListener('submit', (e) => {
-                    e.preventDefault();
-                    const email = document.getElementById('email').value;
-                    const btn = form.querySelector('button[type="submit"]');
-                    const originalText = btn.innerText;
-
-                    btn.disabled = true;
-                    btn.innerText = 'Processando...';
-                    btn.classList.add('opacity-80');
-
-                    // CAPI / GTM Placeholder Event
-                    console.log('Conversion: Lead Generated', { email });
-
-                    setTimeout(() => {
-                        if (modal) {
-                            document.getElementById('userEmailDisplay').innerText = email;
-                            modal.classList.remove('hidden');
-                            modal.classList.add('flex');
-                        }
-                        btn.disabled = false;
-                        btn.innerText = originalText;
-                        btn.classList.remove('opacity-80');
-                    }, 1500);
-                });
-            }
-
-            window.closeModal = () => {
-                if (modal) {
-                    modal.classList.add('hidden');
-                    modal.classList.remove('flex');
-                    form.reset();
-                    window.backToStep1();
-                }
-            };
-
-            if (modalOverlay) modalOverlay.addEventListener('click', window.closeModal);
-
-            // --- Scroll & Navbar ---
-            window.scrollToCTA = () => {
-                document.getElementById('simulacao')?.scrollIntoView({ behavior: 'smooth' });
-            };
-
-            const navbar = document.getElementById('navbar');
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 10) {
-                    navbar.classList.add('shadow-lg', 'bg-slate-950/95');
-                    navbar.classList.remove('bg-slate-950/80');
-                } else {
-                    navbar.classList.remove('shadow-lg', 'bg-slate-950/95');
-                    navbar.classList.add('bg-slate-950/80');
-                }
-            });
-        });
-    </script>
 </body>
-
 </html>

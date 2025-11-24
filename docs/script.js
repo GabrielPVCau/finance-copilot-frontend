@@ -1,119 +1,164 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const scrollButtons = document.querySelectorAll('[data-scroll]');
+    scrollButtons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+            const target = document.querySelector(btn.dataset.scroll);
+            target?.scrollIntoView({ behavior: 'smooth' });
+        });
+    });
 
-    // --- 1. Zero-Party Data Logic (Multi-step Form) ---
-    window.selectObjective = (obj) => {
-        const step1 = document.getElementById('step1');
-        const form = document.getElementById('leadForm');
-        const input = document.getElementById('selectedObjective');
-
-        if (step1 && form && input) {
-            input.value = obj;
-
-            // Animate transition
-            step1.style.opacity = '0';
-            step1.style.transform = 'translateY(-10px)';
-
-            setTimeout(() => {
-                step1.classList.add('hidden');
-                form.classList.remove('hidden');
-                form.classList.add('animate-fade-in-up');
-
-                // Auto-focus email for speed
-                setTimeout(() => document.getElementById('email')?.focus(), 100);
-            }, 200);
-        }
-    };
-
-    window.backToStep1 = () => {
-        const step1 = document.getElementById('step1');
-        const form = document.getElementById('leadForm');
-
-        if (step1 && form) {
-            form.classList.add('hidden');
-            form.classList.remove('animate-fade-in-up');
-
-            step1.classList.remove('hidden');
-            // Reset animation state
-            setTimeout(() => {
-                step1.style.opacity = '1';
-                step1.style.transform = 'translateY(0)';
-            }, 50);
-        }
-    };
-
-    // --- 2. Form Submission & Modal ---
-    const form = document.getElementById('leadForm');
-    const modal = document.getElementById('successModal');
-    const modalOverlay = document.getElementById('modalOverlay');
-
-    if (form) {
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const email = document.getElementById('email').value;
-            const objective = document.getElementById('selectedObjective').value;
-            const btn = form.querySelector('button[type="submit"]');
-            const originalText = btn.innerText;
-
-            // Simulate API Call / Loading State
-            btn.disabled = true;
-            btn.innerText = 'Processando...';
-            btn.classList.add('opacity-80');
-
-            // 5. EXTERNAL REQUIREMENT: GTM/CAPI Placeholder
-            console.log('GTM Event: Lead Generated', {
-                event: 'generate_lead',
-                email: email,
-                objective: objective,
-                timestamp: new Date().toISOString()
-            });
-
-            setTimeout(() => {
-                // Show Modal
-                if (modal) {
-                    document.getElementById('userEmailDisplay').innerText = email;
-                    modal.classList.remove('hidden');
-                    modal.classList.add('flex');
-                }
-
-                // Reset Button
-                btn.disabled = false;
-                btn.innerText = originalText;
-                btn.classList.remove('opacity-80');
-            }, 1500);
+    const navToggle = document.querySelector('.nav-toggle');
+    const nav = document.getElementById('primaryNav');
+    if (navToggle && nav) {
+        navToggle.setAttribute('aria-expanded', 'false');
+        nav.setAttribute('aria-expanded', 'false');
+        navToggle.addEventListener('click', () => {
+            const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+            navToggle.setAttribute('aria-expanded', (!expanded).toString());
+            nav.setAttribute('aria-expanded', (!expanded).toString());
         });
     }
 
-    window.closeModal = () => {
-        if (modal) {
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
-            form.reset();
-            window.backToStep1();
+    const dtrTarget = document.querySelector('[data-dtr]');
+    if (dtrTarget) {
+        const params = new URLSearchParams(window.location.search);
+        const segmento = params.get('segmento') || params.get('setor');
+        const cidade = params.get('cidade');
+        const uf = params.get('uf');
+        let text = dtrTarget.getAttribute('data-dtr-default');
+        if (segmento) {
+            text = `Crédito justo para ${segmento}`;
+        } else if (cidade) {
+            text = `Crédito justo para PMEs de ${cidade}${uf ? ` - ${uf}` : ''}`;
         }
-    };
-
-    // Close modal on overlay click
-    if (modalOverlay) {
-        modalOverlay.addEventListener('click', window.closeModal);
+        dtrTarget.textContent = text;
     }
 
-    // --- 3. Scroll to CTA ---
-    window.scrollToCTA = () => {
-        const ctaSection = document.getElementById('simulacao'); // Changed to the form section
-        if (ctaSection) {
-            ctaSection.scrollIntoView({ behavior: 'smooth' });
-        }
-    };
+    const cascadeTargets = document.querySelectorAll('.cascade');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.2 });
+    cascadeTargets.forEach((el) => observer.observe(el));
 
-    // --- 4. Navbar Scroll Effect ---
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 10) {
-            navbar.classList.add('shadow-lg', 'bg-slate-950/95');
-            navbar.classList.remove('bg-slate-950/80');
-        } else {
-            navbar.classList.remove('shadow-lg', 'bg-slate-950/95');
-            navbar.classList.add('bg-slate-950/80');
-        }
+    const buttons = document.querySelectorAll('.btn, .chip');
+    buttons.forEach((item) => {
+        item.addEventListener('pointerdown', () => {
+            item.classList.add('is-pressed');
+        });
+        item.addEventListener('pointerup', () => {
+            item.classList.remove('is-pressed');
+        });
+        item.addEventListener('pointerleave', () => {
+            item.classList.remove('is-pressed');
+        });
     });
+
+    const form = document.getElementById('creditForm');
+    const progressLabel = document.getElementById('formProgress');
+    const feedback = document.getElementById('formFeedback');
+    if (form && progressLabel && feedback) {
+        const steps = Array.from(form.querySelectorAll('.form-step'));
+        let currentStep = 0;
+
+        const updateProgress = () => {
+            progressLabel.textContent = `Passo ${currentStep + 1} de ${steps.length}`;
+        };
+
+        const showStep = (index) => {
+            steps.forEach((step, i) => {
+                step.hidden = i !== index;
+            });
+            currentStep = index;
+            updateProgress();
+        };
+
+        const chips = form.querySelectorAll('.form-step[data-step="0"] .chip');
+        const objectiveField = document.getElementById('objectiveField');
+        chips.forEach((chip) => {
+            chip.addEventListener('click', () => {
+                chips.forEach((c) => c.classList.remove('active'));
+                chip.classList.add('active');
+                objectiveField.value = chip.dataset.value || '';
+                showStep(1);
+            });
+        });
+
+        form.addEventListener('click', (event) => {
+            const target = event.target;
+            if (target instanceof HTMLElement && target.hasAttribute('data-next')) {
+                const fieldset = target.closest('.form-step');
+                if (!fieldset) return;
+                const input = fieldset.querySelector('input');
+                if (input && !input.checkValidity()) {
+                    input.reportValidity();
+                    return;
+                }
+                const nextIndex = currentStep + 1;
+                if (nextIndex < steps.length) {
+                    showStep(nextIndex);
+                }
+            }
+        });
+
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const valid = form.checkValidity();
+            if (!valid) {
+                form.reportValidity();
+                return;
+            }
+            feedback.textContent = 'Analisando dados em tempo real...';
+            const formData = new FormData(form);
+            console.log('Lead submitted', Object.fromEntries(formData.entries()));
+            setTimeout(() => {
+                feedback.textContent = 'Tudo certo! Enviamos o link seguro para o seu email.';
+                form.reset();
+                steps.forEach((step) => {
+                    const chipsInner = step.querySelectorAll('.chip');
+                    chipsInner.forEach((chip) => chip.classList.remove('active'));
+                });
+                showStep(0);
+            }, 1200);
+        });
+
+        showStep(0);
+    }
+
+    const quizForm = document.getElementById('qualifyQuiz');
+    const quizResult = document.getElementById('quizResult');
+    if (quizForm && quizResult) {
+        const quizChips = quizForm.querySelectorAll('.quiz-question .chip');
+        quizChips.forEach((chip) => {
+            chip.addEventListener('click', () => {
+                const parent = chip.closest('.chip-group');
+                parent?.querySelectorAll('.chip').forEach((c) => c.classList.remove('active'));
+                chip.classList.add('active');
+            });
+        });
+
+        quizForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const picked = Array.from(quizForm.querySelectorAll('.quiz-question')).map((question) => {
+                const selected = question.querySelector('.chip.active');
+                return selected ? Number(selected.dataset.score) : 0;
+            });
+            if (picked.includes(0)) {
+                quizResult.textContent = 'Selecione uma resposta para cada pergunta.';
+                return;
+            }
+            const score = picked.reduce((sum, value) => sum + value, 0);
+            if (score >= 8) {
+                quizResult.textContent = 'Sinal verde! Vamos liberar o dossiê prioritário e conectar você a taxas agressivas.';
+            } else if (score >= 6) {
+                quizResult.textContent = 'Você está pronto, mas indicamos revisar previsibilidade de recebíveis. Nosso time ajuda nisso na etapa 1.';
+            } else {
+                quizResult.textContent = 'Ainda dá tempo: conecte seu Open Finance e normalize fluxo para subir de faixa. Nosso playbook envia o passo a passo.';
+            }
+        });
+    }
 });
