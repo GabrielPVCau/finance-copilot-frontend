@@ -6,36 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Copiloto Financeiro | Crédito Justo via Open Finance</title>
     <meta name="description"
-        content="Transforme seus dados operacionais em dossiês de crédito irrecusáveis. Acesso a taxas justas para PMEs em 48h.">
+        content="Transforme seus dados operacionais em dossiês de crédito irrecusáveis. Acesso a taxas justas para PMEs.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <script src="https://unpkg.com/lucide@latest"></script>
     <script defer src="script.js"></script>
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "SoftwareApplication",
-            "name": "Copiloto Financeiro",
-            "applicationCategory": "FinanceApplication",
-            "operatingSystem": "Web",
-            "offers": {
-                "@type": "Offer",
-                "price": "0",
-                "priceCurrency": "BRL",
-                "availability": "https://schema.org/PreOrder"
-            },
-            "description": "Plataforma de inteligência de crédito que traduz dados operacionais de PMEs em narrativas financeiras para aprovação de crédito.",
-            "aggregateRating": {
-                "@type": "AggregateRating",
-                "ratingValue": "4.9",
-                "ratingCount": "120"
-            }
-        }
-    </script>
 </head>
 
 <body>
@@ -44,9 +24,9 @@
     <!-- Sticky Mobile CTA -->
     <div class="sticky-cta md:hidden" id="mobileStickyBar" role="region" aria-label="Oferta por tempo limitado">
         <div class="sticky-content">
-            <span class="text-xs font-medium text-emerald-400">Piloto aberto até 30/06</span>
-            <button class="btn btn-sm btn-primary w-full" data-scroll="#conversational-form">
-                Participar Agora
+            <span class="text-xs font-medium text-emerald-400">Garantia de 30 dias</span>
+            <button class="btn btn-sm btn-primary w-full" data-scroll="#cta-final">
+                Ativar Meu Copiloto
                 <i data-lucide="arrow-right" class="size-4"></i>
             </button>
         </div>
@@ -63,12 +43,12 @@
 
             <nav id="primaryNav" class="nav-menu" aria-label="Menu Principal">
                 <ul class="nav-list">
-                    <li><a href="#problem" class="nav-link">O Problema</a></li>
-                    <li><a href="#solution" class="nav-link">Como Funciona</a></li>
-                    <li><a href="#demo" class="nav-link">Demo Interativa</a></li>
-                    <li><a href="#founder" class="nav-link">Quem Somos</a></li>
+                    <li><a href="#dor" class="nav-link">O Problema</a></li>
+                    <li><a href="#solucao" class="nav-link">A Solução</a></li>
+                    <li><a href="#como-funciona" class="nav-link">Como Funciona</a></li>
+                    <li><a href="#preco" class="nav-link">Preço</a></li>
                 </ul>
-                <button class="btn btn-sm btn-ghost" data-scroll="#conversational-form">Solicitar Acesso</button>
+                <button class="btn btn-sm btn-primary" data-scroll="#cta-final">Ver Minhas Ofertas</button>
             </nav>
 
             <button class="nav-toggle md:hidden" aria-controls="primaryNav" aria-expanded="false"
@@ -79,82 +59,66 @@
     </header>
 
     <main id="main-content">
-        <!-- Hero Section -->
-        <section id="hero" class="section hero" aria-labelledby="hero-heading">
-            <div class="container hero-grid">
+        <!-- SEÇÃO 1: HERO -->
+        <section id="hero" class="section hero hero-dark" aria-labelledby="hero-heading">
+            <div class="container hero-content-centered">
                 <div class="hero-content cascade" data-delay="100">
-                    <div class="badge-pill">
-                        <span class="badge-dot"></span>
-                        Projeto de Inovação UTFPR · MVP 2025
+                    <div class="tagline-pill">
+                        <i class="fa-solid fa-building-columns"></i>
+                        PARA EMPRESAS QUE CANSARAM DE RECEBER "NÃO" DO BANCO
                     </div>
-                    <h1 id="hero-heading" class="hero-title">
-                        <span class="text-gradient" data-dtr data-default="Traduzimos sua operação">Traduzimos sua
-                            operação</span>
-                        <br>em crédito aprovado.
+                    
+                    <h1 id="hero-heading" class="hero-title-sales">
+                        Sua empresa é <span class="text-highlight">"Rica em Vendas"</span>, mas <span class="text-danger">"Pobre em Caixa"</span>?
+                        <br><span class="subtitle-warning">Cuidado: É exatamente assim que negócios saudáveis quebram.</span>
                     </h1>
-                    <p class="hero-lead">
-                        O Score tradicional ignora o potencial da sua PME. Usamos seus dados reais (Open Finance + ERP)
-                        para construir uma narrativa irrecusável para os bancos.
+                    
+                    <p class="hero-lead-sales">
+                        Não deixe a burocracia matar seu maior contrato. Descubra como o <strong>Copiloto Financeiro</strong> usa seus próprios dados (via Open Finance) para provar sua capacidade de pagamento e <span class="text-brand">desbloquear crédito justo</span>, mesmo que seu Score esteja baixo.
                     </p>
 
-                    <div class="hero-actions">
-                        <button class="btn btn-lg btn-primary" data-scroll="#conversational-form">
-                            Criar Dossiê Gratuito
-                            <i data-lucide="chevron-right"></i>
-                        </button>
-                        <button class="btn btn-lg btn-outline" data-scroll="#demo">
-                            <i data-lucide="play-circle"></i>
-                            Ver Demo
+                    <div class="hero-actions-centered">
+                        <button class="btn btn-xl btn-primary btn-glow" data-scroll="#cta-final">
+                            <i class="fa-solid fa-rocket"></i>
+                            QUERO VER MINHAS OFERTAS PRÉ-APROVADAS
                         </button>
                     </div>
 
-                    <div class="hero-trust">
-                        <p class="text-sm text-muted">Apoiado por:</p>
-                        <div class="trust-logos">
-                            <span class="trust-logo">UTFPR</span>
-                            <span class="trust-logo">Sebrae</span>
-                            <span class="trust-logo">Open Finance</span>
+                    <div class="microcopy">
+                        <span><i class="fa-solid fa-lock"></i> Consulta Segura via Open Finance Oficial</span>
+                        <span class="divider">|</span>
+                        <span><i class="fa-solid fa-shield-halved"></i> Sem impacto no seu Score atual</span>
+                    </div>
+
+                    <!-- Barra de Parceiros/Autoridade -->
+                    <div class="trust-bar">
+                        <p class="trust-label">Tecnologia regulada por:</p>
+                        <div class="trust-logos-bar">
+                            <div class="trust-logo-item">
+                                <i class="fa-solid fa-landmark"></i>
+                                <span>Banco Central</span>
+                            </div>
+                            <div class="trust-logo-item">
+                                <i class="fa-solid fa-link"></i>
+                                <span>Open Finance Brasil</span>
+                            </div>
+                            <div class="trust-logo-item">
+                                <i class="fa-solid fa-shield-halved"></i>
+                                <span>LGPD Compliant</span>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="hero-visual cascade" data-delay="300">
-                    <div class="visual-card glass-panel">
-                        <div class="card-header">
-                            <div class="user-info">
-                                <div class="avatar">CF</div>
-                                <div>
-                                    <p class="font-bold">Dossiê de Crédito</p>
-                                    <p class="text-xs text-muted">Gerado em 2s</p>
-                                </div>
-                            </div>
-                            <div class="status-badge success">Aprovado</div>
-                        </div>
-                        <div class="card-body">
-                            <div class="metric-row">
-                                <span>Score Tradicional</span>
-                                <span class="text-red-400">450 (Baixo)</span>
-                            </div>
-                            <div class="metric-row highlight">
-                                <span>Score Copiloto</span>
-                                <span class="text-emerald-400">890 (Excelente)</span>
-                            </div>
-                            <div class="chart-placeholder">
-                                <div class="bar" style="height: 40%"></div>
-                                <div class="bar" style="height: 60%"></div>
-                                <div class="bar active" style="height: 95%"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Vertical Video Placeholder -->
+                <!-- Vídeo Depoimento do Cliente -->
+                <div class="hero-video cascade" data-delay="300">
                     <div class="video-float">
                         <video autoplay muted loop playsinline
                             poster="https://placehold.co/180x320/0f172a/ffffff?text=Case+Sucesso">
                             <source src="videos/case 1.mp4" type="video/mp4">
                         </video>
                         <div class="video-overlay">
-                            <i data-lucide="check-circle" class="text-brand"></i>
+                            <i class="fa-solid fa-circle-check text-brand"></i>
                             <span>R$ 150k Aprovado</span>
                         </div>
                     </div>
@@ -162,147 +126,269 @@
             </div>
         </section>
 
-        <!-- Problem Section -->
-        <section id="problem" class="section problem">
+        <!-- SEÇÃO 2: A DOR (Storytelling) -->
+        <section id="dor" class="section dor-section">
             <div class="container">
-                <div class="section-header text-center">
-                    <h2 class="section-title">O sistema joga contra você</h2>
-                    <p class="section-subtitle">Bancos usam métricas do passado. Nós usamos o futuro do seu negócio.</p>
-                </div>
-
-                <div class="bento-grid">
-                    <div class="bento-item span-2 bg-gradient cascade" data-delay="100">
-                        <i data-lucide="trending-down" class="bento-icon text-red-400"></i>
-                        <h3>Score Cego</h3>
-                        <p>Seu faturamento cresceu 30%, mas o Serasa ainda não viu. O banco nega crédito por dados de
-                            2023.</p>
+                <div class="story-container glass-panel cascade" data-delay="100">
+                    <div class="section-header-left">
+                        <span class="eyebrow"><i class="fa-solid fa-cloud-rain"></i> A realidade cruel</span>
+                        <h2 class="section-title">O cenário do pesadelo <span class="text-muted">(que você conhece bem).</span></h2>
                     </div>
-                    <div class="bento-item cascade" data-delay="200">
-                        <i data-lucide="clock" class="bento-icon text-amber-400"></i>
-                        <h3>45 Dias de Espera</h3>
-                        <p>O tempo médio para uma resposta negativa. Sua operação não pode parar.</p>
-                    </div>
-                    <div class="bento-item cascade" data-delay="300">
-                        <i data-lucide="file-x" class="bento-icon text-gray-400"></i>
-                        <h3>Burocracia Infinita</h3>
-                        <p>Papelada física, cartórios e idas à agência que não garantem nada.</p>
+                    
+                    <div class="story-content">
+                        <p class="story-text">
+                            É segunda-feira de manhã. Você acabou de assinar um contrato de <strong class="text-brand">R$ 500.000,00</strong>. É a venda que muda o patamar da sua empresa. Mas para entregar, você precisa comprar insumos <em>hoje</em>.
+                        </p>
+                        
+                        <p class="story-text">
+                            Você corre para o banco. Mostra o faturamento. Mas o gerente diz a frase que todo empresário teme:
+                        </p>
+                        
+                        <blockquote class="story-quote">
+                            <i class="fa-solid fa-quote-left"></i>
+                            "Sinto muito. O sistema negou. Seu Score está baixo."
+                        </blockquote>
+                        
+                        <p class="story-text">
+                            O motivo? Uma conta de luz esquecida ou um boleto pequeno. <strong class="text-danger">É revoltante.</strong>
+                        </p>
+                        
+                        <p class="story-text highlight-box">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                            Você sai da agência com uma empresa <strong>rica em vendas...</strong> mas <strong class="text-danger">pobre em caixa.</strong>
+                        </p>
+                        
+                        <p class="story-cta">
+                            Se você cansou de ser julgado por um número que não reflete a força do seu trabalho... <strong class="text-brand">Continue lendo. O jogo virou.</strong>
+                        </p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Solution / Features Section -->
-        <section id="solution" class="section solution">
+        <!-- SEÇÃO 3: A SOLUÇÃO (Mecanismo) -->
+        <section id="solucao" class="section solucao-section">
             <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Seu tradutor de negócios</h2>
+                <div class="section-header text-center cascade" data-delay="100">
+                    <span class="eyebrow"><i class="fa-solid fa-wand-magic-sparkles"></i> A Solução</span>
+                    <h2 class="section-title">Apresentando o seu <span class="text-gradient">"Tradutor de Negócios"</span> via IA.</h2>
                 </div>
 
-                <div class="features-grid">
-                    <article class="feature-card cascade" data-delay="100">
-                        <div class="feature-icon">
-                            <i data-lucide="shield-check"></i>
-                        </div>
-                        <h3>1. Conexão Segura</h3>
-                        <p>Conecte seu ERP e contas bancárias via Open Finance com criptografia de ponta a ponta.</p>
-                    </article>
-
-                    <article class="feature-card cascade" data-delay="200">
-                        <div class="feature-icon">
-                            <i data-lucide="cpu"></i>
-                        </div>
-                        <h3>2. Análise IA</h3>
-                        <p>Nossos algoritmos identificam padrões de crescimento invisíveis ao olho humano.</p>
-                    </article>
-
-                    <article class="feature-card cascade" data-delay="300">
-                        <div class="feature-icon">
-                            <i data-lucide="file-check"></i>
-                        </div>
-                        <h3>3. Dossiê Pronto</h3>
-                        <p>Geramos um relatório profissional que fala a língua dos analistas de risco.</p>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <!-- Interactive Demo Section -->
-        <section id="demo" class="section demo-section">
-            <div class="container">
-                <div class="demo-wrapper glass-panel cascade" data-delay="200">
-                    <div class="demo-content">
-                        <span class="eyebrow">Simulador de Potencial</span>
-                        <h2>Veja seu crédito desbloqueado</h2>
-                        <p>Ajuste o faturamento mensal e veja a projeção de crédito baseada em nossos modelos.</p>
-
-                        <div class="interactive-slider">
-                            <label for="revenueRange">Faturamento Mensal: <span id="revenueValue"
-                                    class="text-brand font-bold">R$ 50.000</span></label>
-                            <input type="range" id="revenueRange" min="10000" max="500000" step="5000" value="50000">
-                        </div>
-
-                        <div class="demo-stats">
-                            <div class="stat-box">
-                                <span class="stat-label">Crédito Estimado</span>
-                                <span class="stat-value" id="creditValue">R$ 15.000</span>
-                            </div>
-                            <div class="stat-box">
-                                <span class="stat-label">Taxa Média</span>
-                                <span class="stat-value text-emerald-400">1.9% a.m.</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="demo-visual">
-                        <!-- Abstract visual representation -->
-                        <div class="graph-bars">
-                            <div class="graph-bar" style="height: 30%"></div>
-                            <div class="graph-bar" style="height: 50%"></div>
-                            <div class="graph-bar" style="height: 40%"></div>
-                            <div class="graph-bar active" style="height: 80%"></div>
-                            <div class="graph-bar" style="height: 60%"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Founder Section -->
-        <section id="founder" class="section founder">
-            <div class="container founder-grid">
-                <div class="founder-image cascade" data-delay="100">
-                    <img src="https://placehold.co/400x500/0f172a/ffffff?text=Equipe+UTFPR"
-                        alt="Equipe Copiloto Financeiro" loading="lazy">
-                    <div class="founder-badge">
-                        <i data-lucide="award"></i>
-                        <span>Premiado UTFPR 2025</span>
-                    </div>
-                </div>
-                <div class="founder-content cascade" data-delay="200">
-                    <h2 class="section-title">De pesquisadores para empreendedores</h2>
-                    <p>Nascemos dentro da Universidade Tecnológica Federal do Paraná. Não somos banqueiros. Somos
-                        engenheiros e cientistas de dados cansados de ver bons negócios fecharem por falta de capital.
+                <div class="solution-intro cascade" data-delay="200">
+                    <p class="lead-text text-center">
+                        O Copiloto Financeiro <strong>não é um banco</strong>. É uma inteligência artificial que <span class="text-brand">joga no seu time</span>.
                     </p>
+                    <p class="lead-text text-center">
+                        Nós criamos o <strong class="text-brand">"Dossiê de Credibilidade"</strong>. Nossa tecnologia conecta ao seu ERP e extratos para ler a <em>saúde real</em> da operação.
+                    </p>
+                </div>
 
-                    <ul class="founder-list">
-                        <li><i data-lucide="check"></i> Metodologia validada academicamente</li>
-                        <li><i data-lucide="check"></i> Sem conflito de interesse com bancos</li>
-                        <li><i data-lucide="check"></i> Foco 100% no sucesso da PME</li>
-                    </ul>
+                <div class="translation-grid cascade" data-delay="300">
+                    <div class="translation-header">
+                        <div class="column-header bank">
+                            <i class="fa-solid fa-building-columns"></i>
+                            <span>Onde o banco vê "Risco"</span>
+                        </div>
+                        <div class="column-header ai">
+                            <i class="fa-solid fa-robot"></i>
+                            <span>Nossa IA traduz para</span>
+                        </div>
+                    </div>
 
-                    <div class="founder-quote">
-                        "O crédito não deve ser um favor, mas uma consequência lógica de uma operação saudável."
+                    <div class="translation-item">
+                        <div class="bank-view">
+                            <i class="fa-solid fa-xmark"></i>
+                            Score Baixo
+                        </div>
+                        <div class="ai-view">
+                            <i class="fa-solid fa-check"></i>
+                            <strong>Sazonalidade Positiva:</strong> Você vende bem em datas que o banco ignora.
+                        </div>
+                    </div>
+
+                    <div class="translation-item">
+                        <div class="bank-view">
+                            <i class="fa-solid fa-xmark"></i>
+                            Histórico Curto
+                        </div>
+                        <div class="ai-view">
+                            <i class="fa-solid fa-check"></i>
+                            <strong>Contratos Assinados:</strong> Dinheiro futuro que já é quase certo.
+                        </div>
+                    </div>
+
+                    <div class="translation-item">
+                        <div class="bank-view">
+                            <i class="fa-solid fa-xmark"></i>
+                            Setor Arriscado
+                        </div>
+                        <div class="ai-view">
+                            <i class="fa-solid fa-check"></i>
+                            <strong>Fidelidade de Clientes:</strong> Receita recorrente que garante o pagamento.
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Conversational Form -->
-        <section id="conversational-form" class="section form-section">
+        <!-- SEÇÃO 4: COMO FUNCIONA (Passo a Passo) -->
+        <section id="como-funciona" class="section como-funciona-section">
+            <div class="container">
+                <div class="section-header text-center cascade" data-delay="100">
+                    <span class="eyebrow"><i class="fa-solid fa-list-check"></i> Passo a Passo</span>
+                    <h2 class="section-title">Como funciona na prática</h2>
+                </div>
+
+                <div class="steps-grid">
+                    <div class="step-card cascade" data-delay="100">
+                        <div class="step-number">1</div>
+                        <div class="step-icon">
+                            <i class="fa-solid fa-lock"></i>
+                        </div>
+                        <h3>Conexão Blindada</h3>
+                        <p>Em <strong>2 minutos</strong>, você conecta suas contas via Open Finance (Ambiente regulado pelo Banco Central).</p>
+                    </div>
+
+                    <div class="step-card cascade" data-delay="200">
+                        <div class="step-number">2</div>
+                        <div class="step-icon">
+                            <i class="fa-solid fa-magnifying-glass-chart"></i>
+                        </div>
+                        <h3>O "Raio-X" da IA</h3>
+                        <p>Nosso robô analisa os dados e gera seu <strong>Dossiê de Credibilidade</strong> personalizado.</p>
+                    </div>
+
+                    <div class="step-card cascade" data-delay="300">
+                        <div class="step-number">3</div>
+                        <div class="step-icon">
+                            <i class="fa-solid fa-handshake"></i>
+                        </div>
+                        <h3>Matchmaking</h3>
+                        <p>A plataforma envia seu Dossiê para nossa <strong>rede de parceiros</strong> (Fintechs e Bancos Médios).</p>
+                    </div>
+
+                    <div class="step-card cascade" data-delay="400">
+                        <div class="step-number">4</div>
+                        <div class="step-icon">
+                            <i class="fa-solid fa-trophy"></i>
+                        </div>
+                        <h3>Poder de Escolha</h3>
+                        <p>Você recebe a notificação com <strong>ofertas pré-aprovadas</strong> e escolhe a melhor taxa.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 5: PREÇO E OFERTA (Destaque) -->
+        <section id="preco" class="section preco-section">
+            <div class="container">
+                <div class="section-header text-center cascade" data-delay="100">
+                    <span class="eyebrow"><i class="fa-solid fa-calculator"></i> Investimento</span>
+                    <h2 class="section-title">Vamos falar a verdade sobre o <span class="text-gradient">"Custo do Dinheiro"</span>.</h2>
+                </div>
+
+                <div class="price-comparison cascade" data-delay="200">
+                    <div class="comparison-card bad">
+                        <div class="comparison-header">
+                            <i class="fa-solid fa-circle-xmark"></i>
+                            <h3>Cheque Especial</h3>
+                            <span class="comparison-tag">O que você paga hoje</span>
+                        </div>
+                        <div class="comparison-body">
+                            <p class="comparison-scenario">Se você entrar no Cheque Especial por <strong>apenas 2 dias</strong>:</p>
+                            <div class="comparison-value bad">
+                                <span class="currency">R$</span>
+                                <span class="amount">200+</span>
+                                <span class="period">de juros</span>
+                            </div>
+                            <ul class="comparison-list">
+                                <li><i class="fa-solid fa-xmark"></i> Taxas abusivas</li>
+                                <li><i class="fa-solid fa-xmark"></i> Sem opção de escolha</li>
+                                <li><i class="fa-solid fa-xmark"></i> Prejudica seu Score</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="comparison-card good featured">
+                        <div class="featured-badge">
+                            <i class="fa-solid fa-star"></i> MELHOR ESCOLHA
+                        </div>
+                        <div class="comparison-header">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <h3>Copiloto Financeiro</h3>
+                            <span class="comparison-tag">Investimento inteligente</span>
+                        </div>
+                        <div class="comparison-body">
+                            <div class="comparison-value good">
+                                <span class="currency">R$</span>
+                                <span class="amount">149</span>
+                                <span class="period">/mês</span>
+                            </div>
+                            <div class="daily-cost">
+                                <i class="fa-solid fa-mug-hot"></i>
+                                <span>Isso dá <strong>R$ 4,96 por dia</strong> — menos que um café na padaria.</span>
+                            </div>
+                            <ul class="comparison-list">
+                                <li><i class="fa-solid fa-check"></i> Copiloto trabalhando 24h para você</li>
+                                <li><i class="fa-solid fa-check"></i> Acesso às melhores taxas do mercado</li>
+                                <li><i class="fa-solid fa-check"></i> Evita custos de emergência</li>
+                                <li><i class="fa-solid fa-check"></i> Melhora seu perfil de crédito</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="price-question cascade" data-delay="300">
+                    <p>O que sai mais caro? <strong>Pagar juros abusivos</strong> ou investir o preço de um café para ter acesso às <span class="text-brand">melhores taxas</span>?</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 6: GARANTIA E FECHAMENTO -->
+        <section id="cta-final" class="section garantia-section">
+            <div class="container">
+                <div class="garantia-container glass-panel cascade" data-delay="100">
+                    <div class="garantia-badge">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    
+                    <div class="section-header text-center">
+                        <h2 class="section-title">Garantia de <span class="text-brand">"Risco Invertido"</span>.</h2>
+                    </div>
+
+                    <div class="garantia-content">
+                        <p class="garantia-text">
+                            Encare os R$ 149,00 como um <strong>depósito de segurança</strong>.
+                        </p>
+                        <p class="garantia-text highlight">
+                            Se em <strong>30 dias</strong> você não conseguir nenhuma oferta melhor, ou se a ferramenta não te der clareza financeira, nós <span class="text-brand">devolvemos 100% da sua mensalidade</span>.
+                        </p>
+                        <p class="garantia-text">
+                            <strong>O risco financeiro é todo nosso.</strong>
+                        </p>
+                    </div>
+
+                    <div class="garantia-cta">
+                        <button class="btn btn-xl btn-primary btn-glow" data-scroll="#form-section">
+                            <i class="fa-solid fa-bolt"></i>
+                            ATIVAR MEU COPILOTO E RECEBER PROPOSTAS
+                        </button>
+                        <div class="garantia-microcopy">
+                            <span><i class="fa-solid fa-clock"></i> Ativação em menos de 5 minutos</span>
+                            <span><i class="fa-solid fa-rotate-left"></i> Garantia de 30 dias</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Formulário de Cadastro -->
+        <section id="form-section" class="section form-section">
             <div class="container">
                 <div class="form-container glass-panel">
                     <div class="form-header text-center">
-                        <h2 class="section-title">Vamos construir seu dossiê?</h2>
-                        <p>Responda 4 perguntas rápidas para iniciar sua pré-análise.</p>
+                        <h2 class="section-title">Vamos ativar seu Copiloto?</h2>
+                        <p>Preencha seus dados e receba suas ofertas pré-aprovadas.</p>
                     </div>
 
                     <form id="creditForm" class="conversational-form" novalidate>
@@ -355,7 +441,10 @@
                                 <label for="terms">Concordo com a Política de Privacidade e processamento de
                                     dados.</label>
                             </div>
-                            <button type="submit" class="btn btn-primary btn-lg w-full">Gerar Dossiê Agora</button>
+                            <button type="submit" class="btn btn-primary btn-lg w-full">
+                                <i class="fa-solid fa-paper-plane"></i>
+                                Ativar Meu Copiloto Agora
+                            </button>
                         </div>
                     </form>
                     <div id="formFeedback" class="form-feedback hidden"></div>
@@ -371,17 +460,19 @@
                     <details class="faq-item">
                         <summary>O Copiloto é um banco? <i data-lucide="chevron-down"></i></summary>
                         <p>Não. Somos uma plataforma de inteligência que conecta sua empresa aos melhores parceiros de
-                            crédito do mercado.</p>
+                            crédito do mercado, usando IA para traduzir seus dados em oportunidades.</p>
                     </details>
                     <details class="faq-item">
                         <summary>Meus dados estão seguros? <i data-lucide="chevron-down"></i></summary>
-                        <p>Sim. Utilizamos criptografia de nível bancário e seguimos rigorosamente a LGPD. Seus dados
-                            são seus.</p>
+                        <p>Sim. Utilizamos conexão via Open Finance (regulado pelo Banco Central), criptografia de nível bancário e seguimos rigorosamente a LGPD. Seus dados são seus.</p>
                     </details>
                     <details class="faq-item">
-                        <summary>Quanto custa? <i data-lucide="chevron-down"></i></summary>
-                        <p>O dossiê inicial é 100% gratuito. Só cobramos uma taxa de sucesso se você conseguir o crédito
-                            através da nossa plataforma.</p>
+                        <summary>E se eu não gostar? <i data-lucide="chevron-down"></i></summary>
+                        <p>Você tem 30 dias de garantia total. Se não conseguir nenhuma oferta melhor ou não ficar satisfeito, devolvemos 100% do seu investimento.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Isso afeta meu Score? <i data-lucide="chevron-down"></i></summary>
+                        <p>Não! A consulta via Open Finance é segura e não impacta seu Score de crédito. Apenas mostramos seu potencial real aos parceiros.</p>
                     </details>
                 </div>
             </div>
